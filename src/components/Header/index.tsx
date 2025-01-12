@@ -40,7 +40,7 @@ export const Header = () => {
         (scrollActive ? ' shadow-md pt-0' : ' pt-4')
       }
     >
-      <nav className="max-w-screen-xl py-4 px-6 sm:px-8 lg:px-16 mx-auto flex items-center justify-between">
+      <nav className="max-w-screen-xl py-4 px-6 sm:px-8 lg:px-16 mx-auto flex items-center justify-between font-Cinzel">
         <div>
           <Image src="/logo.png" alt="Logo" width={64} height={64} />
         </div>
