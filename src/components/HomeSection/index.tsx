@@ -1,10 +1,16 @@
 import Image from 'next/image';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { SocialMediaLink } from '../SocialMediaLink';
+import AnimatedBackground from '../AnimatedBackground';
 
 export const HomeSection = () => {
   return (
-    <section className="flex flex-col-reverse md:flex-row items-center justify-center gap-5 md:gap-0 md:justify-around h-full">
+    <section className="relative overflow-hidden flex flex-col-reverse md:flex-row items-center justify-center gap-5 md:gap-0 md:justify-around h-full">
+      {/* Container dos SVGs Animados */}
+      <div className="absolute inset-0 pointer-events-none z-[-1]">
+        <AnimatedBackground />
+      </div>
+
       <div className="flex flex-col items-center md:gap-5">
         <h1 className="text-5xl tracking-wider md:text-8xl font-semibold font-CormorantGaramond">
           ANDREY <br /> DANTAS
