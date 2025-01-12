@@ -16,7 +16,8 @@ export default {
       },
       fontFamily: {
         CormorantGaramond: ['var(--font-cormorant-garamond)', 'serif'],
-        Cinzel: ['var(--font-cinzel)', 'serif']
+        Cinzel: ['var(--font-cinzel)', 'serif'],
+        Poppins: ['var(--font-poppins)', 'sans-serif']
       },
       animation: {
         animate: 'animate 8s linear infinite'
