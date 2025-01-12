@@ -36,7 +36,7 @@ export const Header = () => {
   return (
     <header
       className={
-        'w-full pt-4 fixed top-0 z-30 transition-all' +
+        'w-full pt-4 fixed top-0 z-30 bg-background transition-all' +
         (scrollActive ? ' shadow-md pt-0' : ' pt-4')
       }
     >
