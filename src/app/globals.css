@@ -32,10 +32,26 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Popins', sans-serif;
-  /* background-image: url('/background.png');
+  overflow-x: hidden;
+}
+
+.background-projects {
+  position: absolute;
+  background-image: url('/background.png');
   background-size: 200px 200px;
   background-repeat: repeat;
-  animation: slide-bg 60s linear infinite; */
+  animation: slide-bg 60s linear infinite;
+  z-index: -1;
+}
+
+/* Animação opcional para o background */
+@keyframes slide-bg {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -200px 200px;
+  }
 }
 
 .content-title::before {
