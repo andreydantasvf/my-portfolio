@@ -20,7 +20,7 @@
       -258 -107 -53 -27 -99 -49 -101 -49 -2 0 -6 145 -9 323 -4 177 -11 371 -16
       431 -6 60 -8 113 -5 117 3 5 23 -3 45 -18 22 -14 42 -24 44 -21 3 3 -8 36 -23
       74 -16 38 -39 98 -51 134 -24 73 -36 96 -44 84z">
-      <animate attributeName="fill" values="#161515;#ecdc98;#161515" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="fill" values="#161515;#ecdc98;#161515" dur="7s" repeatCount="indefinite"/>
     </path>
   </g>
 </svg>
