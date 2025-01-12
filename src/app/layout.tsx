@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Cinzel } from 'next/font/google';
+import { Cormorant_Garamond, Cinzel, Poppins } from 'next/font/google';
 import './globals.css';
 
 const CormorantGaramond = Cormorant_Garamond({
@@ -16,6 +16,13 @@ const CinzelFont = Cinzel({
   weight: ['400', '600', '700']
 });
 
+const PoppinsFont = Poppins({
+  subsets: ['latin'],
+  style: 'normal',
+  variable: '--font-poppins',
+  weight: ['400', '600', '700']
+});
+
 export const metadata: Metadata = {
   title: 'Andrey Dantas | Desenvolvedor de Software',
   description: 'Desenvolvedor de Software Full Stack'
@@ -29,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${CormorantGaramond.variable} ${CinzelFont.variable} antialiased`}
+        className={`${CormorantGaramond.variable} ${CinzelFont.variable} ${PoppinsFont.variable} antialiased`}
       >
         {children}
       </body>
