@@ -3,7 +3,7 @@ import { SectionTitle } from '../SectionTitle';
 
 export const ContactMe = () => {
   return (
-    <section className="mt-10 md:mt-20 pb-12">
+    <section className="mt-10 md:mt-20 pb-6 2xl:pb-12">
       <SectionTitle
         title="Envie uma mensagem via Hermes"
         imageUrl="/hermes.svg"

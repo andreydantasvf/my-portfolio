@@ -5,7 +5,7 @@ import AnimatedBackground from '../AnimatedBackground';
 
 export const HomeSection = () => {
   return (
-    <section className="relative overflow-hidden flex flex-col-reverse md:flex-row items-center justify-center gap-5 md:gap-0 md:justify-around h-full">
+    <section className="relative overflow-hidden flex flex-col-reverse md:flex-row items-center justify-center gap-5 md:gap-0 md:justify-around h-screen 2xl:h-[620px]">
       {/* Container dos SVGs Animados */}
       <div className="absolute inset-0 pointer-events-none z-[-1]">
         <AnimatedBackground />
