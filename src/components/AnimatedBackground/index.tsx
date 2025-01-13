@@ -30,7 +30,14 @@ const godsVectors = [
   'hephaestusVector.svg',
   'heraVector.svg',
   'hermesVector.svg',
-  'heraclesVector.svg'
+  'heraclesVector.svg',
+  'artemisVector.svg',
+  'demeterVector.svg',
+  'dionysusVector.svg',
+  'hadesVector.svg',
+  'hestiaVector.svg',
+  'perseusVector.svg',
+  'poseidonVector.svg'
 ];
 
 const getRandomGod = (): string =>
