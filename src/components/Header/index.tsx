@@ -20,7 +20,7 @@ export const Header = () => {
     };
   }, []);
 
-  // Bloquear/desbloquear o scroll ao abrir/fechar o menu
+  // Bloquear/desbloquear o scroll ao abrir/fechar o menu mobile
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
@@ -32,6 +32,11 @@ export const Header = () => {
       document.body.style.overflow = '';
     };
   }, [menuOpen]);
+
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+    document.body.style.overflow = '';
+  };
 
   return (
     <header
@@ -47,11 +52,11 @@ export const Header = () => {
 
         {/* Menu para Desktop */}
         <ul className="hidden md:flex items-center gap-6">
-          <NavLink name="Home" href="#" iconUrl="/zeus.png" />
-          <NavLink name="Sobre Mim" href="#" iconUrl="/poseidon.png" />
-          <NavLink name="Projetos" href="#" iconUrl="/kronos.png" />
-          <NavLink name="Tecnologias" href="#" iconUrl="/hephaestus.png" />
-          <NavLink name="Contatos" href="#" iconUrl="/hades.png" />
+          <NavLink name="Home" href="home" iconUrl="/zeus.png" />
+          <NavLink name="Sobre Mim" href="about" iconUrl="/poseidon.png" />
+          <NavLink name="Habilidades" href="skills" iconUrl="/hephaestus.png" />
+          <NavLink name="Projetos" href="projects" iconUrl="/kronos.png" />
+          <NavLink name="Contatos" href="contact-me" iconUrl="/hades.png" />
         </ul>
 
         {/* Botão Menu Hamburguer */}
@@ -72,11 +77,36 @@ export const Header = () => {
           style={{ height: 'calc(100vh - 64px)' }}
         >
           <ul className="flex flex-col h-full gap-4 py-4 w-fit mx-auto">
-            <NavLink name="Home" href="#" iconUrl="/zeus.png" />
-            <NavLink name="Sobre Mim" href="#" iconUrl="/poseidon.png" />
-            <NavLink name="Projetos" href="#" iconUrl="/kronos.png" />
-            <NavLink name="Tecnologias" href="#" iconUrl="/hephaestus.png" />
-            <NavLink name="Contatos" href="#" iconUrl="/hades.png" />
+            <NavLink
+              name="Home"
+              href="home"
+              iconUrl="/zeus.png"
+              onClick={handleLinkClick}
+            />
+            <NavLink
+              name="Sobre Mim"
+              href="about"
+              iconUrl="/poseidon.png"
+              onClick={handleLinkClick}
+            />
+            <NavLink
+              name="Habilidades"
+              href="skills"
+              iconUrl="/hephaestus.png"
+              onClick={handleLinkClick}
+            />
+            <NavLink
+              name="Projetos"
+              href="projects"
+              iconUrl="/kronos.png"
+              onClick={handleLinkClick}
+            />
+            <NavLink
+              name="Contatos"
+              href="contact-me"
+              iconUrl="/hades.png"
+              onClick={handleLinkClick}
+            />
           </ul>
         </div>
       </nav>
