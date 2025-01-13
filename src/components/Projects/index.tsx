@@ -4,7 +4,7 @@ import { SectionTitle } from '../SectionTitle';
 
 export const Projects = () => {
   return (
-    <section className="mt-10 md:mt-20">
+    <section id="projects" className="mt-10 md:mt-20">
       <SectionTitle title="Projetos Lendarios" imageUrl="/forge.svg" />
 
       <div className="relative mt-5 md:mt-10">

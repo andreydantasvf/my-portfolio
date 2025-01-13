@@ -3,7 +3,7 @@ import { SectionTitle } from '../SectionTitle';
 
 export const AboutMe = () => {
   return (
-    <section className="md:mt-20">
+    <section id="about" className="md:mt-20">
       <SectionTitle title="Sobre Mim" imageUrl="/trident.svg" />
 
       <div className="flex flex-col md:flex-row gap-6 md:justify-between items-center mt-5 md:mt-10 md:pb-5 md:pr-5 relative">
