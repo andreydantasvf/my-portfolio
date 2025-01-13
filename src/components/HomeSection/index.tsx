@@ -28,17 +28,17 @@ export const HomeSection = () => {
 
         <div className="flex items-center gap-4 mt-4 md:mt-0">
           <SocialMediaLink
-            href="#"
+            href="https://www.linkedin.com/in/andreydantasvf"
             icon={<FaLinkedin className="text-primaryColor" />}
           />
 
           <SocialMediaLink
-            href="#"
+            href="https://github.com/andreydantasvf"
             icon={<FaGithub className="text-primaryColor" />}
           />
 
           <SocialMediaLink
-            href="#"
+            href="https://www.instagram.com/andreydantasvf"
             icon={<FaInstagram className="text-primaryColor" />}
           />
         </div>

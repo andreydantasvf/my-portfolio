@@ -7,17 +7,17 @@ export const Footer = () => {
     <footer className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto py-10">
       <div className="flex items-center justify-center gap-4">
         <SocialMediaLink
-          href="#"
+          href="https://www.linkedin.com/in/andreydantasvf"
           icon={<FaLinkedin className="text-primaryColor" />}
         />
 
         <SocialMediaLink
-          href="#"
+          href="https://github.com/andreydantasvf"
           icon={<FaGithub className="text-primaryColor" />}
         />
 
         <SocialMediaLink
-          href="#"
+          href="https://www.instagram.com/andreydantasvf"
           icon={<FaInstagram className="text-primaryColor" />}
         />
       </div>
