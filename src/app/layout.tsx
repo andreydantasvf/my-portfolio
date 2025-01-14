@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Cormorant_Garamond, Cinzel, Poppins } from 'next/font/google';
 import './globals.css';
 import Head from 'next/head';
+import Script from 'next/script';
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 
 const CormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -61,6 +63,11 @@ export const metadata: Metadata = {
 const schemaData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  author: {
+    '@type': 'Person',
+    name: 'Andrey Dantas',
+    url: 'https://www.andreydantas.com.br'
+  },
   name: 'Andrey Dantas',
   url: 'https://www.andreydantas.com.br',
   image: 'https://www.andreydantas.com.br/preview.png', // Substitua pelo URL de uma imagem representativa
@@ -100,16 +107,18 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link rel="manifest" href="/manifest.json" />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-        />
       </Head>
       <body
         className={`${CormorantGaramond.variable} ${CinzelFont.variable} ${PoppinsFont.variable} antialiased`}
       >
         {children}
+
+        <Script
+          id="portfolio-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
+        <GoogleAnalytics />
       </body>
     </html>
   );
