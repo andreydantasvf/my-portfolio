@@ -8,7 +8,10 @@ import { IoMdColorPalette } from 'react-icons/io';
 export const Skills = () => {
   return (
     <section id="skills" className="mt-10 md:mt-20">
-      <SectionTitle title="Habilidades Divinas" imageUrl="/ray.svg" />
+      <SectionTitle
+        title="Habilidades Divinas"
+        imageUrl="/title-icons/ray.svg"
+      />
 
       <div className="py-10 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <DivineSkill

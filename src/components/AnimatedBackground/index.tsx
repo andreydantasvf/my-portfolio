@@ -81,7 +81,7 @@ const AnimatedBackground: React.FC = () => {
             width={64}
             height={64}
             className="opacity-10 w-16 h-16 text-white"
-            src={`/${element.god}`} // Cada elemento usa seu próprio deus
+            src={`/gods-vectors/${element.god}`} // Cada elemento usa seu próprio deus
             alt={element.god.replace('.svg', '')}
           />
         </div>

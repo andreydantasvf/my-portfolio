@@ -55,31 +55,31 @@ export const Header = () => {
           <NavLink
             name="Home"
             href="home"
-            iconUrl="/zeus.png"
+            iconUrl="/navLinks-icons/zeus.png"
             ariaLabel="Ir para a seção Home"
           />
           <NavLink
             name="Sobre Mim"
             href="about"
-            iconUrl="/poseidon.png"
+            iconUrl="/navLinks-icons/poseidon.png"
             ariaLabel="Ir para a seção Sobre Mim"
           />
           <NavLink
             name="Habilidades"
             href="skills"
-            iconUrl="/hephaestus.png"
+            iconUrl="/navLinks-icons/hephaestus.png"
             ariaLabel="Ir para a seção Habilidades"
           />
           <NavLink
             name="Projetos"
             href="projects"
-            iconUrl="/kronos.png"
+            iconUrl="/navLinks-icons/kronos.png"
             ariaLabel="Ir para a seção Projetos"
           />
           <NavLink
             name="Contatos"
             href="contact-me"
-            iconUrl="/hades.png"
+            iconUrl="/navLinks-icons/hades.png"
             ariaLabel="Ir para a seção Contatos"
           />
         </ul>
@@ -107,35 +107,35 @@ export const Header = () => {
             <NavLink
               name="Home"
               href="home"
-              iconUrl="/zeus.png"
+              iconUrl="/navLinks-icons/zeus.png"
               onClick={handleLinkClick}
               ariaLabel="Ir para a seção Home"
             />
             <NavLink
               name="Sobre Mim"
               href="about"
-              iconUrl="/poseidon.png"
+              iconUrl="/navLinks-icons/poseidon.png"
               onClick={handleLinkClick}
               ariaLabel="Ir para a seção Sobre Mim"
             />
             <NavLink
               name="Habilidades"
               href="skills"
-              iconUrl="/hephaestus.png"
+              iconUrl="/navLinks-icons/hephaestus.png"
               onClick={handleLinkClick}
               ariaLabel="Ir para a seção Habilidades"
             />
             <NavLink
               name="Projetos"
               href="projects"
-              iconUrl="/kronos.png"
+              iconUrl="/navLinks-icons/kronos.png"
               onClick={handleLinkClick}
               ariaLabel="Ir para a seção Projetos"
             />
             <NavLink
               name="Contatos"
               href="contact-me"
-              iconUrl="/hades.png"
+              iconUrl="/navLinks-icons/hades.png"
               onClick={handleLinkClick}
               ariaLabel="Ir para a seção Contatos"
             />

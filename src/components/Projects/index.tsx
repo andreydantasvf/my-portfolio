@@ -5,7 +5,10 @@ import { SectionTitle } from '../SectionTitle';
 export const Projects = () => {
   return (
     <section id="projects" className="mt-10 md:mt-20">
-      <SectionTitle title="Projetos Lendarios" imageUrl="/forge.svg" />
+      <SectionTitle
+        title="Projetos Lendarios"
+        imageUrl="/title-icons/forge.svg"
+      />
 
       <div className="relative mt-5 md:mt-10">
         <div className="h-full w-full md:w-[200vw] absolute left-0 md:left-[-100vw] background-projects opacity-5"></div>

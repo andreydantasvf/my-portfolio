@@ -57,7 +57,7 @@ export const ContactMe = () => {
     <section id="contact-me" className="mt-10 md:mt-20 pb-6 2xl:pb-12 relative">
       <SectionTitle
         title="Envie uma mensagem via Hermes"
-        imageUrl="/hermes.svg"
+        imageUrl="/title-icons/hermes.svg"
       />
 
       <div className="px-8 py-6 mt-10 border border-secondaryColor rounded-xl max-w-[750px] mx-auto shadow-lg">

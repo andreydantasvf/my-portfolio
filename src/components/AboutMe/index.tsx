@@ -4,13 +4,13 @@ import { SectionTitle } from '../SectionTitle';
 export const AboutMe = () => {
   return (
     <section id="about" className="md:mt-20">
-      <SectionTitle title="Sobre Mim" imageUrl="/trident.svg" />
+      <SectionTitle title="Sobre Mim" imageUrl="/title-icons/trident.svg" />
 
       <div className="flex flex-col md:flex-row gap-6 md:justify-between items-center mt-5 md:mt-10 md:pb-5 md:pr-5 relative">
         <Image
           width={360}
           height={360}
-          src="/statue-zeus.png"
+          src="/section-images/statue-zeus.png"
           alt="Estátua de Zeus"
           quality={100}
           className="w-40 h-40 md:w-auto md:h-auto"

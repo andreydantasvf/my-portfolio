@@ -37,7 +37,7 @@ body {
 
 .background-projects {
   position: absolute;
-  background-image: url('/background.png');
+  background-image: url('/section-images/background.png');
   background-size: 200px 200px;
   background-repeat: repeat;
   animation: slide-bg 60s linear infinite;

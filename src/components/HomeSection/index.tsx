@@ -49,7 +49,7 @@ export const HomeSection = () => {
 
       <div className="w-fit h-fit">
         <Image
-          src={'/statue-poseidon.png'}
+          src={'/section-images/statue-poseidon.png'}
           alt="Escultura de Poseidon com tridente"
           width={700}
           height={700}
