@@ -9,14 +9,6 @@ export const projects = [
     webLink: 'https://andreydantasvf.github.io/Jokenpo/'
   },
   {
-    title: 'Wizzi Flight',
-    imgURL:
-      'https://cdn.discordapp.com/attachments/282658921712320513/1153780016606351501/image.png',
-    details: 'Página de formulário para registro de passagens aéreas.',
-    githubLink: 'https://github.com/andreydantasvf/Wizzi-Teste',
-    webLink: 'https://wizzi-teste.vercel.app/'
-  },
-  {
     title: 'NFT MarketPlace',
     imgURL:
       'https://res.cloudinary.com/andreydantas/image/upload/v1675122213/NFT-MarketPlace_oexdms.png',
@@ -26,27 +18,17 @@ export const projects = [
     webLink: 'https://nftmarketplace-hazel.vercel.app/'
   },
   {
-    title: 'Deliverizé',
-    imgURL:
-      'https://cdn.discordapp.com/attachments/282658921712320513/1153780751356153956/image.png',
-    details:
-      'Página simulando o momento da compra de um lanche em um app fictício.',
-    githubLink: 'https://github.com/andreydantasvf/Deliverize',
-    webLink: 'https://deliverize.netlify.app/'
-  },
-  {
     title: 'YourFood',
     imgURL:
       'https://raw.githubusercontent.com/andreydantasvf/YourFood/main/.github/view.png',
     details:
       'Ecommerce de um restaurante com pratos deliciosos, onde pode-se ver com detalhes a descrição dos pratos e seus ingredientes.',
-    githubLink: 'https://github.com/andreydantasvf/YourFood',
-    webLink: 'https://yourfoodd.netlify.app/'
+    githubLink: 'https://github.com/andreydantasvf/YourFood'
   },
   {
     title: 'SportFit',
     imgURL:
-      'https://cdn.discordapp.com/attachments/282658921712320513/1153779306816864257/image.png',
+      'https://raw.githubusercontent.com/andreydantasvf/SportFit/refs/heads/main/.github/demo.png',
     details:
       'Landing page para uma academia ficticia. Construído com Next Js e Tailwind Css',
     githubLink: 'https://github.com/andreydantasvf/SportFit',
