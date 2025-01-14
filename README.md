@@ -1,52 +1,86 @@
-![React Avançado](https://raw.githubusercontent.com/React-Avancado/boilerplate/master/public/img/logo-gh.svg)
+# 🧙‍♂️ Portfólio Pessoal - Andrey Dantas
 
-This is a [Next.js](https://nextjs.org/) boilerplate to be used in a course called [React Avançado](https://reactavancado.com.br/).
-![ci](https://github.com/React-Avancado/boilerplate-apps-router/workflows/ci/badge.svg)
+Bem-vindo ao repositório do meu portfólio pessoal! Este é o meu espaço na web, onde mostro meu trabalho, compartilho conhecimentos e ofereço uma maneira fácil de entrar em contato comigo.
 
-## What is inside?
+![Preview](https://andreydantas.com.br/preview.png) <!-- Substitua pela URL de uma imagem de pré-visualização -->
 
-This project uses lot of stuff as:
+---
 
-- [TypeScript](https://www.typescriptlang.org/)
-- [NextJS](https://nextjs.org/)
-- [Jest](https://jestjs.io/)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-- [Storybook](https://storybook.js.org/)
-- [Eslint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [Husky](https://github.com/typicode/husky)
-- [Tailwind](https://tailwindcss.com/docs/installation)
-- [Github CI/CD](https://docs.github.com/pt/actions)
+## 🔥 Tecnologias Utilizadas
 
-## Getting Started
+Este projeto foi construído com as seguintes tecnologias modernas:
 
-First, run the development server:
+- **[Next.js](https://nextjs.org/)** - Framework React para desenvolvimento web.
+- **[Tailwind CSS](https://tailwindcss.com/)** - Framework de CSS para estilização moderna e responsiva.
+- **[EmailJS](https://www.emailjs.com/)** - Para envio de mensagens via formulário de contato.
+- **[React Icons](https://react-icons.github.io/react-icons/)** - Biblioteca de ícones para uma UI atraente.
+- **TypeScript** - Para garantir maior segurança no código.
+- **SEO Avançado** - Com suporte a Schema Markup, otimização para Open Graph e meta tags.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Funcionalidades
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- **Página de Apresentação**: Mostra minha trajetória e habilidades principais.
+- **Portfólio de Projetos**: Galeria com os meus trabalhos.
+- **Formulário de Contato**: Permite enviar mensagens diretamente via EmailJS.
+- **Links Sociais**: Facilita a conexão com LinkedIn, GitHub e Instagram.
+- **Design Responsivo**: Compatível com todos os tamanhos de tela.
+- **SEO Melhorado**: Estrutura otimizada para melhores resultados nos motores de busca.
 
-## Commands
+---
 
-- `dev`: runs your application on `localhost:3000`
-- `build`: creates the production build version
-- `start`: starts a simple server with the build production code
-- `lint`: runs the linter in all components and pages
-- `test`: runs jest to test all components and pages
-- `test:watch`: runs jest in watch mode
-- `storybook`: runs storybook on `localhost:6006`
-- `build-storybook`: create the build version of storybook
+## 🛠️ Como Rodar o Projeto
 
-## How Use This Boilerplate
+### Pré-requisitos
 
-To use this Boilerplate, just run the command:
+Antes de começar, você precisará ter instalado em sua máquina:
 
-```bash
-npx create-next-app --example https://github.com/andreydantasvf/Boilerplate_NextJs
-```
+- **[Node.js](https://nodejs.org/)** (v18 ou superior)
+- **[Yarn](https://yarnpkg.com/)** ou **npm**
+
+### Passo a Passo
+
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/andreydantasvf/my-portfolio.git
+   ```
+2. Entre na pasta do projeto:
+   ```bash
+   cd my-portfolio
+   ```
+3. Instale as dependências:
+   ```bash
+     npm install
+     # ou
+     yarn install
+   ```
+4. Configure as variáveis de ambiente:
+
+   - Crie um arquivo .env.local na raiz do projeto com as seguintes variáveis:
+
+   ```bash
+     NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=SEU_PUBLIC_KEY
+     NEXT_PUBLIC_EMAILJS_SERVICE_ID=SEU_SERVICE_ID
+     NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=SEU_TEMPLATE_ID
+   ```
+
+5. Inicie o servidor de desenvolvimento:
+
+   ```bash
+     npm run dev
+     # ou
+     yarn dev
+   ```
+
+6. Acesse o projeto em http://localhost:3000
+
+## 📞 Contato
+
+Se você gostou do meu trabalho ou tem alguma oportunidade interessante, entre em contato:
+
+- Portfólio: https://andreydantas.com.br
+- LinkedIn: https://linkedin.com/in/andreydantasvf
+- GitHub: https://github.com/andreydantasvf
+- Instagram: @andreydantasvf
+- E-mail: andreydantasvf@gmail.com
