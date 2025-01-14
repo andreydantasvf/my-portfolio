@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: 'Andrey Dantas | Desenvolvedor de Software',
     description: 'Confira meu portfólio e meus projetos.',
     creator: '@andreydantasvf',
-    images: ['https://seuportfolio.com/imagem-de-preview.png']
+    images: ['https://www.andreydantas.com.br/preview.png']
   }
 };
 
@@ -54,8 +54,8 @@ const schemaData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Andrey Dantas',
-  url: 'https://seusite.com',
-  image: 'https://seusite.com/og-image.png', // Substitua pelo URL de uma imagem representativa
+  url: 'https://www.andreydantas.com.br',
+  image: 'https://www.andreydantas.com.br/preview.png', // Substitua pelo URL de uma imagem representativa
   sameAs: [
     'https://www.linkedin.com/in/andreydantasvf',
     'https://github.com/andreydantasvf',
