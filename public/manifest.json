@@ -1,0 +1,39 @@
+{
+  "name": "Andrey Dantas",
+  "short_name": "Andrey",
+  "description": "Portfólio oficial de Andrey Dantas, desenvolvedor de software especializado em criar experiências lendárias.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#161515",
+  "theme_color": "#ecdc98",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "lang": "pt-BR",
+  "scope": "/",
+  "categories": ["portfolio", "desenvolvimento-web", "tecnologia"],
+  "screenshots": [
+    {
+      "src": "/screenshots/home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "Página inicial"
+    },
+    {
+      "src": "/screenshots/contact.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "Formulário de contato"
+    }
+  ]
+}

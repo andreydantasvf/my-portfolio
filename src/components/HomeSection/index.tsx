@@ -30,16 +30,19 @@ export const HomeSection = () => {
           <SocialMediaLink
             href="https://www.linkedin.com/in/andreydantasvf"
             icon={<FaLinkedin className="text-primaryColor" />}
+            ariaLabel="Perfil do LinkedIn de Andrey Dantas"
           />
 
           <SocialMediaLink
             href="https://github.com/andreydantasvf"
             icon={<FaGithub className="text-primaryColor" />}
+            ariaLabel="Perfil do GitHub de Andrey Dantas"
           />
 
           <SocialMediaLink
             href="https://www.instagram.com/andreydantasvf"
             icon={<FaInstagram className="text-primaryColor" />}
+            ariaLabel="Perfil do Instagram de Andrey Dantas"
           />
         </div>
       </div>
@@ -47,7 +50,7 @@ export const HomeSection = () => {
       <div className="w-fit h-fit">
         <Image
           src={'/statue-poseidon.png'}
-          alt="Estátua de Poseidon"
+          alt="Escultura de Poseidon com tridente"
           width={700}
           height={700}
           className="opacity-80 w-[250px] h-[250px] md:h-[450px] md:w-full"

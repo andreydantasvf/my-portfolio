@@ -7,6 +7,7 @@ type NavLinkProps = {
   iconUrl?: string;
   iconSizer?: number;
   onClick?: () => void;
+  ariaLabel?: string;
 };
 
 export const NavLink = ({
@@ -14,10 +15,14 @@ export const NavLink = ({
   href,
   iconUrl,
   iconSizer,
-  onClick
+  onClick,
+  ariaLabel
 }: NavLinkProps) => {
   return (
-    <li className="hover:text-primaryColor transition-all duration-300 relative font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto after:h-[2px] after:w-0 after:bg-primaryColor after:transition-all after:duration-300 after:origin-center hover:after:w-full">
+    <li
+      className="hover:text-primaryColor transition-all duration-300 relative font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto after:h-[2px] after:w-0 after:bg-primaryColor after:transition-all after:duration-300 after:origin-center hover:after:w-full"
+      aria-label={ariaLabel}
+    >
       <LinkScroll
         activeClass="active"
         to={href}

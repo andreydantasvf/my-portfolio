@@ -44,6 +44,14 @@ body {
   z-index: -1;
 }
 
+.border-anim {
+  transition: all 0.3s ease;
+}
+
+.border-anim:hover {
+  transform: scale(1.1);
+}
+
 /* Animação opcional para o background */
 @keyframes slide-bg {
   from {

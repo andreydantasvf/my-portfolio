@@ -52,17 +52,44 @@ export const Header = () => {
 
         {/* Menu para Desktop */}
         <ul className="hidden md:flex items-center gap-6">
-          <NavLink name="Home" href="home" iconUrl="/zeus.png" />
-          <NavLink name="Sobre Mim" href="about" iconUrl="/poseidon.png" />
-          <NavLink name="Habilidades" href="skills" iconUrl="/hephaestus.png" />
-          <NavLink name="Projetos" href="projects" iconUrl="/kronos.png" />
-          <NavLink name="Contatos" href="contact-me" iconUrl="/hades.png" />
+          <NavLink
+            name="Home"
+            href="home"
+            iconUrl="/zeus.png"
+            ariaLabel="Ir para a seção Home"
+          />
+          <NavLink
+            name="Sobre Mim"
+            href="about"
+            iconUrl="/poseidon.png"
+            ariaLabel="Ir para a seção Sobre Mim"
+          />
+          <NavLink
+            name="Habilidades"
+            href="skills"
+            iconUrl="/hephaestus.png"
+            ariaLabel="Ir para a seção Habilidades"
+          />
+          <NavLink
+            name="Projetos"
+            href="projects"
+            iconUrl="/kronos.png"
+            ariaLabel="Ir para a seção Projetos"
+          />
+          <NavLink
+            name="Contatos"
+            href="contact-me"
+            iconUrl="/hades.png"
+            ariaLabel="Ir para a seção Contatos"
+          />
         </ul>
 
         {/* Botão Menu Hamburguer */}
         <div
           className="flex md:hidden items-center cursor-pointer transition-all duration-300 ease-in-out text-primaryColor"
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Abrir menu"
+          aria-expanded={menuOpen ? 'true' : 'false'}
         >
           {!menuOpen ? <Menu size={32} /> : <X size={32} />}
         </div>
@@ -82,30 +109,35 @@ export const Header = () => {
               href="home"
               iconUrl="/zeus.png"
               onClick={handleLinkClick}
+              ariaLabel="Ir para a seção Home"
             />
             <NavLink
               name="Sobre Mim"
               href="about"
               iconUrl="/poseidon.png"
               onClick={handleLinkClick}
+              ariaLabel="Ir para a seção Sobre Mim"
             />
             <NavLink
               name="Habilidades"
               href="skills"
               iconUrl="/hephaestus.png"
               onClick={handleLinkClick}
+              ariaLabel="Ir para a seção Habilidades"
             />
             <NavLink
               name="Projetos"
               href="projects"
               iconUrl="/kronos.png"
               onClick={handleLinkClick}
+              ariaLabel="Ir para a seção Projetos"
             />
             <NavLink
               name="Contatos"
               href="contact-me"
               iconUrl="/hades.png"
               onClick={handleLinkClick}
+              ariaLabel="Ir para a seção Contatos"
             />
           </ul>
         </div>

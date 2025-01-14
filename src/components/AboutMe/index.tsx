@@ -53,8 +53,8 @@ export const AboutMe = () => {
           </p>
         </div>
 
-        <div className="w-8 h-8 border-t-8 border-r-8 border-primaryColor absolute right-0 top-0 hidden xl:block" />
-        <div className="w-8 h-8 border-l-8 border-b-8 border-primaryColor absolute bottom-0 left-0 hidden xl:block" />
+        <div className="w-8 h-8 border-t-8 border-r-8 border-primaryColor absolute right-0 top-0 hidden xl:block border-anim" />
+        <div className="w-8 h-8 border-l-8 border-b-8 border-primaryColor absolute bottom-0 left-0 hidden xl:block border-anim" />
       </div>
     </section>
   );

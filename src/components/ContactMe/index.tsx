@@ -11,14 +11,6 @@ export const ContactMe = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  emailjs.init({
-    publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
-    limitRate: {
-      id: 'app',
-      throttle: 10000 // Allow 1 request per 10s
-    }
-  });
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -33,6 +25,13 @@ export const ContactMe = () => {
           name: formData.get('name'),
           email: formData.get('email'),
           message: formData.get('message')
+        },
+        {
+          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+          limitRate: {
+            id: 'app',
+            throttle: 10000 // Allow 1 request
+          }
         }
       )
       .then(() => {

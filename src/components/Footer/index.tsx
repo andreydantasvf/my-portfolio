@@ -9,16 +9,19 @@ export const Footer = () => {
         <SocialMediaLink
           href="https://www.linkedin.com/in/andreydantasvf"
           icon={<FaLinkedin className="text-primaryColor" />}
+          ariaLabel="Perfil do LinkedIn de Andrey Dantas"
         />
 
         <SocialMediaLink
           href="https://github.com/andreydantasvf"
           icon={<FaGithub className="text-primaryColor" />}
+          ariaLabel="Perfil do GitHub de Andrey Dantas"
         />
 
         <SocialMediaLink
           href="https://www.instagram.com/andreydantasvf"
           icon={<FaInstagram className="text-primaryColor" />}
+          ariaLabel="Perfil do Instagram de Andrey Dantas"
         />
       </div>
 

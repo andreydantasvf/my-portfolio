@@ -15,6 +15,7 @@ export const SectionTitle = ({ title, imageUrl }: SectionTitleProps) => {
           src={imageUrl}
           alt="Símbolo de um Deus Grego"
           className="w-12 h-12 md:w-16 md:h-16"
+          quality={100}
         />
       )}
       <h2 className="text-center text-3xl md:text-5xl text-primaryColor font-Cinzel font-bold">
@@ -27,6 +28,7 @@ export const SectionTitle = ({ title, imageUrl }: SectionTitleProps) => {
           src={imageUrl}
           alt="Símbolo de um Deus Grego"
           className="w-12 h-12 md:w-16 md:h-16"
+          quality={100}
         />
       )}
     </div>
