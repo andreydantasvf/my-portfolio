@@ -12,6 +12,24 @@
       "src": "/logo.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "/favicon96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon96.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "256x256",
+      "type": "image/x-icon",
+      "purpose": "any"
     }
   ],
   "lang": "pt-BR",

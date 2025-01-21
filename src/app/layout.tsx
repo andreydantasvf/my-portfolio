@@ -108,6 +108,17 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
+        <link rel="icon" type="image/png" href="/favicon16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="/favicon32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="/favicon48.png" sizes="48x48" />
+        <link rel="icon" type="image/png" href="/favicon96.png" sizes="96x96" />
+
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          type="image/x-icon"
+          href="/favicon.ico"
+        ></link>
       </Head>
       <body
         className={`${CormorantGaramond.variable} ${CinzelFont.variable} ${PoppinsFont.variable} antialiased`}
