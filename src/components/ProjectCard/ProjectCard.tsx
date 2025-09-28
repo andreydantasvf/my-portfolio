@@ -49,7 +49,7 @@ export function ProjectCard({
               className="px-4 py-2 flex items-center justify-center gap-2 border border-primaryColor rounded-md transition-all duration-300 hover:bg-secondaryColor hover:border-secondaryColor hover:text-primaryColor"
             >
               <FaGithub />
-              Repo
+              Code
             </a>
           )}
           {webLink && (
@@ -61,7 +61,7 @@ export function ProjectCard({
               className="px-4 py-2 flex items-center justify-center gap-2 border border-primaryColor rounded-md transition-all duration-300 hover:bg-secondaryColor hover:border-secondaryColor hover:text-primaryColor"
             >
               <FaExternalLinkAlt />
-              View
+              Demo
             </a>
           )}
         </div>

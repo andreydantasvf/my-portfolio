@@ -19,37 +19,30 @@ export const AboutMe = () => {
         <div className="md:max-w-[60%] space-y-3 text-justify">
           <p>
             Olá! Meu nome é <span className="font-bold">Andrey Dantas</span> e
-            sou um desenvolvedor de software full-stack apaixonado por construir
-            soluções que unem funcionalidade e design. Assim como os grandes
-            heróis da mitologia grega, encaro cada desafio no desenvolvimento de
-            software como uma oportunidade de superar limites e alcançar novas
-            conquistas.
+            sou um Engenheiro de Software com foco na contrução e otimização de
+            aplicações Full-Stack robustas e escaláveis.
           </p>
 
           <p>
-            Com experiência em tecnologias como{' '}
+            Meu trabalho é transformar requisitos complexos em soluções digitais
+            eficientes, utilizando stacks modernas como{' '}
             <span className="font-bold">
-              JavaScript, Next.js, React, TypeScript, Tailwind, Node.js, Python
+              JavaScript/Typescript, React, Next.js, Tailwind, Node.js, Python,
+              Flask
             </span>
-            , e bancos de dados modernos, domino tanto o front-end quanto o
-            back-end, criando aplicações robustas e escaláveis. Além disso,
-            possuo conhecimentos em AWS e outras ferramentas de infraestrutura,
-            o que me permite trabalhar com arquiteturas na nuvem e otimizar
-            sistemas para alto desempenho.
+            . Além disso, tenho proficiência em{' '}
+            <span className="font-bold">
+              Docker, bancos de dados SQL/NoSQL (Postgres, Mongo DB) e
+              certificação AWS Certified Cloud Practitioner
+            </span>{' '}
+            , estou preparado para atuar em todo o ciclo de vida do
+            desenvolvimento, desde o design de UI/UX até a implementação segura
+            e o deployment em ambientes cloud.
           </p>
 
           <p>
-            Minha jornada na tecnologia é guiada pela curiosidade e pela vontade
-            de aprender constantemente. Seja desenvolvendo uma interface
-            intuitiva, implementando uma lógica complexa no back-end ou
-            garantindo que cada componente funcione perfeitamente em conjunto,
-            eu me dedico a entregar resultados que agreguem valor real.
-          </p>
-
-          <p>
-            Assim como os mitos gregos contam histórias de inovação e evolução,
-            busco transformar ideias em realidades digitais, colaborando para
-            criar produtos que fazem a diferença.
+            Busco desafios que exijam excelência técnica e um compromisso com a
+            escalabilidade do produto.
           </p>
         </div>
 

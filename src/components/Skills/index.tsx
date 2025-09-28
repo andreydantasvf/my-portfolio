@@ -16,25 +16,25 @@ export const Skills = () => {
       <div className="py-10 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <DivineSkill
           skillName="Relâmpago de Zeus"
-          skills={'JavaScript & TypeScript'}
+          skills={'JavaScript & TypeScript & Python'}
           icon={<BsFillLightningChargeFill />}
         />
 
         <DivineSkill
           skillName="Forja de Hefesto"
-          skills={'React & Next Js'}
+          skills={'React & Next Js & Node.js & Flask'}
           icon={<IoCodeSharp />}
         />
 
         <DivineSkill
-          skillName="Profundezas de Poseidon"
-          skills={'Banco de Dados & Backend'}
+          skillName="Mar de Poseidon"
+          skills={'Banco de Dados & SQL/NoSQL & AWS'}
           icon={<FaDatabase />}
         />
 
         <DivineSkill
           skillName="A Beleza de Afrodite"
-          skills={'UI/UX Design'}
+          skills={'UI/UX Design & Figma & Tailwind CSS'}
           icon={<IoMdColorPalette />}
         />
       </div>
