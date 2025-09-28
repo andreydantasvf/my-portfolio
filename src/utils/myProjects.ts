@@ -1,8 +1,7 @@
 export const projects = [
   {
     title: 'Jokenpo',
-    imgURL:
-      'https://res.cloudinary.com/andreydantas/image/upload/v1642863558/Jokenpo-App/desktop_xkddvq.png',
+    imgURL: '/projects/jokenpo.png',
     details:
       'Teste suas hábilidades no famoso Jokenpo contra uma máquina. Construído com javascript puro, um valor aleatório é gerado e decidirá se você ganhou ou perdeu a disputa de pedra, papel ou tesoura.',
     githubLink: 'https://github.com/andreydantasvf/Jokenpo',
@@ -33,5 +32,12 @@ export const projects = [
       'Landing page para uma academia ficticia. Construído com Next Js e Tailwind Css',
     githubLink: 'https://github.com/andreydantasvf/SportFit',
     webLink: 'https://sportfit-three.vercel.app/'
+  },
+  {
+    title: 'Boilerplate Fastify',
+    imgURL: '/projects/fastify_boilerplate.svg',
+    details:
+      'Base de código para iniciar projetos com Fastify, Typescript, Prisma e Zod. Inclui autenticação JWT, CRUD básico e estrutura de pastas organizada.',
+    githubLink: 'https://github.com/andreydantasvf/Boilerplate_Fastify'
   }
 ];
