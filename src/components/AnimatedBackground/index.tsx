@@ -48,7 +48,7 @@ const AnimatedBackground: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setElements((prev) => [
+      setElements(prev => [
         ...prev,
         {
           id: Date.now(),
@@ -59,7 +59,7 @@ const AnimatedBackground: React.FC = () => {
 
       // Remove o elemento após 3 segundos
       setTimeout(() => {
-        setElements((prev) => prev.slice(1));
+        setElements(prev => prev.slice(1));
       }, 3000);
     }, 500);
 
@@ -67,11 +67,11 @@ const AnimatedBackground: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-full">
-      {elements.map((element) => (
+    <div className="relative h-full w-full">
+      {elements.map(element => (
         <div
           key={element.id}
-          className="absolute animate-fade-in-out"
+          className="animate-fade-in-out absolute"
           style={{
             top: element.position.top,
             left: element.position.left
@@ -80,7 +80,7 @@ const AnimatedBackground: React.FC = () => {
           <Image
             width={64}
             height={64}
-            className="opacity-10 w-16 h-16 text-white"
+            className="h-16 w-16 text-white opacity-10"
             src={`/gods-vectors/${element.god}`} // Cada elemento usa seu próprio deus
             alt={element.god.replace('.svg', '')}
           />

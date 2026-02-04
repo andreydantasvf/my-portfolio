@@ -14,11 +14,11 @@ export const SectionTitle = ({ title, imageUrl }: SectionTitleProps) => {
           height={64}
           src={imageUrl}
           alt="Símbolo de um Deus Grego"
-          className="w-12 h-12 md:w-16 md:h-16"
+          className="h-12 w-12 md:h-16 md:w-16"
           quality={100}
         />
       )}
-      <h2 className="text-center text-3xl md:text-5xl text-primaryColor font-Cinzel font-bold">
+      <h2 className="text-primaryColor font-Cinzel text-center text-3xl font-bold md:text-5xl">
         {title}
       </h2>
       {imageUrl && (
@@ -27,7 +27,7 @@ export const SectionTitle = ({ title, imageUrl }: SectionTitleProps) => {
           height={64}
           src={imageUrl}
           alt="Símbolo de um Deus Grego"
-          className="w-12 h-12 md:w-16 md:h-16"
+          className="h-12 w-12 md:h-16 md:w-16"
           quality={100}
         />
       )}

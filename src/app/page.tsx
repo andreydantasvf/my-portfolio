@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="2xl:mt-28 max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto">
+      <main className="mx-auto max-w-screen-xl px-6 sm:px-8 lg:px-16 2xl:mt-28">
         <HomeSection />
         <AboutMe />
         <Skills />

@@ -10,9 +10,9 @@ export const SocialMediaLink = ({
   ariaLabel
 }: SocialMediaLinkProps) => {
   return (
-    <div className="flex items-center justify-center w-8 h-8 border border-primaryColor rounded-full hover:bg-secondaryColor hover:text-white transition-all">
+    <div className="border-primaryColor hover:bg-secondaryColor flex h-8 w-8 items-center justify-center rounded-full border transition-all hover:text-white">
       <a
-        className="w-full h-full flex items-center justify-center"
+        className="flex h-full w-full items-center justify-center"
         href={href}
         target="_blank"
         rel="noreferrer noopener"

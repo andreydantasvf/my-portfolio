@@ -17,7 +17,7 @@ export function ProjectCard({
   webLink
 }: ProjectCardProps) {
   return (
-    <div className="flex flex-col h-full w-full bg-black/50 backdrop-blur-md border border-gray-700 rounded-lg overflow-hidden shadow-md">
+    <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-gray-700 bg-black/50 shadow-md backdrop-blur-md">
       {/* Imagem */}
       <div className="h-52">
         <Image
@@ -27,26 +27,26 @@ export function ProjectCard({
           alt={title}
           loading="lazy"
           quality={100}
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover"
         />
       </div>
 
       {/* Conteúdo */}
-      <div className="flex flex-col flex-grow p-6">
+      <div className="flex flex-grow flex-col p-6">
         <header>
-          <h3 className="text-center border-b-2 border-primaryColor pb-4">
+          <h3 className="border-primaryColor border-b-2 pb-4 text-center">
             {title}
           </h3>
         </header>
-        <p className="mt-4 text-lg flex-grow break-words">{details}</p>
-        <div className="flex justify-center gap-4 mt-6">
+        <p className="mt-4 flex-grow text-lg break-words">{details}</p>
+        <div className="mt-6 flex justify-center gap-4">
           {githubLink && (
             <a
               href={githubLink}
               target="_blank"
               rel="noreferrer"
               aria-label={`Repositório do projeto ${title}`}
-              className="px-4 py-2 flex items-center justify-center gap-2 border border-primaryColor rounded-md transition-all duration-300 hover:bg-secondaryColor hover:border-secondaryColor hover:text-primaryColor"
+              className="border-primaryColor hover:bg-secondaryColor hover:border-secondaryColor hover:text-primaryColor flex items-center justify-center gap-2 rounded-md border px-4 py-2 transition-all duration-300"
             >
               <FaGithub />
               Code
@@ -58,7 +58,7 @@ export function ProjectCard({
               target="_blank"
               rel="noreferrer"
               aria-label={`Web site do projeto ${title}`}
-              className="px-4 py-2 flex items-center justify-center gap-2 border border-primaryColor rounded-md transition-all duration-300 hover:bg-secondaryColor hover:border-secondaryColor hover:text-primaryColor"
+              className="border-primaryColor hover:bg-secondaryColor hover:border-secondaryColor hover:text-primaryColor flex items-center justify-center gap-2 rounded-md border px-4 py-2 transition-all duration-300"
             >
               <FaExternalLinkAlt />
               Demo

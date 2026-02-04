@@ -6,17 +6,17 @@ export const AboutMe = () => {
     <section id="about" className="md:mt-20">
       <SectionTitle title="Sobre Mim" imageUrl="/title-icons/trident.svg" />
 
-      <div className="flex flex-col md:flex-row gap-6 md:justify-between items-center mt-5 md:mt-10 md:pb-5 md:pr-5 relative">
+      <div className="relative mt-5 flex flex-col items-center gap-6 md:mt-10 md:flex-row md:justify-between md:pr-5 md:pb-5">
         <Image
           width={360}
           height={360}
           src="/section-images/statue-zeus.png"
           alt="Estátua de Zeus"
           quality={100}
-          className="w-40 h-40 md:w-auto md:h-auto"
+          className="h-40 w-40 md:h-auto md:w-auto"
         />
 
-        <div className="md:max-w-[60%] space-y-3 text-justify">
+        <div className="space-y-3 text-justify md:max-w-[60%]">
           <p>
             Olá! Meu nome é <span className="font-bold">Andrey Dantas</span> e
             sou um Engenheiro de Software com foco na contrução e otimização de
@@ -46,8 +46,8 @@ export const AboutMe = () => {
           </p>
         </div>
 
-        <div className="w-8 h-8 border-t-8 border-r-8 border-primaryColor absolute right-0 top-0 hidden xl:block border-anim" />
-        <div className="w-8 h-8 border-l-8 border-b-8 border-primaryColor absolute bottom-0 left-0 hidden xl:block border-anim" />
+        <div className="border-primaryColor border-anim absolute top-0 right-0 hidden h-8 w-8 border-t-8 border-r-8 xl:block" />
+        <div className="border-primaryColor border-anim absolute bottom-0 left-0 hidden h-8 w-8 border-b-8 border-l-8 xl:block" />
       </div>
     </section>
   );

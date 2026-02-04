@@ -11,9 +11,9 @@ export const Projects = () => {
       />
 
       <div className="relative mt-5 md:mt-10">
-        <div className="h-full w-full md:w-[200vw] absolute left-0 md:left-[-100vw] background-projects opacity-5"></div>
+        <div className="background-projects absolute left-0 h-full w-full opacity-5 md:left-[-100vw] md:w-[200vw]"></div>
         <div
-          className="py-5 grid grid-cols-1 md:items-start md:justify-normal md:grid-cols-2 gap-10"
+          className="grid grid-cols-1 gap-10 py-5 md:grid-cols-2 md:items-start md:justify-normal"
           role="list"
           aria-label="Lista de projetos lendários"
         >

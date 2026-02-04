@@ -13,7 +13,7 @@ export const Skills = () => {
         imageUrl="/title-icons/ray.svg"
       />
 
-      <div className="py-10 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="grid grid-cols-1 gap-10 py-10 md:grid-cols-2 md:py-20 lg:grid-cols-4">
         <DivineSkill
           skillName="Relâmpago de Zeus"
           skills={'JavaScript & TypeScript & Python'}

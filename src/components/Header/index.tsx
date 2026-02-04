@@ -41,17 +41,17 @@ export const Header = () => {
   return (
     <header
       className={
-        'w-full pt-4 fixed top-0 z-30 bg-background transition-all' +
-        (scrollActive ? ' shadow-md pt-0' : ' pt-4')
+        'bg-background fixed top-0 z-30 w-full pt-4 transition-all' +
+        (scrollActive ? ' pt-0 shadow-md' : ' pt-4')
       }
     >
-      <nav className="max-w-screen-xl py-4 px-6 sm:px-8 lg:px-16 mx-auto flex items-center justify-between font-Cinzel">
+      <nav className="font-Cinzel mx-auto flex max-w-screen-xl items-center justify-between px-6 py-4 sm:px-8 lg:px-16">
         <div>
           <Image src="/logo.png" alt="Logo" width={64} height={64} />
         </div>
 
         {/* Menu para Desktop */}
-        <ul className="hidden md:flex items-center gap-6">
+        <ul className="hidden items-center gap-6 md:flex">
           <NavLink
             name="Home"
             href="home"
@@ -86,7 +86,7 @@ export const Header = () => {
 
         {/* Botão Menu Hamburguer */}
         <div
-          className="flex md:hidden items-center cursor-pointer transition-all duration-300 ease-in-out text-primaryColor"
+          className="text-primaryColor flex cursor-pointer items-center transition-all duration-300 ease-in-out md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Abrir menu"
           aria-expanded={menuOpen ? 'true' : 'false'}
@@ -96,14 +96,14 @@ export const Header = () => {
 
         {/* Menu Mobile */}
         <div
-          className={`md:hidden absolute top-full left-0 w-full bg-background flex flex-col items-center justify-center shadow-md transition-all duration-500 ease-in-out ${
+          className={`bg-background absolute top-full left-0 flex w-full flex-col items-center justify-center shadow-md transition-all duration-500 ease-in-out md:hidden ${
             menuOpen
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 -translate-y-full pointer-events-none'
+              ? 'translate-y-0 opacity-100'
+              : 'pointer-events-none -translate-y-full opacity-0'
           }`}
           style={{ height: 'calc(100vh - 64px)' }}
         >
-          <ul className="flex flex-col h-full gap-4 py-4 w-fit mx-auto">
+          <ul className="mx-auto flex h-full w-fit flex-col gap-4 py-4">
             <NavLink
               name="Home"
               href="home"

@@ -6,14 +6,14 @@ type DivineSkillProps = {
 
 export const DivineSkill = ({ icon, skillName, skills }: DivineSkillProps) => {
   return (
-    <div className="flex flex-col items-center gap-2 transition-transform transform hover:scale-105 group">
-      <div className="flex items-center justify-center w-12 h-12 bg-primaryColor group-hover:brightness-110 text-secondaryColor text-2xl rounded-full mb-3">
+    <div className="group flex transform flex-col items-center gap-2 transition-transform hover:scale-105">
+      <div className="bg-primaryColor text-secondaryColor mb-3 flex h-12 w-12 items-center justify-center rounded-full text-2xl group-hover:brightness-110">
         {icon}
       </div>
 
-      <span className="font-bold text-xl text-center">{skillName}</span>
+      <span className="text-center text-xl font-bold">{skillName}</span>
       <ul
-        className="text-center list-disc text-slate-300"
+        className="list-disc text-center text-slate-300"
         role="list"
         aria-label={`${skillName} skills`}
       >

@@ -54,24 +54,24 @@ export const ContactMe = () => {
   };
 
   return (
-    <section id="contact-me" className="mt-10 md:mt-20 pb-6 2xl:pb-12 relative">
+    <section id="contact-me" className="relative mt-10 pb-6 md:mt-20 2xl:pb-12">
       <SectionTitle
         title="Envie uma mensagem via Hermes"
         imageUrl="/title-icons/hermes.svg"
       />
 
-      <div className="px-8 py-6 mt-10 border border-secondaryColor rounded-xl max-w-[750px] mx-auto shadow-lg">
-        <h2 className="text-3xl font-bold text-primaryColor">Fale Comigo</h2>
-        <p className="opacity-70 mt-2 text-sm">
+      <div className="border-secondaryColor mx-auto mt-10 max-w-[750px] rounded-xl border px-8 py-6 shadow-lg">
+        <h2 className="text-primaryColor text-3xl font-bold">Fale Comigo</h2>
+        <p className="mt-2 text-sm opacity-70">
           Vamos criar algo lendário juntos. Preencha os campos abaixo e entrarei
           em contato.
         </p>
 
-        <form className="flex flex-col gap-4 mt-5" onSubmit={handleSubmit}>
+        <form className="mt-5 flex flex-col gap-4" onSubmit={handleSubmit}>
           <div className="flex flex-col">
             <label
               htmlFor="name"
-              className="text-sm font-medium text-primaryColor"
+              className="text-primaryColor text-sm font-medium"
             >
               Nome
             </label>
@@ -81,7 +81,7 @@ export const ContactMe = () => {
               name="name"
               placeholder="Seu nome completo"
               aria-label="Seu nome completo"
-              className="mt-1 px-4 py-2 bg-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primaryColor"
+              className="focus:ring-primaryColor mt-1 rounded-lg bg-zinc-800 px-4 py-2 focus:ring-2 focus:outline-none"
               required
             />
           </div>
@@ -89,7 +89,7 @@ export const ContactMe = () => {
           <div className="flex flex-col">
             <label
               htmlFor="email"
-              className="text-sm font-medium text-primaryColor"
+              className="text-primaryColor text-sm font-medium"
             >
               E-mail
             </label>
@@ -99,7 +99,7 @@ export const ContactMe = () => {
               name="email"
               placeholder="seuemail@exemplo.com"
               aria-label="Seu endereço de e-mail"
-              className="mt-1 px-4 py-2 bg-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primaryColor"
+              className="focus:ring-primaryColor mt-1 rounded-lg bg-zinc-800 px-4 py-2 focus:ring-2 focus:outline-none"
               required
             />
           </div>
@@ -107,7 +107,7 @@ export const ContactMe = () => {
           <div className="flex flex-col">
             <label
               htmlFor="message"
-              className="text-sm font-medium text-primaryColor"
+              className="text-primaryColor text-sm font-medium"
             >
               Mensagem
             </label>
@@ -116,7 +116,7 @@ export const ContactMe = () => {
               name="message"
               placeholder="Escreva sua mensagem aqui"
               aria-label="Sua mensagem"
-              className="mt-1 px-4 py-2 rounded-lg bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-primaryColor h-28 resize-none"
+              className="focus:ring-primaryColor mt-1 h-28 resize-none rounded-lg bg-zinc-800 px-4 py-2 focus:ring-2 focus:outline-none"
               required
             />
           </div>
@@ -124,9 +124,9 @@ export const ContactMe = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`mt-4 flex items-center gap-2 justify-center text-primaryColor font-semibold border border-secondaryColor py-2 px-6 rounded-lg shadow-md transition duration-300 ${
+            className={`text-primaryColor border-secondaryColor mt-4 flex items-center justify-center gap-2 rounded-lg border px-6 py-2 font-semibold shadow-md transition duration-300 ${
               loading
-                ? 'bg-gray-700 cursor-not-allowed'
+                ? 'cursor-not-allowed bg-gray-700'
                 : 'hover:bg-secondaryColor hover:text-primaryColor'
             }`}
           >
