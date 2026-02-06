@@ -1,97 +1,105 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@theme {
+  /* Theme-specific colors managed by CSS variables */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+
+  /* Greek-inspired Fonts if we add them later */
+  /* --font-display: 'Cinzel', serif; */
+  /* --font-body: 'Inter', sans-serif; */
 }
 
-html,
-body,
-#__next {
-  height: 100%;
-}
+/* 
+  Olympus Themes 
+  Zeus: Marble, Gold, Sky
+  Poseidon: Deep Sea, Cyan, Foam
+  Hades: Charcoal, Slate, Blood
+*/
 
 :root {
-  --background: #161515;
-  --foreground: #e4f5f5;
-  --primary-color: #ecdc98;
-  --secondary-color: #1f2937;
+  /* Default to Zeus (Light Mode equivalent) */
+  --zeus-bg: #fdfbf7;
+  --zeus-fg: #1a1a1a;
+  --zeus-primary: #d4af37;
+  --zeus-secondary: #87CEEB;
+  --zeus-accent: #a9a9a9;
+
+  --poseidon-bg: #002b36;
+  /* Deep Teal/Slate */
+  --poseidon-fg: #e0f2f1;
+  /* Pale Cyan */
+  --poseidon-primary: #2aa198;
+  /* Muted Cyan */
+  --poseidon-secondary: #268bd2;
+  /* Deep Blue */
+  --poseidon-accent: #b58900;
+  /* Bronze/Gold accent for contrast */
+
+  --hades-bg: #1a1a1a;
+  --hades-fg: #eaeaea;
+  --hades-primary: #8B0000;
+  --hades-secondary: #708090;
+  --hades-accent: #4B0082;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #161515;
-    --foreground: #e4f5f5;
-  }
+[data-theme='zeus'] {
+  --background: var(--zeus-bg);
+  --foreground: var(--zeus-fg);
+  --primary: var(--zeus-primary);
+  --secondary: var(--zeus-secondary);
+  --accent: var(--zeus-accent);
 }
 
+[data-theme='poseidon'] {
+  --background: var(--poseidon-bg);
+  --foreground: var(--poseidon-fg);
+  --primary: var(--poseidon-primary);
+  --secondary: var(--poseidon-secondary);
+  --accent: var(--poseidon-accent);
+}
+
+[data-theme='hades'] {
+  --background: var(--hades-bg);
+  --foreground: var(--hades-fg);
+  --primary: var(--hades-primary);
+  --secondary: var(--hades-secondary);
+  --accent: var(--hades-accent);
+}
+
+/* Base Styles */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: 'Popins', sans-serif;
+  @apply bg-background text-foreground transition-colors duration-700 ease-in-out;
+  font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  /* Prevent horizontal scroll from effects */
 }
 
-.background-projects {
-  position: absolute;
-  background-image: url('/section-images/background.png');
-  background-size: 200px 200px;
-  background-repeat: repeat;
-  animation: slide-bg 60s linear infinite;
-  z-index: -1;
-}
+/* Utilities */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
 
-.border-anim {
-  transition: all 0.3s ease;
-}
-
-.border-anim:hover {
-  transform: scale(1.1);
-}
-
-/* Animação opcional para o background */
-@keyframes slide-bg {
-  from {
-    background-position: 0 0;
+  @media (width >=--theme(--breakpoint-sm)) {
+    max-width: none;
   }
-  to {
-    background-position: -200px 200px;
+
+  @media (width >=1400px) {
+    max-width: 1400px;
   }
 }
 
-.content-title::before {
-  content: attr(data-text);
-  position: absolute;
-  color: var(--primary-color);
-  border-bottom: 2px solid var(--primary-color);
-  width: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: animate 8s linear infinite;
-  filter: drop-shadow(0 0 20px var(--primary-color));
-}
-
-@keyframes animate {
-  0%,
-  10%,
-  100% {
-    width: 0;
-  }
-  70%,
-  90% {
-    width: 100%;
-  }
-}
-
+/* Animations from previous version preserved/adapted */
 @keyframes slide-bg {
   0% {
-    background-position: 100% 0; /* Início à direita */
+    background-position: 100% 0;
   }
+
   100% {
-    background-position: 0 0; /* Fim à esquerda */
+    background-position: 0 0;
   }
 }
 
@@ -100,10 +108,12 @@ body {
     opacity: 0;
     transform: scale(0.8);
   }
+
   50% {
     opacity: 1;
     transform: scale(1);
   }
+
   100% {
     opacity: 0;
     transform: scale(1.2);

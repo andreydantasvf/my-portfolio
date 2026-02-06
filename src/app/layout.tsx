@@ -4,6 +4,10 @@ import './globals.css';
 import Head from 'next/head';
 import Script from 'next/script';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import { ThemeProvider } from '@/context/ThemeContext';
+import { DivineToggle } from '@/components/ui/DivineToggle';
+import { Cursor } from '@/components/ui/Cursor';
+import { Loader } from '@/components/ui/Loader';
 
 const CormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -98,7 +102,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" dir="ltr">
+    <html lang="pt-BR" dir="ltr" suppressHydrationWarning>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -123,14 +127,19 @@ export default function RootLayout({
       <body
         className={`${CormorantGaramond.variable} ${CinzelFont.variable} ${PoppinsFont.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider>
+          <Loader />
+          {/* <Cursor /> */}
+          {children}
+          <DivineToggle />
 
-        <Script
-          id="portfolio-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-        />
-        <GoogleAnalytics />
+          <Script
+            id="portfolio-schema"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+          />
+          <GoogleAnalytics />
+        </ThemeProvider>
       </body>
     </html>
   );
