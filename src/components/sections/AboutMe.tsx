@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
@@ -67,7 +66,7 @@ export function AboutMe() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative flex h-[400px] items-center justify-center p-8"
+            className="relative flex h-100 items-center justify-center p-8"
           >
             <div
               className={clsx(

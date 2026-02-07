@@ -1,14 +1,10 @@
 'use client';
 
-import React from 'react';
-import { Github, Linkedin, Instagram, Mail } from 'lucide-react';
-import { useTheme } from '@/context/ThemeContext';
+import { Github, Linkedin, Instagram } from 'lucide-react';
 
 export function Footer() {
-  const { theme } = useTheme();
-
   return (
-    <footer className="relative overflow-hidden py-20 text-center">
+    <footer className="relative overflow-hidden py-30 text-center">
       <div className="relative z-10 container flex flex-col items-center gap-8">
         <div className="flex gap-6">
           <a
@@ -38,7 +34,7 @@ export function Footer() {
       </div>
 
       {/* Ambient bottom glow */}
-      <div className="pointer-events-none absolute bottom-0 left-0 h-40 w-full bg-gradient-to-t from-current to-transparent opacity-10" />
+      <div className="pointer-events-none absolute bottom-0 left-0 h-40 w-full bg-linear-to-t from-current to-transparent opacity-10" />
     </footer>
   );
 }

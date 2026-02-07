@@ -9,9 +9,9 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-transparent">
       <Hero />
-      <Projects />
-      <TechStack />
       <AboutMe />
+      <TechStack />
+      <Projects />
       <Contact />
       <Footer />
     </main>
