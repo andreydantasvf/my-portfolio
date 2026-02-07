@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 
 export function LightningCanvas() {
@@ -17,7 +17,7 @@ export function LightningCanvas() {
 
     let w = (canvas.width = window.innerWidth);
     let h = (canvas.height = window.innerHeight);
-    let lightning: any[] = [];
+    const lightning: any[] = [];
     let animationId: number;
 
     const resize = () => {
