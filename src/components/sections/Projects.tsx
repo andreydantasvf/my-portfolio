@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import { projects } from '@/utils/myProjects';
 import Image from 'next/image';
 import { useTheme } from '@/context/ThemeContext';
@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { clsx } from 'clsx';
 import { ExternalLink, Github } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,25 +20,13 @@ export function Projects() {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray('.project-card');
 
-      cards.forEach((card: any, i) => {
-        let animationVars: gsap.TweenVars = {
-          opacity: 0,
-          duration: 1,
-          ease: 'power3.out'
-        };
-
-        // Theme specific animations (can be dynamic, but initial load logic is simpler)
-        // We'll rely on CSS + GSAP triggers.
-        // Actually, let's make it simpler: GSAP handles the trigger, CSS handles the style/theme.
-
-        // Base animation: Slide up + fade
+      cards.forEach((card: any, _i) => {
         gsap.from(card, {
           scrollTrigger: {
             trigger: card,
             start: 'top 85%',
             end: 'top 20%',
             toggleActions: 'play none none reverse'
-            // markers: true, // for debugging
           },
           y: 100,
           opacity: 0,
@@ -48,7 +37,18 @@ export function Projects() {
     }, componentRef);
 
     return () => ctx.revert();
-  }, [theme]); // Re-run if theme changes to potentially adjust effects? Actually standard scroll is enough.
+  }, [theme]);
+
+  // Dynamic Theme Styles
+  const cardStyles = cn(
+    'flex-1 rounded-2xl border p-6 shadow-xl backdrop-blur-md transition-all duration-500 md:p-10 group-hover:scale-[1.02]',
+    theme === 'zeus' &&
+      'border-black/5 bg-white/40 hover:bg-white/60 hover:border-yellow-500/30 text-neutral-800',
+    theme === 'poseidon' &&
+      'border-cyan-500/20 bg-[#002b36]/60 hover:bg-[#002b36]/80 hover:border-cyan-400/40 text-cyan-50',
+    theme === 'hades' &&
+      'border-red-900/20 bg-black/60 hover:bg-black/80 hover:border-red-600/40 text-neutral-200'
+  );
 
   return (
     <section
@@ -56,25 +56,39 @@ export function Projects() {
       className="relative min-h-screen overflow-hidden py-20"
     >
       {/* Background Title / Watermark */}
-      <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-5">
-        <h2 className="font-serif text-[10rem] font-bold tracking-widest text-current uppercase">
+      <div
+        className={cn(
+          'pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-5 select-none',
+          theme === 'zeus' ? 'text-black' : 'text-white'
+        )}
+      >
+        <h2 className="font-serif text-[15vw] leading-none font-bold tracking-widest uppercase">
           ODISSEIA
         </h2>
       </div>
 
-      <div className="relative z-10 container">
+      <div className="relative z-10 container mx-auto px-4">
         <div className="mb-20 text-center">
           <h2
             className="mb-4 font-serif text-4xl font-bold md:text-6xl"
-            style={{ fontFamily: 'var(--font-cinzel), serif' }}
+            style={{
+              fontFamily: 'var(--font-cinzel), serif',
+              color: theme === 'zeus' ? 'var(--zeus-primary)' : 'var(--primary)'
+            }}
           >
-            Os 12 Trabalhos
+            Meus Projetos
           </h2>
-          <div className="mx-auto h-1 w-20 rounded-full bg-current" />
+          <div
+            className="mx-auto h-1 w-20 rounded-full"
+            style={{ backgroundColor: 'var(--primary)' }}
+          />
         </div>
 
         {/* Timeline Line */}
-        <div className="absolute top-40 bottom-20 left-1/2 hidden w-px bg-current opacity-20 md:block" />
+        <div
+          className="absolute top-40 bottom-20 left-1/2 hidden w-px opacity-20 md:block"
+          style={{ backgroundColor: 'var(--foreground)' }}
+        />
 
         <div className="space-y-20 md:space-y-40">
           {projects.map((project, index) => (
@@ -86,21 +100,14 @@ export function Projects() {
               )}
             >
               {/* Content */}
-              <div
-                className={clsx(
-                  'flex-1 rounded-2xl border border-white/10 p-6 shadow-xl backdrop-blur-md transition-colors duration-500 md:p-10',
-                  theme === 'zeus' &&
-                    'border-yellow-500/20 bg-white/50 hover:border-yellow-500/50',
-                  theme === 'poseidon' &&
-                    'border-cyan-500/20 bg-cyan-900/30 hover:border-cyan-500/50',
-                  theme === 'hades' &&
-                    'border-red-900/20 bg-black/50 hover:border-red-500/50'
-                )}
-              >
-                <h3 className="mb-4 font-serif text-2xl font-bold md:text-3xl">
+              <div className={cn('group w-full md:w-1/2', cardStyles)}>
+                <h3
+                  className="mb-4 font-serif text-2xl font-bold md:text-3xl"
+                  style={{ color: 'var(--primary)' }}
+                >
                   {project.title}
                 </h3>
-                <p className="mb-6 leading-relaxed opacity-80">
+                <p className="mb-6 leading-relaxed font-light opacity-90">
                   {project.details}
                 </p>
 
@@ -110,9 +117,9 @@ export function Projects() {
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 opacity-70 transition-opacity hover:underline hover:opacity-100"
+                      className="hover:text-background flex items-center gap-2 rounded-full border border-current px-4 py-2 text-sm font-medium opacity-80 transition-all hover:bg-current hover:opacity-100"
                     >
-                      <Github size={20} /> Code
+                      <Github size={18} /> Code
                     </a>
                   )}
                   {project.webLink && (
@@ -120,9 +127,13 @@ export function Projects() {
                       href={project.webLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 opacity-70 transition-opacity hover:underline hover:opacity-100"
+                      className="bg-primary text-background flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all hover:brightness-110"
+                      style={{
+                        backgroundColor: 'var(--primary)',
+                        color: theme === 'zeus' ? 'white' : 'black'
+                      }}
                     >
-                      <ExternalLink size={20} /> Live
+                      <ExternalLink size={18} /> Live
                     </a>
                   )}
                 </div>
@@ -131,11 +142,10 @@ export function Projects() {
               {/* Image / Artifact */}
               <div className="group perspective-1000 w-full max-w-xl flex-1">
                 <div
-                  className={clsx(
-                    'relative aspect-video transform overflow-hidden rounded-xl shadow-2xl transition-all duration-700 group-hover:scale-105',
+                  className={cn(
+                    'relative aspect-video transform overflow-hidden rounded-xl shadow-2xl transition-all duration-700 group-hover:scale-105 group-hover:rotate-1',
                     theme === 'zeus' && 'shadow-yellow-500/20',
-                    theme === 'poseidon' &&
-                      'shadow-cyan-500/20 group-hover:rotate-1',
+                    theme === 'poseidon' && 'shadow-cyan-500/20',
                     theme === 'hades' &&
                       'shadow-red-500/10 grayscale group-hover:grayscale-0'
                   )}
@@ -147,13 +157,12 @@ export function Projects() {
                     className="object-cover"
                   />
                   <div
-                    className={clsx(
+                    className={cn(
                       'pointer-events-none absolute inset-0 transition-opacity duration-300',
-                      theme === 'zeus' &&
-                        'bg-yellow-500/10 opacity-0 mix-blend-overlay group-hover:opacity-100',
+                      theme === 'zeus' && 'bg-yellow-500/10 mix-blend-overlay',
                       theme === 'poseidon' &&
                         'bg-cyan-500/20 mix-blend-overlay',
-                      theme === 'hades' && 'bg-black/40'
+                      theme === 'hades' && 'bg-red-900/20'
                     )}
                   />
                 </div>
