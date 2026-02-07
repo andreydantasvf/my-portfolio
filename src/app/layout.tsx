@@ -6,7 +6,6 @@ import Script from 'next/script';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { DivineToggle } from '@/components/ui/DivineToggle';
-import { Cursor } from '@/components/ui/Cursor';
 import { Loader } from '@/components/ui/Loader';
 
 const CormorantGaramond = Cormorant_Garamond({
@@ -129,7 +128,6 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Loader />
-          {/* <Cursor /> */}
           {children}
           <DivineToggle />
 
