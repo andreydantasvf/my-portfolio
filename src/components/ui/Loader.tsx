@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Anchor, Skull } from 'lucide-react';
@@ -27,7 +27,7 @@ export function Loader() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: 'easeInOut' }}
           className={clsx(
-            'fixed inset-0 z-[10000] flex items-center justify-center transition-colors duration-500',
+            'fixed inset-0 z-10000 flex items-center justify-center transition-colors duration-500',
             theme === 'zeus'
               ? 'bg-[#fdfbf7]'
               : theme === 'poseidon'
