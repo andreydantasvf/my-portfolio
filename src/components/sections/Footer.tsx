@@ -4,7 +4,7 @@ import { Github, Linkedin, Instagram } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden py-30 text-center">
+    <footer className="relative overflow-hidden py-10 pb-30 text-center">
       <div className="relative z-10 container flex flex-col items-center gap-8">
         <div className="flex gap-6">
           <a

@@ -59,7 +59,7 @@ function LightningBoltModel() {
   );
 
   return (
-    <group ref={group} scale={1.2}>
+    <group ref={group} scale={0.8}>
       {/* Main Lightning Bolt */}
       <mesh rotation={[0, 0, 0]}>
         <extrudeGeometry args={[lightningShape, extrudeSettings]} />
@@ -115,9 +115,9 @@ function TridentModel() {
   });
 
   return (
-    <group ref={group} rotation={[0, 0, Math.PI / 6]} scale={1.1}>
+    <group ref={group} rotation={[0, 0, Math.PI / 6]} scale={0.8}>
       {/* Main Shaft - Octagonal Low Poly */}
-      <mesh position={[0, -1.5, 0]}>
+      <mesh position={[0, -1, 0]}>
         <cylinderGeometry args={[0.08, 0.06, 4.5, 8]} />
         <meshStandardMaterial
           color="#1a4a5e"
@@ -248,9 +248,9 @@ function BidentModel() {
   });
 
   return (
-    <group ref={group} rotation={[0, 0, -Math.PI / 8]} scale={1.15}>
+    <group ref={group} rotation={[0, 0, -Math.PI / 8]} scale={0.8}>
       {/* Main Shaft - Dark Metal */}
-      <mesh position={[0, -1.2, 0]}>
+      <mesh position={[0, -1, 0]}>
         <cylinderGeometry args={[0.07, 0.05, 4, 6]} />
         <meshStandardMaterial
           color="#1a0a0a"

@@ -107,7 +107,7 @@ export function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className={`relative z-10 mx-4 flex max-w-4xl flex-col items-center justify-center rounded-3xl border ${styles.containerBorder} ${styles.containerBg} p-8 text-center shadow-2xl backdrop-blur-lg transition-all duration-700 md:p-14`}
+        className={`relative z-10 mx-4 flex max-w-4xl flex-col items-center justify-center rounded-3xl border ${styles.containerBorder} ${styles.containerBg} p-8 text-center shadow-2xl backdrop-blur-lg transition-all duration-700 md:p-12`}
       >
         {/* Decorative Top Line */}
         <motion.div
@@ -120,7 +120,7 @@ export function Hero() {
 
         <motion.h1
           variants={titleVariants}
-          className={`mb-4 text-5xl font-bold tracking-tight md:text-8xl ${styles.accentGlow}`}
+          className={`mb-4 text-4xl font-bold tracking-tight md:text-7xl ${styles.accentGlow}`}
           style={{
             fontFamily: 'var(--font-cinzel), serif',
             color: styles.titleColor,
@@ -132,7 +132,7 @@ export function Hero() {
 
         <motion.p
           variants={subtitleVariants}
-          className="mb-2 text-lg font-light tracking-[0.25em] uppercase md:text-xl"
+          className="mb-2 text-base font-light tracking-[0.25em] uppercase md:text-xl"
           style={{ color: styles.subtitleColor }}
         >
           Desenvolvedor Full Stack
