@@ -1,9 +1,5 @@
 'use client';
 
-import React, { useMemo, useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Text, Float, Html } from '@react-three/drei';
-import * as THREE from 'three';
 import { useTheme } from '@/context/ThemeContext';
 import {
   SiReact,
@@ -19,7 +15,8 @@ import {
   SiGraphql,
   SiGit
 } from 'react-icons/si';
-import { clsx } from 'clsx';
+import Marquee from '@/components/ui/Marquee';
+import { cn } from '@/lib/utils';
 
 const SKILLS = [
   { name: 'React', icon: SiReact, color: '#61DAFB' },
@@ -27,7 +24,7 @@ const SKILLS = [
   { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
   { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
   { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
-  { name: 'Three.js', icon: SiAutodesk, color: '#ffffff' }, // Fallback to generic or 3D icon
+  { name: 'Three.js', icon: SiAutodesk, color: '#ffffff' },
   { name: 'AWS', icon: SiAmazon, color: '#FF9900' },
   { name: 'Python', icon: SiPython, color: '#3776AB' },
   { name: 'SQL', icon: SiPostgresql, color: '#4169E1' },
@@ -36,124 +33,73 @@ const SKILLS = [
   { name: 'Git', icon: SiGit, color: '#F05032' }
 ];
 
-function SkillItem({
-  index,
-  skill,
-  count,
+const SkillCard = ({
+  icon: Icon,
+  name,
   theme
 }: {
-  index: number;
-  skill: (typeof SKILLS)[0];
-  count: number;
+  icon: any;
+  name: string;
   theme: string;
-}) {
-  const meshRef = useRef<THREE.Group>(null!);
-  const [hovered, setHovered] = useState(false);
-
-  // Spherical / Helix distribution
-  const position = useMemo(() => {
-    const phi = Math.acos(-1 + (2 * index) / count);
-    const theta = Math.sqrt(count * Math.PI) * phi;
-    const r = 4.5;
-    return new THREE.Vector3(
-      r * Math.cos(theta) * Math.sin(phi),
-      r * Math.sin(theta) * Math.sin(phi),
-      r * Math.cos(phi)
-    );
-  }, [index, count]);
-
-  const Icon = skill.icon;
-
-  // Dynamic glow/color based on interaction and theme
-  const isActive = hovered;
-  const itemColor =
-    theme === 'zeus' ? '#d4af37' : theme === 'poseidon' ? '#00ffff' : '#ff0000';
-
+}) => {
   return (
-    <group position={position} ref={meshRef}>
-      <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
-        <Html transform distanceFactor={10}>
-          <div
-            className={clsx(
-              'flex cursor-pointer flex-col items-center justify-center rounded-xl border p-4 backdrop-blur-sm transition-all duration-300 select-none',
-              isActive ? 'z-50 scale-125' : 'scale-100 opacity-80',
-              theme === 'zeus' &&
-                'border-yellow-500/30 bg-white/10 text-yellow-500',
-              theme === 'poseidon' &&
-                'border-cyan-500/30 bg-cyan-900/40 text-cyan-400',
-              theme === 'hades' && 'border-red-900/30 bg-black/60 text-red-500'
-            )}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            style={{
-              boxShadow: isActive ? `0 0 30px ${itemColor}` : 'none'
-            }}
-          >
-            <Icon
-              size={40}
-              className={clsx(
-                'mb-2 transition-transform',
-                isActive && 'animate-pulse'
-              )}
-            />
-            <span className="text-sm font-bold tracking-wider whitespace-nowrap">
-              {skill.name}
-            </span>
-          </div>
-        </Html>
-
-        {/* Connecting lines or particles could go here, but HTML overlay is clean */}
-      </Float>
-    </group>
+    <div
+      className={cn(
+        'relative flex h-24 w-24 cursor-pointer flex-col items-center justify-center rounded-xl border p-4 transition-all duration-300 hover:scale-110 md:h-32 md:w-32',
+        theme === 'zeus' &&
+          'border-yellow-500/20 bg-white/50 text-neutral-800 hover:bg-white/80',
+        theme === 'poseidon' &&
+          'border-cyan-500/30 bg-cyan-950/30 text-cyan-50 hover:bg-cyan-900/50',
+        theme === 'hades' &&
+          'border-red-900/30 bg-black/60 text-red-500 hover:bg-red-950/50'
+      )}
+    >
+      <Icon className="mb-2 h-8 w-8 md:h-12 md:w-12" />
+      <span className="text-xs font-semibold md:text-sm">{name}</span>
+    </div>
   );
-}
-
-function Scene() {
-  const { theme } = useTheme();
-  const groupRef = useRef<THREE.Group>(null!);
-
-  useFrame(state => {
-    // Orbital rotation
-    if (groupRef.current) {
-      groupRef.current.rotation.y += 0.002;
-      groupRef.current.rotation.z =
-        Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
-    }
-  });
-
-  return (
-    <group ref={groupRef}>
-      {SKILLS.map((skill, i) => (
-        <SkillItem
-          key={i}
-          index={i}
-          skill={skill}
-          count={SKILLS.length}
-          theme={theme}
-        />
-      ))}
-    </group>
-  );
-}
+};
 
 export function TechStack() {
+  const { theme } = useTheme();
+
   return (
-    <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden">
-      <div className="pointer-events-none absolute top-20 z-10 text-center">
+    <section className="relative flex min-h-[50vh] w-full flex-col items-center justify-center overflow-hidden py-20">
+      <div className="z-10 mb-10 text-center">
         <h2
-          className="mb-2 font-serif text-4xl font-bold md:text-5xl"
-          style={{ fontFamily: 'var(--font-cinzel), serif' }}
+          className="mb-2 text-4xl font-bold md:text-5xl"
+          style={{
+            fontFamily: 'var(--font-cinzel), serif',
+            color: theme === 'zeus' ? 'var(--zeus-primary)' : 'var(--primary)'
+          }}
         >
           Oferendas
         </h2>
         <p className="opacity-70">Arsenal Tecnológico</p>
       </div>
 
-      <div className="absolute inset-0 z-0">
-        <Canvas camera={{ position: [0, 0, 12], fov: 50 }} dpr={[1, 2]}>
-          <ambientLight intensity={1} />
-          <Scene />
-        </Canvas>
+      <div className="relative flex w-full flex-col items-center justify-center gap-8 overflow-hidden">
+        {/* First Row - Left to Right */}
+        <Marquee pauseOnHover className="[--duration:25s] [--gap:1.5rem]">
+          {SKILLS.slice(0, 6).map(skill => (
+            <SkillCard key={skill.name} {...skill} theme={theme} />
+          ))}
+        </Marquee>
+
+        {/* Second Row - Right to Left */}
+        <Marquee
+          reverse
+          pauseOnHover
+          className="[--duration:25s] [--gap:1.5rem]"
+        >
+          {SKILLS.slice(6, 12).map(skill => (
+            <SkillCard key={skill.name} {...skill} theme={theme} />
+          ))}
+        </Marquee>
+
+        {/* Gradient Edges */}
+        <div className="from-background dark:from-background pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-linear-to-r to-transparent"></div>
+        <div className="from-background dark:from-background pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-linear-to-l to-transparent"></div>
       </div>
     </section>
   );
