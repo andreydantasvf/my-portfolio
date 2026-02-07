@@ -1,16 +1,8 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { useTheme } from '@/context/ThemeContext';
-
-const GreekBust = dynamic(
-  () => import('../3d/GreekBust').then(mod => mod.GreekBust),
-  { ssr: false }
-);
-const LightningCanvas = dynamic(
-  () => import('../effects/LightningCanvas').then(mod => mod.LightningCanvas),
-  { ssr: false }
-);
+import { GreekBust } from '../3d/GreekBust';
+import { LightningCanvas } from '../effects/LightningCanvas';
 import { motion, Variants } from 'framer-motion';
 
 export function Hero() {
