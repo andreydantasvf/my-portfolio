@@ -3,8 +3,9 @@
 import { useTheme } from '@/context/ThemeContext';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
-import { User, Code, Heart } from 'lucide-react';
+import { Code, Heart } from 'lucide-react';
 import ElectricBorder from '../ui/ElectricBorder';
+import Image from 'next/image';
 
 export function AboutMe() {
   const { theme } = useTheme();
@@ -83,27 +84,52 @@ export function AboutMe() {
                 color="#d4af37"
                 speed={1}
                 chaos={0.12}
-                style={{ borderRadius: 12, rotate: '45deg' }}
+                style={{ borderRadius: 12, width: 288, height: 288 }}
               >
                 <div
                   className={clsx(
-                    'relative flex h-64 w-64 items-center justify-center rounded-full border-4',
-                    theme === 'zeus' && 'rounded-xl border-yellow-500/30'
+                    'relative flex h-72 w-72 items-center justify-center overflow-hidden rounded-xl border-4 border-yellow-500/30'
                   )}
                 >
-                  <User size={64} className="opacity-50" />
+                  <Image
+                    src="/andrey-zeus.png"
+                    alt="Andrey como Zeus"
+                    width={288}
+                    height={288}
+                    className="h-full w-full object-cover"
+                    priority
+                  />
                 </div>
               </ElectricBorder>
+            ) : theme === 'poseidon' ? (
+              <div
+                className={clsx(
+                  'relative flex h-72 w-72 items-center justify-center overflow-hidden rounded-3xl border-4 border-cyan-500/30'
+                )}
+              >
+                <Image
+                  src="/andrey-poseidon.png"
+                  alt="Andrey como Poseidon"
+                  width={288}
+                  height={288}
+                  className="h-full w-full object-cover"
+                  priority
+                />
+              </div>
             ) : (
               <div
                 className={clsx(
-                  'relative flex h-64 w-64 items-center justify-center rounded-full border-4',
-                  theme === 'poseidon' && 'rounded-3xl border-cyan-500/30',
-                  theme === 'hades' &&
-                    'rotate-12 rounded-none border-red-900/30'
+                  'relative flex h-72 w-72 rotate-6 items-center justify-center overflow-hidden rounded-none border-4 border-red-900/30'
                 )}
               >
-                <User size={64} className="opacity-50" />
+                <Image
+                  src="/andrey-hades.png"
+                  alt="Andrey como Hades"
+                  width={288}
+                  height={288}
+                  className="h-full w-full object-cover"
+                  priority
+                />
               </div>
             )}
           </motion.div>
