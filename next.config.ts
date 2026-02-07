@@ -1,7 +1,10 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  compress: true,
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'react-icons', 'framer-motion']
+  },
   images: {
     remotePatterns: [
       {
