@@ -245,9 +245,10 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
     const borderOffset = 60;
 
     const updateSize = () => {
-      const rect = container.getBoundingClientRect();
-      const width = rect.width + borderOffset * 2;
-      const height = rect.height + borderOffset * 2;
+      // Use offsetWidth/offsetHeight instead of getBoundingClientRect() to avoid issues with
+      // CSS transforms (like scale animations) affecting the size calculation.
+      const width = container.offsetWidth + borderOffset * 2;
+      const height = container.offsetHeight + borderOffset * 2;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = width * dpr;
