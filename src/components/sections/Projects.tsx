@@ -89,18 +89,69 @@ export function Projects() {
             <div
               key={index}
               className={clsx(
-                'project-card relative flex flex-col items-center gap-8 md:flex-row',
-                index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                'project-card relative flex flex-col items-center gap-2 md:gap-8',
+                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               )}
             >
+              {/* Image / Artifact */}
+              <div className="group perspective-1000 w-full max-w-xl flex-1">
+                <div
+                  className={cn(
+                    'relative aspect-video transform overflow-hidden rounded-xl shadow-2xl transition-all duration-700 group-hover:scale-105 group-hover:rotate-1',
+                    theme === 'zeus' && 'shadow-yellow-500/20',
+                    theme === 'poseidon' && 'shadow-cyan-500/20',
+                    theme === 'hades' &&
+                      'shadow-red-500/10 grayscale group-hover:grayscale-0'
+                  )}
+                >
+                  <Image
+                    src={project.imgURL}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div
+                    className={cn(
+                      'pointer-events-none absolute inset-0 transition-opacity duration-300',
+                      theme === 'zeus' && 'bg-yellow-500/10 mix-blend-overlay',
+                      theme === 'poseidon' &&
+                        'bg-cyan-500/20 mix-blend-overlay',
+                      theme === 'hades' && 'bg-red-900/20'
+                    )}
+                  />
+                </div>
+              </div>
+
               {/* Content */}
               <div className={cn('group w-full md:w-1/2', cardStyles)}>
                 <h3
-                  className="mb-4 font-serif text-2xl font-bold md:text-3xl"
+                  className="mb-2 font-serif text-2xl font-bold md:text-3xl"
                   style={{ color: 'var(--primary)' }}
                 >
                   {project.title}
                 </h3>
+
+                {/* Technologies */}
+                {project.technologies && (
+                  <div className="mb-4 flex flex-wrap gap-2">
+                    {project.technologies.map(tech => (
+                      <span
+                        key={tech}
+                        className={cn(
+                          'rounded-full px-3 py-1 text-xs font-semibold tracking-wider uppercase',
+                          theme === 'zeus' &&
+                            'bg-yellow-500/10 text-neutral-800',
+                          theme === 'poseidon' &&
+                            'bg-cyan-500/10 text-cyan-200',
+                          theme === 'hades' && 'bg-red-900/20 text-red-200'
+                        )}
+                      >
+                        ● {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
                 <p className="mb-6 leading-relaxed font-light opacity-90">
                   {project.details}
                 </p>
@@ -130,35 +181,6 @@ export function Projects() {
                       <ExternalLink size={18} /> Live
                     </a>
                   )}
-                </div>
-              </div>
-
-              {/* Image / Artifact */}
-              <div className="group perspective-1000 w-full max-w-xl flex-1">
-                <div
-                  className={cn(
-                    'relative aspect-video transform overflow-hidden rounded-xl shadow-2xl transition-all duration-700 group-hover:scale-105 group-hover:rotate-1',
-                    theme === 'zeus' && 'shadow-yellow-500/20',
-                    theme === 'poseidon' && 'shadow-cyan-500/20',
-                    theme === 'hades' &&
-                      'shadow-red-500/10 grayscale group-hover:grayscale-0'
-                  )}
-                >
-                  <Image
-                    src={project.imgURL}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div
-                    className={cn(
-                      'pointer-events-none absolute inset-0 transition-opacity duration-300',
-                      theme === 'zeus' && 'bg-yellow-500/10 mix-blend-overlay',
-                      theme === 'poseidon' &&
-                        'bg-cyan-500/20 mix-blend-overlay',
-                      theme === 'hades' && 'bg-red-900/20'
-                    )}
-                  />
                 </div>
               </div>
             </div>

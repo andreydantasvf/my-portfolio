@@ -4,8 +4,7 @@ export const projects = [
     imgURL: '/projects/jokenpo.png',
     details:
       'Teste suas hábilidades no famoso Jokenpo contra uma máquina. Construído com javascript puro, um valor aleatório é gerado e decidirá se você ganhou ou perdeu a disputa de pedra, papel ou tesoura.',
-    githubLink: 'https://github.com/andreydantasvf/Jokenpo',
-    webLink: 'https://andreydantasvf.github.io/Jokenpo/'
+    technologies: ['JavaScript', 'HTML', 'CSS']
   },
   {
     title: 'NFT MarketPlace',
@@ -14,7 +13,8 @@ export const projects = [
     details:
       'Landing Page construída apenas em Next js e Tailwind Css para simular uma página de vendas de NFTs.',
     githubLink: 'https://github.com/andreydantasvf/NFT-Marketplace-2.0',
-    webLink: 'https://nftmarketplace-hazel.vercel.app/'
+    webLink: 'https://nftmarketplace-hazel.vercel.app/',
+    technologies: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Framer Motion']
   },
   {
     title: 'YourFood',
@@ -22,7 +22,8 @@ export const projects = [
       'https://raw.githubusercontent.com/andreydantasvf/YourFood/main/.github/view.png',
     details:
       'Ecommerce de um restaurante com pratos deliciosos, onde pode-se ver com detalhes a descrição dos pratos e seus ingredientes.',
-    githubLink: 'https://github.com/andreydantasvf/YourFood'
+    githubLink: 'https://github.com/andreydantasvf/YourFood',
+    technologies: ['React Native', 'TypeScript', 'Redux', 'Styled Components']
   },
   {
     title: 'SportFit',
@@ -31,13 +32,15 @@ export const projects = [
     details:
       'Landing page para uma academia ficticia. Construído com Next Js e Tailwind Css',
     githubLink: 'https://github.com/andreydantasvf/SportFit',
-    webLink: 'https://sportfit-three.vercel.app/'
+    webLink: 'https://sportfit-three.vercel.app/',
+    technologies: ['Next.js', 'Tailwind CSS', 'TypeScript']
   },
   {
     title: 'Boilerplate Fastify',
     imgURL: '/projects/fastify_boilerplate.svg',
     details:
       'Base de código para iniciar projetos com Fastify, Typescript, Prisma e Zod. Inclui autenticação JWT, CRUD básico e estrutura de pastas organizada.',
-    githubLink: 'https://github.com/andreydantasvf/Boilerplate_Fastify'
+    githubLink: 'https://github.com/andreydantasvf/Boilerplate_Fastify',
+    technologies: ['Fastify', 'TypeScript', 'Prisma', 'Zod', 'JWT']
   }
 ];
