@@ -1,8 +1,6 @@
 # 🧙‍♂️ Portfólio Pessoal - Andrey Dantas
 
-Bem-vindo ao repositório do meu portfólio pessoal! Este é o meu espaço na web, onde mostro meu trabalho, compartilho conhecimentos e ofereço uma maneira fácil de entrar em contato comigo.
-
-![Preview](https://andreydantas.com.br/preview.png) <!-- Substitua pela URL de uma imagem de pré-visualização -->
+Bem-vindo ao repositório do meu portfólio pessoal! Este é o meu espaço na web, onde mostro meu trabalho, compartilho conhecimentos e ofereço uma maneira fácil de entrar em contato comigo.<!-- Substitua pela URL de uma imagem de pré-visualização -->
 
 ---
 
