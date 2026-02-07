@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { Cormorant_Garamond, Cinzel, Poppins } from 'next/font/google';
 import './globals.css';
-import Head from 'next/head';
 import Script from 'next/script';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import { ThemeProvider } from '@/context/ThemeContext';
+import { DivineToggle } from '@/components/ui/DivineToggle';
+import { Loader } from '@/components/ui/Loader';
 
 const CormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -98,39 +100,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" dir="ltr">
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
-        <link rel="icon" type="image/png" href="/favicon16.png" sizes="16x16" />
-        <link rel="icon" type="image/png" href="/favicon32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="/favicon48.png" sizes="48x48" />
-        <link rel="icon" type="image/png" href="/favicon96.png" sizes="96x96" />
-
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          type="image/x-icon"
-          href="/favicon.ico"
-        ></link>
-      </Head>
+    <html lang="pt-BR" dir="ltr" suppressHydrationWarning>
       <body
         className={`${CormorantGaramond.variable} ${CinzelFont.variable} ${PoppinsFont.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider>
+          <Loader />
+          {children}
+          <DivineToggle />
 
-        <Script
-          id="portfolio-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-        />
-        <GoogleAnalytics />
+          <Script
+            id="portfolio-schema"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+          />
+          <GoogleAnalytics />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,16 +1,15 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  compress: true,
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'react-icons', 'framer-motion']
+  },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'res.cloudinary.com'
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.discordapp.com'
+        hostname: 'github.com'
       },
       {
         protocol: 'https',

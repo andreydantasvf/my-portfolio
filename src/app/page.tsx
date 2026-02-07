@@ -1,23 +1,19 @@
-import { AboutMe } from '@/components/AboutMe';
-import { ContactMe } from '@/components/ContactMe';
-import { Footer } from '@/components/Footer';
-import { Header } from '@/components/Header';
-import { HomeSection } from '@/components/HomeSection';
-import { Projects } from '@/components/Projects';
-import { Skills } from '@/components/Skills';
+import { Hero } from '@/components/sections/Hero';
+import { Projects } from '@/components/sections/Projects';
+import { TechStack } from '@/components/sections/TechStack';
+import { Footer } from '@/components/sections/Footer';
+import { AboutMe } from '@/components/sections/AboutMe';
+import { Contact } from '@/components/sections/Contact';
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <main className="2xl:mt-28 max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto">
-        <HomeSection />
-        <AboutMe />
-        <Skills />
-        <Projects />
-        <ContactMe />
-      </main>
+    <main className="min-h-screen bg-transparent">
+      <Hero />
+      <AboutMe />
+      <TechStack />
+      <Projects />
+      <Contact />
       <Footer />
-    </>
+    </main>
   );
 }
