@@ -84,12 +84,6 @@ export function Projects() {
           />
         </div>
 
-        {/* Timeline Line */}
-        <div
-          className="absolute top-40 bottom-20 left-1/2 hidden w-px opacity-20 md:block"
-          style={{ backgroundColor: 'var(--foreground)' }}
-        />
-
         <div className="space-y-20 md:space-y-40">
           {projects.map((project, index) => (
             <div

@@ -13,7 +13,8 @@ import {
   SiPostgresql,
   SiFigma,
   SiGraphql,
-  SiGit
+  SiGit,
+  SiNestjs
 } from 'react-icons/si';
 import Marquee from '@/components/ui/Marquee';
 import { cn } from '@/lib/utils';
@@ -23,6 +24,7 @@ const SKILLS = [
   { name: 'Next.js', icon: SiNextdotjs, color: '#ffffff' },
   { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
   { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+  { name: 'Nest.js', icon: SiNestjs, color: '#E0234E' },
   { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
   { name: 'Three.js', icon: SiAutodesk, color: '#ffffff' },
   { name: 'AWS', icon: SiAmazon, color: '#FF9900' },
