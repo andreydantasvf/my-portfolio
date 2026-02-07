@@ -1,11 +1,75 @@
 'use client';
 
-import React from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { motion } from 'framer-motion';
-import { Zap, Waves, Ghost } from 'lucide-react';
-import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+
+// Custom SVG Icons for Gods
+const LightningBoltIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="currentColor" />
+  </svg>
+);
+
+const TridentIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    {/* Main shaft */}
+    <line x1="12" y1="22" x2="12" y2="6" />
+    {/* Center prong */}
+    <line x1="12" y1="6" x2="12" y2="2" />
+    <polygon points="12,2 10.5,5 13.5,5" fill="currentColor" />
+    {/* Left prong */}
+    <path d="M12 6L7 4" />
+    <polygon points="7,4 8.5,6 9,4" fill="currentColor" />
+    {/* Right prong */}
+    <path d="M12 6L17 4" />
+    <polygon points="17,4 15,4 15.5,6" fill="currentColor" />
+    {/* Decorative rings */}
+    <circle cx="12" cy="8" r="1" fill="currentColor" />
+  </svg>
+);
+
+const BidentIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    {/* Main shaft */}
+    <line x1="12" y1="22" x2="12" y2="7" />
+    {/* Skull ornament */}
+    <circle cx="12" cy="9" r="1.5" fill="currentColor" />
+    {/* Left prong */}
+    <path d="M12 7L9 6L9 3" />
+    <polygon points="9,3 7.5,5 10.5,5" fill="currentColor" />
+    {/* Right prong */}
+    <path d="M12 7L15 6L15 3" />
+    <polygon points="15,3 13.5,5 16.5,5" fill="currentColor" />
+    {/* Flame effect on tips */}
+    <path d="M9 2.5C9 1.5 8.5 1 9 1s1 0.5 0.5 1.5" strokeWidth="1" />
+    <path d="M15 2.5C15 1.5 14.5 1 15 1s1 0.5 0.5 1.5" strokeWidth="1" />
+  </svg>
+);
 
 export function DivineToggle() {
   const { theme, setTheme } = useTheme();
@@ -13,24 +77,24 @@ export function DivineToggle() {
   const artifacts = [
     {
       id: 'zeus',
-      icon: Zap,
+      icon: LightningBoltIcon,
       label: 'Zeus',
-      color: 'text-yellow-500', // Hardcoded fallback or use theme vars
+      color: 'text-yellow-500',
       bgActive: 'bg-yellow-500/20'
     },
     {
       id: 'poseidon',
-      icon: Waves,
+      icon: TridentIcon,
       label: 'Poseidon',
       color: 'text-cyan-500',
       bgActive: 'bg-cyan-500/20'
     },
     {
       id: 'hades',
-      icon: Ghost,
+      icon: BidentIcon,
       label: 'Hades',
-      color: 'text-purple-500',
-      bgActive: 'bg-purple-500/20'
+      color: 'text-red-500',
+      bgActive: 'bg-red-500/20'
     }
   ] as const;
 
@@ -51,7 +115,6 @@ export function DivineToggle() {
             onClick={() => {
               if (theme !== artifact.id) {
                 setTheme(artifact.id as any);
-                setTimeout(() => window.location.reload(), 100);
               }
             }}
             className={twMerge(
