@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Float, Stars, Cloud, Environment, Sparkles } from '@react-three/drei';
 import * as THREE from 'three';
@@ -587,10 +587,26 @@ function BackgroundEffects() {
 
 export function GreekBust() {
   const mouse = useRef(new THREE.Vector2());
+  const [frameloop, setFrameloop] = useState<'always' | 'never'>('always');
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setFrameloop(document.hidden ? 'never' : 'always');
+    };
+
+    // Set initial state based on current visibility
+    handleVisibilityChange();
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
 
   return (
     <div className="absolute top-0 left-0 -z-10 h-screen w-full transition-colors duration-1000 ease-in-out">
       <Canvas
+        frameloop={frameloop}
         shadows
         camera={{ position: [0, 0, 8], fov: 45 }}
         onMouseMove={e => {
