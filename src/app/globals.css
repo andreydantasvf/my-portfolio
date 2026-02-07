@@ -21,29 +21,33 @@
 */
 
 :root {
-  /* Default to Zeus (Light Mode equivalent) */
-  --zeus-bg: #fdfbf7;
+  /* Zeus (Light Mode equivalent) */
+  --zeus-bg: #f8f5f2;
   --zeus-fg: #1a1a1a;
   --zeus-primary: #d4af37;
-  --zeus-secondary: #87CEEB;
-  --zeus-accent: #a9a9a9;
+  --zeus-secondary: #0077be;
+  --zeus-accent: #e0e0e0;
 
-  --poseidon-bg: #002b36;
-  /* Deep Teal/Slate */
+  /* Poseidon (Oceanic/Dark) */
+  --poseidon-bg: #001f27;
+  /* Darker deep sea */
   --poseidon-fg: #e0f2f1;
-  /* Pale Cyan */
-  --poseidon-primary: #2aa198;
-  /* Muted Cyan */
-  --poseidon-secondary: #268bd2;
-  /* Deep Blue */
-  --poseidon-accent: #b58900;
-  /* Bronze/Gold accent for contrast */
+  --poseidon-primary: #00e5ff;
+  /* Brighter Cyan */
+  --poseidon-secondary: #0288d1;
+  --poseidon-accent: #ffd700;
+  /* Gold contrast */
 
-  --hades-bg: #1a1a1a;
-  --hades-fg: #eaeaea;
-  --hades-primary: #8B0000;
-  --hades-secondary: #708090;
-  --hades-accent: #4B0082;
+  /* Hades (Underworld/Dark) */
+  --hades-bg: #0f0f0f;
+  /* Near black */
+  --hades-fg: #e0e0e0;
+  --hades-primary: #ff3d00;
+  /* Vibrant Red/Orange */
+  --hades-secondary: #4a148c;
+  /* Deep Purple */
+  --hades-accent: #212121;
+  /* Dark Grey */
 }
 
 [data-theme='zeus'] {
@@ -68,6 +72,21 @@
   --primary: var(--hades-primary);
   --secondary: var(--hades-secondary);
   --accent: var(--hades-accent);
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Base Styles */
@@ -122,4 +141,33 @@ body {
 
 .animate-fade-in-out {
   animation: fade-in-out 3s ease-in-out forwards;
+}
+
+/* Marquee Animations */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration) linear infinite;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
 }
