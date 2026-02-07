@@ -4,6 +4,7 @@ import { useTheme } from '@/context/ThemeContext';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
 import { User, Code, Heart } from 'lucide-react';
+import ElectricBorder from '../ui/ElectricBorder';
 
 export function AboutMe() {
   const { theme } = useTheme();
@@ -77,18 +78,34 @@ export function AboutMe() {
               )}
             />
 
-            {/* Stylized geometric shape or placeholder for now */}
-            <div
-              className={clsx(
-                'rounded- full relative flex h-64 w-64 items-center justify-center border-4',
-                theme === 'zeus' && 'rounded-full border-yellow-500/30',
-                theme === 'poseidon' &&
-                  'rotate-45 rounded-3xl border-cyan-500/30',
-                theme === 'hades' && 'rotate-12 rounded-none border-red-900/30'
-              )}
-            >
-              <User size={64} className="opacity-50" />
-            </div>
+            {theme === 'zeus' ? (
+              <ElectricBorder
+                color="#d4af37"
+                speed={1}
+                chaos={0.12}
+                style={{ borderRadius: 12, rotate: '45deg' }}
+              >
+                <div
+                  className={clsx(
+                    'relative flex h-64 w-64 items-center justify-center rounded-full border-4',
+                    theme === 'zeus' && 'rounded-xl border-yellow-500/30'
+                  )}
+                >
+                  <User size={64} className="opacity-50" />
+                </div>
+              </ElectricBorder>
+            ) : (
+              <div
+                className={clsx(
+                  'relative flex h-64 w-64 items-center justify-center rounded-full border-4',
+                  theme === 'poseidon' && 'rounded-3xl border-cyan-500/30',
+                  theme === 'hades' &&
+                    'rotate-12 rounded-none border-red-900/30'
+                )}
+              >
+                <User size={64} className="opacity-50" />
+              </div>
+            )}
           </motion.div>
         </div>
       </div>
