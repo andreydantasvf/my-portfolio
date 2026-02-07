@@ -103,7 +103,12 @@ export function DivineToggle() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1 }}
-      className="fixed bottom-8 left-1/2 z-50 flex -translate-x-1/2 items-center gap-4 rounded-full border border-white/10 bg-black/20 px-6 py-3 shadow-2xl backdrop-blur-md"
+      className={twMerge(
+        'fixed bottom-8 left-1/2 z-50 flex -translate-x-1/2 items-center gap-4 rounded-full border px-6 py-3 shadow-2xl backdrop-blur-md',
+        theme === 'zeus'
+          ? 'border-yellow-600/30 bg-amber-950/70'
+          : 'border-white/10 bg-black/20'
+      )}
     >
       {artifacts.map(artifact => {
         const isActive = theme === artifact.id;
@@ -119,7 +124,11 @@ export function DivineToggle() {
             }}
             className={twMerge(
               'group relative rounded-full p-3 transition-all duration-300',
-              isActive ? artifact.bgActive : 'hover:bg-white/5'
+              isActive
+                ? artifact.bgActive
+                : theme === 'zeus'
+                  ? 'hover:bg-amber-900/30'
+                  : 'hover:bg-white/5'
             )}
             aria-label={`Switch to ${artifact.label} theme`}
           >
@@ -128,7 +137,9 @@ export function DivineToggle() {
                 'h-6 w-6 transition-all duration-300',
                 isActive
                   ? artifact.color
-                  : 'text-gray-400 group-hover:text-white',
+                  : theme === 'zeus'
+                    ? 'text-amber-200/70 group-hover:text-white'
+                    : 'text-gray-400 group-hover:text-white',
                 isActive && 'scale-110 drop-shadow-[0_0_8px_currentColor]'
               )}
             />
