@@ -9,11 +9,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'res.cloudinary.com'
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.discordapp.com'
+        hostname: 'github.com'
       },
       {
         protocol: 'https',
