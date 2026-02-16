@@ -6,6 +6,7 @@ import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { DivineToggle } from '@/components/ui/DivineToggle';
 import { Loader } from '@/components/ui/Loader';
+import { Toaster } from '@/components/ui/toaster';
 
 const CormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -108,6 +109,7 @@ export default function RootLayout({
           <Loader />
           {children}
           <DivineToggle />
+          <Toaster />
 
           <Script
             id="portfolio-schema"
