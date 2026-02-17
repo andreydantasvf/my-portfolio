@@ -162,7 +162,7 @@ export function Projects() {
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-background flex items-center gap-2 rounded-full border border-current px-4 py-2 text-sm font-medium opacity-80 transition-all hover:bg-current hover:opacity-100"
+                      className="hover:text-background hover:bg-foreground flex items-center gap-2 rounded-full border border-current px-4 py-2 text-sm font-medium opacity-80 transition-all hover:opacity-30"
                     >
                       <Github size={18} /> Code
                     </a>
