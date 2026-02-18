@@ -17,6 +17,15 @@ export const projects = [
     webLink: 'https://www.autoaulabr.com'
   },
   {
+    title: 'Entendendo Algoritmos',
+    imgURL: '/projects/entendendo-algoritmos.png',
+    details:
+      'Entenda e visualize os algoritmos mais famosos da computação, como ordenação, busca, grafos e muito mais. O site apresenta explicações detalhadas e visualizações interativas para facilitar o aprendizado.',
+    technologies: ['Next.js', 'TypeScript', 'TailwindCSS', 'Framer Motion'],
+    webLink: 'https://entendendoalgoritmos.vercel.app',
+    githubLink: 'https://github.com/andreydantasvf/entendendo-algoritmos'
+  },
+  {
     title: 'Hashi Mix',
     imgURL: '/projects/hashi-mix.png',
     details:
