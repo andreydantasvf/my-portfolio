@@ -1,5 +1,25 @@
 export const projects = [
   {
+    title: 'Racing of Legends',
+    imgURL: '/projects/racing-of-legends.png',
+    details:
+      'Crie campeonatos de League of Legends com seus amigos. Pontuação customizável baseada em kills, mortes, assistências e muito mais.',
+    technologies: [
+      'Next.js',
+      'TypeScript',
+      'TailwindCSS',
+      'Nest.js',
+      'TypeORM',
+      'PostgreSQL',
+      'Redis',
+      'BullMQ',
+      'LUA',
+      'Docker'
+    ],
+    webLink: 'https://racingoflegends.com.br',
+    githubLink: 'https://github.com/andreydantasvf/racing-of-legends'
+  },
+  {
     title: 'Auto Aula',
     imgURL: '/projects/autoaula.png',
     details:
@@ -58,14 +78,5 @@ export const projects = [
     technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
     webLink: 'https://mikael-barbearia.vercel.app/',
     githubLink: 'https://github.com/andreydantasvf/mikael-barbearia'
-  },
-  {
-    title: 'Jokenpo',
-    imgURL: '/projects/jokenpo.png',
-    details:
-      'Teste suas hábilidades no famoso Jokenpo contra uma máquina. Construído com javascript puro, um valor aleatório é gerado e decidirá se você ganhou ou perdeu a disputa de pedra, papel ou tesoura.',
-    technologies: ['JavaScript', 'HTML', 'CSS'],
-    githubLink: 'https://github.com/andreydantasvf/Jokenpo',
-    webLink: 'https://andreydantasvf.github.io/Jokenpo/'
   }
 ];
