@@ -1,5 +1,23 @@
 export const projects = [
   {
+    title: 'Patos Empregos',
+    imgURL: '/projects/patosempregos.png',
+    details:
+      'Plataforma de vagas de emprego para Patos-PB. Empresas anunciam, pagam via PIX e a vaga é publicada automaticamente no site e disparada para centenas de pessoas no WhatsApp.',
+    technologies: [
+      'Next.js',
+      'TypeScript',
+      'TailwindCSS',
+      'PostgreSQL',
+      'Prisma',
+      'NextAuth.js',
+      'Mercado Pago',
+      'Evolution API',
+      'Coolify'
+    ],
+    webLink: 'https://patosempregos.com.br'
+  },
+  {
     title: 'Racing of Legends',
     imgURL: '/projects/racing-of-legends.png',
     details:
@@ -18,23 +36,6 @@ export const projects = [
     ],
     webLink: 'https://racingoflegends.com.br',
     githubLink: 'https://github.com/andreydantasvf/racing-of-legends'
-  },
-  {
-    title: 'Auto Aula',
-    imgURL: '/projects/autoaula.png',
-    details:
-      'Plataforma que conecta alunos à instrutores de direção qualificados, permitindo a compra antecipada de pacotes de aulas com agendamento de aulas.',
-    technologies: [
-      'Next.js',
-      'TypeScript',
-      'TailwindCSS',
-      'Nest.js',
-      'TypeORM',
-      'PostgreSQL',
-      'Mercado Pago',
-      'Docker'
-    ],
-    webLink: 'https://www.autoaulabr.com'
   },
   {
     title: 'Entendendo Algoritmos',
