@@ -1,4 +1,3 @@
-import { projects } from '@/data/projects';
 import { getContributionsLastYear } from '@/lib/github';
 import { SectionObject } from '@/components/three/lazy';
 import { CountUp } from '@/components/ui/CountUp';
@@ -8,19 +7,28 @@ import { Section, SectionHeader } from '@/components/ui/Section';
 export async function About() {
   const contributions = await getContributionsLastYear();
 
+  // primeiro emprego na área: mai 2023 (ver data/experience.ts)
+  const years = Math.floor(
+    (Date.now() - new Date(2023, 4).getTime()) / (365.25 * 24 * 3600 * 1000)
+  );
+
   const stats = [
+    { value: years, suffix: '+', label: 'anos de experiência no mercado' },
     {
-      value: projects.filter(p => p.kind === 'Produção').length,
-      label: 'produtos em produção'
+      value: 80,
+      suffix: '%',
+      label: 'menos tempo de resposta em telas React críticas'
     },
     {
-      value: projects.filter(p => p.kind === 'Cliente').length,
-      label: 'clientes atendidos'
+      value: 93,
+      suffix: '%',
+      label: 'menos tempo em consultas SQL críticas'
     },
     ...(contributions
       ? [
           {
             value: contributions,
+            suffix: '',
             label: 'contribuições no GitHub no último ano'
           }
         ]
@@ -36,31 +44,31 @@ export async function About() {
             label="Sobre"
             title={
               <>
-                Construo os sistemas <em>por trás</em> do produto.
+                Do banco de dados à <em>interface</em>.
               </>
             }
           />
           <Reveal className="text-fg-muted mt-8 max-w-2xl space-y-5 text-lg leading-relaxed">
             <p>
-              Sou desenvolvedor full stack em Patos, na Paraíba. Gosto de pegar
-              um problema real e levar até produção: modelagem do banco, API,
-              interface, deploy e o que acontece depois que o primeiro usuário
-              chega.
+              Sou desenvolvedor full stack JavaScript/TypeScript e estudante de
+              Ciência da Computação na UEPB. Trabalho com React, Next.js,
+              Node.js, NestJS e Python, e gosto de entender cada problema de
+              ponta a ponta: da modelagem do banco à última animação da tela.
             </p>
             <p>
-              No <strong className="text-fg font-medium">Patos Empregos</strong>
-              , empresas pagam via PIX e a vaga sai sozinha no site e no
-              WhatsApp de centenas de pessoas. No{' '}
-              <strong className="text-fg font-medium">Racing of Legends</strong>
-              , filas com BullMQ e Redis processam partidas em segundo plano.
-              Também atendo negócios locais com sites rápidos e bem posicionados
-              no Google.
+              Meu foco é performance. Já reduzi em até{' '}
+              <strong className="text-fg font-medium">80%</strong> o tempo de
+              resposta de telas em React e em até{' '}
+              <strong className="text-fg font-medium">93%</strong> o de
+              consultas no PostgreSQL. Também uso IA no dia a dia da engenharia,
+              com Claude Code, Codex, agentes e desenvolvimento orientado por
+              especificação, sempre com revisão humana.
             </p>
           </Reveal>
 
           <Reveal
             as="dl"
-            className="mt-12 grid gap-4 sm:grid-cols-3"
+            className="mt-12 grid gap-4 sm:grid-cols-2"
             stagger={0.12}
           >
             {stats.map(s => (
@@ -70,7 +78,7 @@ export async function About() {
               >
                 <dt className="sr-only">{s.label}</dt>
                 <dd className="font-display text-accent text-5xl font-semibold tracking-tight">
-                  <CountUp value={s.value} />
+                  <CountUp value={s.value} suffix={s.suffix} />
                 </dd>
                 <dd className="text-fg-muted mt-3 text-sm leading-relaxed">
                   {s.label}

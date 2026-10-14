@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { ArrowDown, Github, Linkedin, MapPin } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { site } from '@/data/site';
 import { prefersReducedMotion } from '@/lib/motion';
 import { Button } from '@/components/ui/Button';
@@ -114,9 +114,9 @@ export function Hero() {
           </p>
 
           <p className="hero-fade text-fg-muted mt-5 max-w-xl text-lg leading-relaxed md:text-xl">
-            Construo produtos que rodam em produção, do pagamento via PIX ao
-            disparo no WhatsApp. Next.js no front, Node e Nest no back,
-            PostgreSQL embaixo de tudo.
+            Desenvolvedor full stack JavaScript/TypeScript. Crio aplicações web
+            com React, Next.js, Node.js e NestJS, com atenção a performance,
+            APIs bem desenhadas e interfaces cuidadas.
           </p>
 
           <div className="hero-fade mt-10 flex flex-wrap gap-3">
@@ -129,8 +129,13 @@ export function Hero() {
           </div>
 
           <ul className="hero-fade label mt-12 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <li className="flex items-center gap-2">
-              <MapPin size={13} className="text-accent" /> {site.location}
+            <li>
+              <a
+                href={`mailto:${site.email}`}
+                className="hover:text-fg flex items-center gap-2 transition-colors"
+              >
+                <Mail size={13} className="text-accent" /> E-mail
+              </a>
             </li>
             <li>
               <a

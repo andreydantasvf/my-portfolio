@@ -15,7 +15,13 @@ const FACE_SRC = '/hero/face.svg';
  * Cada <section data-particles="forma"> define a forma enquanto está na tela;
  * perto do fim da seção as partículas migram para a forma da próxima.
  */
-export type ParticleShape = 'face' | 'orb' | 'field' | 'wave' | 'ring';
+export type ParticleShape =
+  | 'face'
+  | 'orb'
+  | 'field'
+  | 'wave'
+  | 'ring'
+  | 'helix';
 
 type Shape = {
   pos: Float32Array;
@@ -119,7 +125,37 @@ function buildShapes(
     ring.set([v.x, v.y + ringY, v.z - 3], i * 3);
   }
 
+  // Hélice dupla vertical à direita (seção Experiência): duas fitas e "degraus" entre elas
+  const helix = new Float32Array(n * 3);
+  const helixCenter: [number, number, number] = mobile
+    ? [halfW * 0.55, 0, -2]
+    : [halfW * 0.58, 0, -1];
+  const helixR = mobile ? 0.9 : 1.3;
+  const helixH = halfH * 1.8;
+  for (let i = 0; i < n; i++) {
+    const u = i / n;
+    const turn = u * Math.PI * 2 * 3.2;
+    const y = (u - 0.5) * helixH;
+    let x: number;
+    let z: number;
+    if (i % 5 === 0) {
+      // degrau ligando as duas fitas
+      const s = Math.random() * 2 - 1;
+      x = Math.cos(turn) * helixR * s;
+      z = Math.sin(turn) * helixR * s;
+    } else {
+      const strand = i % 2 ? 0 : Math.PI;
+      x = Math.cos(turn + strand) * helixR + rand(-0.05, 0.05);
+      z = Math.sin(turn + strand) * helixR + rand(-0.05, 0.05);
+    }
+    helix.set(
+      [x + helixCenter[0], y + helixCenter[1], z + helixCenter[2]],
+      i * 3
+    );
+  }
+
   return {
+    helix: { pos: helix, center: helixCenter, motion: 'spin' },
     face: facePoints
       ? { pos: face, center: faceCenter, motion: 'sway' }
       : { pos: face, center: orbCenter, motion: 'spin' },

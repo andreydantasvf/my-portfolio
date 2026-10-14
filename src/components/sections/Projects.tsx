@@ -8,14 +8,14 @@ export function Projects() {
     <Section id="projetos" particles="ring" className="overflow-x-clip">
       <div className="container-site grid items-center gap-10 lg:grid-cols-[1.4fr_1fr]">
         <SectionHeader
-          index={3}
+          index={4}
           label="Projetos"
           title={
             <>
               Trabalho <em>selecionado</em>.
             </>
           }
-          lead="Produtos próprios em produção, sites para clientes e projetos abertos. Cada um resolveu um problema real."
+          lead="Plataformas completas, ferramentas educacionais, sites e jogos. Cada card leva ao site ou ao código."
         />
         <div className="relative mx-auto hidden aspect-square w-full max-w-sm lg:block">
           <SectionObject kind="network" className="h-full w-full" />

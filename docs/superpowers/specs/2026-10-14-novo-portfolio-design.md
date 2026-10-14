@@ -4,7 +4,7 @@ Data: 2026-10-14 · Branch: `feat/novo-portfolio`
 
 ## Objetivo
 
-Substituir o tema de mitologia grega por um portfolio escuro, com azul-marinho e temática de IA, voltado a **recrutadores e empresas**. O visitante precisa entender em segundos quem é o Andrey, a stack e o que já foi entregue, e ter elementos interativos que diferenciem o site (partículas, objetos 3D, terminal com IA).
+Substituir o tema de mitologia grega por um portfolio escuro, com azul-marinho e temática de IA, voltado a **recrutadores e empresas**. Mesma lógica do portfolio antigo: mostrar **habilidades**, contar a **experiência** e apresentar os **projetos**, sem dar ênfase à cidade nem a "clientes/sistemas em produção". Elementos interativos diferenciam o site (partículas, objetos 3D, árvore de commits, terminal com IA).
 
 Construção iterativa: a base entra primeiro e os ajustes vêm conforme o site toma forma. Estudos de referência ficam em `lab/` (fora do git).
 
@@ -53,7 +53,7 @@ src/
     shell/        SmoothScroll, ScrollProgress, Cursor, Header, Footer
     three/        ParticleField (fundo fixo), ObjectCanvas (canvas sob demanda), objects/*
     ui/           SectionHeader, Button, Reveal, Marquee
-    sections/     Hero, About, Stack, Projects, Contact (+ Experience, GitHub, Terminal nas próximas etapas)
+    sections/     Hero, About, Experience (GitTimeline), Stack, Projects, Contact
 ```
 
 ### Fundo de partículas (peça central)
@@ -64,6 +64,7 @@ Um único canvas `three.js` (via `@react-three/fiber`) fixo atrás da página. C
 |---|---|
 | Hero | **rosto** pontilhado à direita, gerado de `public/hero/face.svg` (quanto mais claro, mais pontos). Hoje é um rosto de exemplo; será trocado pelo rosto vetorizado do Andrey |
 | Sobre | **campo** de estrelas espalhado |
+| Experiência | **hélice dupla** girando à direita |
 | Stack | **onda** no rodapé da tela |
 | Projetos | **anel** inclinado |
 | Contato | **orb** centralizado de novo |
@@ -82,11 +83,17 @@ Canvas próprios e pequenos, renderizando só quando visíveis: **rack de servid
 
 `components/three/imagePoints.ts` lê a imagem num canvas e distribui os pontos por amostragem sistemática proporcional ao brilho (com contraste via gamma). O brilho também empurra o ponto para frente, dando relevo. Imagens escuras sobre fundo claro são invertidas automaticamente. Para trocar o rosto basta substituir o arquivo.
 
+### Experiência como árvore do git
+
+`data/experience.ts` lista os commits em ordem cronológica, cada um numa branch (`main`, `formacao`, `freelance`); `from` abre a branch a partir de outra. `GitTimeline` desenha as colunas do grafo por linha (linhas CSS + curva SVG em unidades de coluna) e anima ao rolar: curva, nó, linha e card, nessa ordem. Só o commit mais recente leva `HEAD`.
+
 ## Escopo
 
 **Etapa 1 (esta):** tokens, fontes, shell global (scroll suave, barra de energia, cursor mira, header com seletor de acento), fundo de partículas com morph, objetos 3D, seções Hero, Sobre, Stack, Projetos e Contato no novo visual, remoção do tema grego.
 
-**Próximas etapas:** experiência com timeline, gráfico do GitHub com cobrinha, terminal com IA simulada, mini assistente, faixas diagonais, páginas de case study e IA real (spec própria).
+**Etapa 2:** textos a partir do currículo, seção de experiência em árvore do git.
+
+**Próximas etapas:** gráfico do GitHub com cobrinha, terminal com IA simulada, mini assistente, faixas diagonais, páginas de case study e IA real (spec própria).
 
 ## Fora do escopo
 

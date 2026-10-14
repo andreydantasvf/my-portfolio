@@ -29,7 +29,7 @@ export function Stack() {
       <div className="container-site grid items-start gap-16 lg:grid-cols-[1.25fr_1fr]">
         <div>
           <SectionHeader
-            index={2}
+            index={3}
             label="Stack"
             title={
               <>

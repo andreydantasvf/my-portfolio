@@ -12,8 +12,8 @@ export function Footer() {
     <footer className="border-line/70 relative z-10 border-t">
       <div className="container-site flex flex-col items-start justify-between gap-6 py-10 sm:flex-row sm:items-center">
         <p className="label">
-          © {new Date().getFullYear()} {site.name} · Feito em Patos-PB com
-          Next.js e three.js
+          © {new Date().getFullYear()} {site.name} · Feito com Next.js e
+          three.js
         </p>
         <ul className="flex gap-2">
           {links.map(({ href, label, icon: Icon }) => (

@@ -1,4 +1,4 @@
-export type ProjectKind = 'Produção' | 'Cliente' | 'Open source' | 'Estudo';
+export type ProjectKind = 'Plataforma' | 'Open source' | 'Site' | 'Jogo';
 
 export type Project = {
   title: string;
@@ -13,10 +13,10 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: 'Patos Empregos',
-    kind: 'Produção',
+    kind: 'Plataforma',
     imgURL: '/projects/patosempregos.png',
     details:
-      'Plataforma de vagas de emprego para Patos-PB. Empresas anunciam, pagam via PIX e a vaga é publicada automaticamente no site e disparada para centenas de pessoas no WhatsApp.',
+      'Plataforma de vagas de emprego com painel para empresas, pagamento via PIX (Mercado Pago com webhooks) e publicação automática no site e em um grupo do WhatsApp via bot.',
     technologies: [
       'Next.js',
       'TypeScript',
@@ -32,7 +32,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Racing of Legends',
-    kind: 'Produção',
+    kind: 'Plataforma',
     imgURL: '/projects/racing-of-legends.png',
     details:
       'Crie campeonatos de League of Legends com seus amigos. Pontuação customizável baseada em kills, mortes, assistências e muito mais.',
@@ -63,7 +63,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Hashi Mix',
-    kind: 'Cliente',
+    kind: 'Site',
     imgURL: '/projects/hashi-mix.png',
     details:
       'Site para restaurante de comida japonesa, apresentando o cardápio completo, informações de contato e localização. O design é moderno e responsivo, garantindo uma ótima experiência em dispositivos móveis e ótimo SEO para busca no google.',
@@ -72,7 +72,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Gabriela Pereira',
-    kind: 'Cliente',
+    kind: 'Site',
     imgURL: '/projects/gabriela-pereira.png',
     details:
       'Site para uma arquiteta, apresentando seu portfólio de projetos, informações de contato e localização. O design é moderno e responsivo, garantindo uma ótima experiência em dispositivos móveis e ótimo SEO para busca no google.',
@@ -81,7 +81,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Batalha Naval Ruby',
-    kind: 'Estudo',
+    kind: 'Jogo',
     imgURL:
       'https://raw.githubusercontent.com/andreydantasvf/BattleShip_Ruby/refs/heads/main/.github/demo.png',
     details:
@@ -91,7 +91,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Mikael Barbearia',
-    kind: 'Cliente',
+    kind: 'Site',
     imgURL: '/projects/mikael-barbearia.png',
     details:
       'Site institucional para uma barbearia local. Com formulário de contato funcional, os clientes podem facilmente agendar seus horários e serviços. O design é moderno e responsivo, garantindo uma ótima experiência em dispositivos móveis.',

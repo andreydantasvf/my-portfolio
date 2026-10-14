@@ -3,12 +3,11 @@ export const site = {
   role: 'Desenvolvedor Full Stack',
   url: 'https://www.andreydantas.com.br',
   email: 'andreydantasvf@gmail.com',
-  location: 'Patos, Paraíba · Brasil',
-  availability: 'Disponível para vagas remotas',
+  availability: 'Aberto a novas oportunidades',
   roles: [
     'Desenvolvedor Full Stack',
-    'Next.js · Node · Nest',
-    'Sistemas em produção'
+    'React · Next.js · Node.js',
+    'TypeScript de ponta a ponta'
   ],
   social: {
     github: 'https://github.com/andreydantasvf',
@@ -19,6 +18,7 @@ export const site = {
 
 export const nav = [
   { id: 'sobre', label: 'Sobre' },
+  { id: 'experiencia', label: 'Experiência' },
   { id: 'stack', label: 'Stack' },
   { id: 'projetos', label: 'Projetos' },
   { id: 'contato', label: 'Contato' }

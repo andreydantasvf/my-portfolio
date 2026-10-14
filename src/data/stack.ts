@@ -1,13 +1,16 @@
 import type { IconType } from 'react-icons';
 import {
   SiAmazonwebservices,
+  SiClaude,
   SiDocker,
+  SiFastapi,
+  SiFlask,
   SiGit,
   SiGraphql,
-  SiGreensock,
-  SiMercadopago,
+  SiKubernetes,
   SiNestjs,
   SiNextdotjs,
+  SiNginx,
   SiNodedotjs,
   SiPostgresql,
   SiPrisma,
@@ -18,8 +21,7 @@ import {
   SiThreedotjs,
   SiTypeorm,
   SiTypescript,
-  SiVercel,
-  SiWhatsapp
+  SiVitest
 } from 'react-icons/si';
 
 export type StackGroup = {
@@ -30,39 +32,79 @@ export type StackGroup = {
 /** Núcleo: o que aparece em destaque na seção Stack. */
 export const coreStack = [
   'TypeScript',
+  'React',
   'Next.js',
   'Node.js',
-  'Nest.js',
+  'NestJS',
   'PostgreSQL'
 ];
 
 export const stackGroups: StackGroup[] = [
   {
     title: 'Front-end',
-    items: ['React', 'Next.js', 'TailwindCSS', 'Three.js', 'GSAP']
+    items: [
+      'React',
+      'Next.js',
+      'React Native',
+      'Redux',
+      'Tailwind CSS',
+      'Shadcn UI',
+      'Framer Motion',
+      'Three.js'
+    ]
   },
   {
     title: 'Back-end',
     items: [
       'Node.js',
-      'Nest.js',
+      'NestJS',
+      'Express',
+      'Fastify',
+      'Python',
+      'Flask',
+      'FastAPI',
+      'REST',
+      'WebSocket'
+    ]
+  },
+  {
+    title: 'Dados',
+    items: [
+      'PostgreSQL',
+      'MySQL',
+      'MongoDB',
+      'Redis',
       'Prisma',
       'TypeORM',
-      'BullMQ',
-      'REST',
+      'Drizzle',
       'GraphQL'
     ]
   },
-  { title: 'Dados', items: ['PostgreSQL', 'Redis', 'SQLite'] },
-  { title: 'Infra', items: ['Docker', 'Coolify', 'AWS', 'Vercel', 'Git'] },
   {
-    title: 'Integrações',
+    title: 'DevOps e cloud',
     items: [
-      'Mercado Pago · PIX',
-      'Evolution API · WhatsApp',
-      'NextAuth.js',
-      'EmailJS'
+      'Docker',
+      'Kubernetes',
+      'Nginx',
+      'AWS',
+      'Google Cloud',
+      'Azure',
+      'CI/CD'
     ]
+  },
+  {
+    title: 'IA no desenvolvimento',
+    items: [
+      'Claude Code',
+      'Codex',
+      'Agentes de IA',
+      'Spec-driven development',
+      'Revisão de código com LLMs'
+    ]
+  },
+  {
+    title: 'Testes e métodos',
+    items: ['Jest', 'Vitest', 'Testes de carga', 'Scrum']
   }
 ];
 
@@ -71,26 +113,28 @@ export type MarqueeItem = { label: string; icon: IconType };
 /** Faixas diagonais do topo da seção Stack. */
 export const stackMarquee: MarqueeItem[] = [
   { label: 'TypeScript', icon: SiTypescript },
-  { label: 'Next.js', icon: SiNextdotjs },
   { label: 'React', icon: SiReact },
+  { label: 'Next.js', icon: SiNextdotjs },
   { label: 'Node.js', icon: SiNodedotjs },
-  { label: 'Nest.js', icon: SiNestjs },
+  { label: 'NestJS', icon: SiNestjs },
+  { label: 'Python', icon: SiPython },
   { label: 'PostgreSQL', icon: SiPostgresql },
   { label: 'Redis', icon: SiRedis },
   { label: 'Docker', icon: SiDocker },
-  { label: 'Three.js', icon: SiThreedotjs },
-  { label: 'Python', icon: SiPython }
+  { label: 'Three.js', icon: SiThreedotjs }
 ];
 
 export const toolsMarquee: MarqueeItem[] = [
+  { label: 'Kubernetes', icon: SiKubernetes },
+  { label: 'FastAPI', icon: SiFastapi },
+  { label: 'Flask', icon: SiFlask },
   { label: 'Prisma', icon: SiPrisma },
   { label: 'TypeORM', icon: SiTypeorm },
-  { label: 'TailwindCSS', icon: SiTailwindcss },
-  { label: 'GSAP', icon: SiGreensock },
+  { label: 'Tailwind CSS', icon: SiTailwindcss },
   { label: 'GraphQL', icon: SiGraphql },
   { label: 'AWS', icon: SiAmazonwebservices },
-  { label: 'Vercel', icon: SiVercel },
-  { label: 'Git', icon: SiGit },
-  { label: 'Mercado Pago', icon: SiMercadopago },
-  { label: 'WhatsApp API', icon: SiWhatsapp }
+  { label: 'Nginx', icon: SiNginx },
+  { label: 'Claude Code', icon: SiClaude },
+  { label: 'Vitest', icon: SiVitest },
+  { label: 'Git', icon: SiGit }
 ];

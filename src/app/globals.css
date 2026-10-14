@@ -47,7 +47,7 @@ html {
 }
 
 body {
-  @apply bg-bg font-sans text-fg antialiased;
+  @apply bg-bg text-fg font-sans antialiased;
   overflow-x: clip;
 }
 
@@ -215,7 +215,13 @@ html.has-cursor .cursor {
   z-index: -1;
   border-radius: inherit;
   padding: 1px;
-  background: conic-gradient(from var(--angle), transparent 0 62%, var(--accent) 82%, #fff 90%, transparent);
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0 62%,
+    var(--accent) 82%,
+    #fff 90%,
+    transparent
+  );
   mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);

@@ -16,14 +16,14 @@ export function Contact() {
       <div className="container-site grid items-start gap-16 lg:grid-cols-2">
         <div>
           <SectionHeader
-            index={4}
+            index={5}
             label="Contato"
             title={
               <>
                 Vamos construir <em>algo</em>?
               </>
             }
-            lead="Aberto a vagas remotas CLT ou PJ e a projetos freelance. E-mail é o caminho mais rápido."
+            lead="Aberto a novas oportunidades e a conversar sobre projetos. E-mail é o caminho mais rápido."
           />
           <Reveal className="mt-10 space-y-8">
             <a

@@ -38,14 +38,14 @@ const jetbrains = JetBrains_Mono({
 });
 
 const description =
-  'Desenvolvedor full stack em Patos-PB. Next.js, Node.js, Nest.js e PostgreSQL: produtos que rodam em produção, do PIX ao WhatsApp.';
+  'Desenvolvedor full stack JavaScript/TypeScript. React, Next.js, Node.js, NestJS e PostgreSQL, com foco em performance e interfaces bem cuidadas.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: `${site.name} · ${site.role}`,
   description,
   keywords:
-    'Andrey Dantas, Desenvolvedor Full Stack, React, Next.js, Node.js, Nest.js, TypeScript, PostgreSQL, Portfólio, Patos, Paraíba',
+    'Andrey Dantas, Desenvolvedor Full Stack, React, Next.js, Node.js, NestJS, TypeScript, PostgreSQL, Python, Portfólio',
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   openGraph: {
