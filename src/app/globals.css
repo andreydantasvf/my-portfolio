@@ -1,173 +1,268 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
-@theme {
-  /* Theme-specific colors managed by CSS variables */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
-
-  /* Greek-inspired Fonts if we add them later */
-  /* --font-display: 'Cinzel', serif; */
-  /* --font-body: 'Inter', sans-serif; */
-}
-
-/* 
-  Olympus Themes 
-  Zeus: Marble, Gold, Sky
-  Poseidon: Deep Sea, Cyan, Foam
-  Hades: Charcoal, Slate, Blood
+/*
+  Design tokens — ver docs/superpowers/specs/2026-10-14-novo-portfolio-design.md
+  Fundo quase preto + camadas azul-marinho + um acento trocável (data-accent).
 */
-
 :root {
-  /* Zeus (Light Mode equivalent) */
-  --zeus-bg: #f8f5f2;
-  --zeus-fg: #1a1a1a;
-  --zeus-primary: #d4af37;
-  --zeus-secondary: #0077be;
-  --zeus-accent: #e0e0e0;
-
-  /* Poseidon (Oceanic/Dark) */
-  --poseidon-bg: #001f27;
-  /* Darker deep sea */
-  --poseidon-fg: #e0f2f1;
-  --poseidon-primary: #00e5ff;
-  /* Brighter Cyan */
-  --poseidon-secondary: #0288d1;
-  --poseidon-accent: #ffd700;
-  /* Gold contrast */
-
-  /* Hades (Underworld/Dark) */
-  --hades-bg: #0f0f0f;
-  /* Near black */
-  --hades-fg: #e0e0e0;
-  --hades-primary: #ff3d00;
-  /* Vibrant Red/Orange */
-  --hades-secondary: #4a148c;
-  /* Deep Purple */
-  --hades-accent: #212121;
-  /* Dark Grey */
+  --bg: #05070d;
+  --navy-950: #080e1c;
+  --navy-900: #0b1428;
+  --navy-800: #10203f;
+  --navy-700: #1a3263;
+  --line: #15203b;
+  --fg: #e8ecf6;
+  --fg-muted: #8a96b4;
+  --fg-subtle: #56627f;
+  --accent: #5b8cff;
+  --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
+  --accent-glow: color-mix(in srgb, var(--accent) 45%, transparent);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: dark;
 }
 
-[data-theme='zeus'] {
-  --background: var(--zeus-bg);
-  --foreground: var(--zeus-fg);
-  --primary: var(--zeus-primary);
-  --secondary: var(--zeus-secondary);
-  --accent: var(--zeus-accent);
+[data-accent='ciano'] {
+  --accent: #2ee6d6;
+}
+[data-accent='laranja'] {
+  --accent: #ff6b3d;
+}
+[data-accent='lilas'] {
+  --accent: #b48cff;
 }
 
-[data-theme='poseidon'] {
-  --background: var(--poseidon-bg);
-  --foreground: var(--poseidon-fg);
-  --primary: var(--poseidon-primary);
-  --secondary: var(--poseidon-secondary);
-  --accent: var(--poseidon-accent);
+@theme inline {
+  --color-bg: var(--bg);
+  --color-navy-950: var(--navy-950);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-navy-700: var(--navy-700);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-sans: var(--font-inter-tight), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --ease-out-expo: var(--ease-out-expo);
 }
 
-[data-theme='hades'] {
-  --background: var(--hades-bg);
-  --foreground: var(--hades-fg);
-  --primary: var(--hades-primary);
-  --secondary: var(--hades-secondary);
-  --accent: var(--hades-accent);
+html {
+  background: var(--bg);
 }
 
-/* Glassmorphism Utilities */
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.glass-dark {
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Base Styles */
 body {
-  @apply bg-background text-foreground transition-colors duration-700 ease-in-out;
-  font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
-  /* Prevent horizontal scroll from effects */
+  @apply bg-bg font-sans text-fg antialiased;
+  overflow-x: clip;
 }
 
-/* Utilities */
-@utility container {
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Rótulo mono padrão: "01 / SOBRE" */
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 1240px;
   margin-inline: auto;
-  padding-inline: 2rem;
-
-  @media (width >=--theme(--breakpoint-sm)) {
-    max-width: none;
-  }
-
-  @media (width >=1400px) {
-    max-width: 1400px;
-  }
+  padding-inline: clamp(20px, 5vw, 48px);
 }
 
-/* Animations from previous version preserved/adapted */
-@keyframes slide-bg {
-  0% {
-    background-position: 100% 0;
-  }
-
-  100% {
-    background-position: 0 0;
-  }
+/* Palavra forte dentro de títulos */
+@utility text-glow {
+  color: var(--accent);
+  text-shadow: 0 0 32px var(--accent-glow);
 }
 
-@keyframes fade-in-out {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(1.2);
-  }
+/* Cursor mira (ver components/shell/Cursor.tsx) */
+html.has-cursor,
+html.has-cursor a,
+html.has-cursor button {
+  cursor: none;
+}
+html.has-cursor input,
+html.has-cursor textarea {
+  cursor: text;
+}
+html.has-cursor .cursor {
+  display: block;
+}
+.cursor[data-visible='false'] {
+  opacity: 0;
+}
+.cursor__ring,
+.cursor__dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform;
+}
+.cursor__ring {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  box-shadow: 0 0 14px -4px var(--accent);
+  transition:
+    border-radius 0.3s var(--ease-out-expo),
+    border-color 0.2s,
+    background-color 0.3s;
+}
+.cursor__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.cursor__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+/* Em links: 4 cantoneiras em volta do elemento */
+.cursor[data-state='link'] .cursor__ring {
+  --c: linear-gradient(var(--accent), var(--accent));
+  border-color: transparent;
+  border-radius: 2px;
+  box-shadow: none;
+  background:
+    var(--c) top left / 10px 2px,
+    var(--c) top left / 2px 10px,
+    var(--c) top right / 10px 2px,
+    var(--c) top right / 2px 10px,
+    var(--c) bottom left / 10px 2px,
+    var(--c) bottom left / 2px 10px,
+    var(--c) bottom right / 10px 2px,
+    var(--c) bottom right / 2px 10px;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+.cursor[data-state='link'] .cursor__dot {
+  opacity: 0;
+}
+.cursor[data-state='label'] .cursor__ring {
+  background-color: var(--accent-soft);
+  backdrop-filter: blur(4px);
+}
+.cursor[data-state='label'] .cursor__label {
+  opacity: 1;
+}
+.cursor.is-down .cursor__ring {
+  opacity: 0.5;
 }
 
-.animate-fade-in-out {
-  animation: fade-in-out 3s ease-in-out forwards;
-}
-
-/* Marquee Animations */
+/* Marquee */
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
   to {
-    transform: translateX(calc(-100% - var(--gap)));
+    transform: translateX(-50%);
   }
 }
 
-@keyframes marquee-vertical {
+@keyframes pulse-dot {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes scroll-line {
   from {
-    transform: translateY(0);
+    transform: translateY(-100%);
   }
-
   to {
-    transform: translateY(calc(-100% - var(--gap)));
+    transform: translateY(200%);
   }
 }
 
-.animate-marquee {
-  animation: marquee var(--duration) linear infinite;
+/* Borda de "energia": um brilho que percorre a borda; acelera no hover */
+@property --angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes spin-angle {
+  to {
+    --angle: 360deg;
+  }
+}
+.energy-border {
+  position: relative;
+  isolation: isolate;
+}
+.energy-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--angle), transparent 0 62%, var(--accent) 82%, #fff 90%, transparent);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0.2;
+  animation: spin-angle 5s linear infinite;
+  transition: opacity 0.4s;
+}
+.energy-border:hover::before,
+.energy-border:focus-within::before {
+  opacity: 1;
+  animation-duration: 1.6s;
 }
 
-.animate-marquee-vertical {
-  animation: marquee-vertical var(--duration) linear infinite;
+/* Grão sutil por cima de tudo, para tirar o aspecto "chapado" do fundo */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Indicador "Role" do hero some em telas baixas para não encostar nos links */
+@media (max-height: 780px) {
+  .hero-scroll {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Cross2Icon } from '@radix-ui/react-icons';
+import { X } from 'lucide-react';
 import * as ToastPrimitives from '@radix-ui/react-toast';
 import { cva, type VariantProps } from 'class-variance-authority';
 
@@ -27,8 +27,10 @@ const toastVariants = cva(
   {
     variants: {
       variant: {
-        success: 'border bg-secondaryColor text-primaryColor',
-        error: 'border border-red-600 bg-red-600 text-white'
+        success:
+          'rounded-xl border-accent/60 bg-navy-900/95 text-fg backdrop-blur-md',
+        error:
+          'rounded-xl border-red-500/60 bg-red-950/95 text-red-50 backdrop-blur-md'
       }
     },
     defaultVariants: {
@@ -80,7 +82,7 @@ const ToastClose = React.forwardRef<
     toast-close=""
     {...props}
   >
-    <Cross2Icon className="h-4 w-4" />
+    <X className="h-4 w-4" />
   </ToastPrimitives.Close>
 ));
 ToastClose.displayName = ToastPrimitives.Close.displayName;

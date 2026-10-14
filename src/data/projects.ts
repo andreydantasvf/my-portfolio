@@ -1,6 +1,19 @@
-export const projects = [
+export type ProjectKind = 'Produção' | 'Cliente' | 'Open source' | 'Estudo';
+
+export type Project = {
+  title: string;
+  kind: ProjectKind;
+  imgURL: string;
+  details: string;
+  technologies: string[];
+  webLink?: string;
+  githubLink?: string;
+};
+
+export const projects: Project[] = [
   {
     title: 'Patos Empregos',
+    kind: 'Produção',
     imgURL: '/projects/patosempregos.png',
     details:
       'Plataforma de vagas de emprego para Patos-PB. Empresas anunciam, pagam via PIX e a vaga é publicada automaticamente no site e disparada para centenas de pessoas no WhatsApp.',
@@ -19,6 +32,7 @@ export const projects = [
   },
   {
     title: 'Racing of Legends',
+    kind: 'Produção',
     imgURL: '/projects/racing-of-legends.png',
     details:
       'Crie campeonatos de League of Legends com seus amigos. Pontuação customizável baseada em kills, mortes, assistências e muito mais.',
@@ -39,6 +53,7 @@ export const projects = [
   },
   {
     title: 'Entendendo Algoritmos',
+    kind: 'Open source',
     imgURL: '/projects/entendendo-algoritmos.png',
     details:
       'Entenda e visualize os algoritmos mais famosos da computação, como ordenação, busca, grafos e muito mais. O site apresenta explicações detalhadas e visualizações interativas para facilitar o aprendizado.',
@@ -48,6 +63,7 @@ export const projects = [
   },
   {
     title: 'Hashi Mix',
+    kind: 'Cliente',
     imgURL: '/projects/hashi-mix.png',
     details:
       'Site para restaurante de comida japonesa, apresentando o cardápio completo, informações de contato e localização. O design é moderno e responsivo, garantindo uma ótima experiência em dispositivos móveis e ótimo SEO para busca no google.',
@@ -56,6 +72,7 @@ export const projects = [
   },
   {
     title: 'Gabriela Pereira',
+    kind: 'Cliente',
     imgURL: '/projects/gabriela-pereira.png',
     details:
       'Site para uma arquiteta, apresentando seu portfólio de projetos, informações de contato e localização. O design é moderno e responsivo, garantindo uma ótima experiência em dispositivos móveis e ótimo SEO para busca no google.',
@@ -64,6 +81,7 @@ export const projects = [
   },
   {
     title: 'Batalha Naval Ruby',
+    kind: 'Estudo',
     imgURL:
       'https://raw.githubusercontent.com/andreydantasvf/BattleShip_Ruby/refs/heads/main/.github/demo.png',
     details:
@@ -73,6 +91,7 @@ export const projects = [
   },
   {
     title: 'Mikael Barbearia',
+    kind: 'Cliente',
     imgURL: '/projects/mikael-barbearia.png',
     details:
       'Site institucional para uma barbearia local. Com formulário de contato funcional, os clientes podem facilmente agendar seus horários e serviços. O design é moderno e responsivo, garantindo uma ótima experiência em dispositivos móveis.',

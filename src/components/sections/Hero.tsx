@@ -1,178 +1,167 @@
 'use client';
 
-import { useTheme } from '@/context/ThemeContext';
-import { GreekBust } from '../3d/GreekBust';
-import { LightningCanvas } from '../effects/LightningCanvas';
-import { motion, Variants } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { ArrowDown, Github, Linkedin, MapPin } from 'lucide-react';
+import { site } from '@/data/site';
+import { prefersReducedMotion } from '@/lib/motion';
+import { Button } from '@/components/ui/Button';
 
-export function Hero() {
-  const { theme } = useTheme();
+function Typewriter({ words }: { words: readonly string[] }) {
+  const [text, setText] = useState(words[0]);
 
-  // Theme-specific styling
-  const getThemeStyles = () => {
-    switch (theme) {
-      case 'zeus':
-        return {
-          titleColor: 'var(--zeus-fg)',
-          titleShadow: '0 0 40px rgba(212, 175, 55, 0.3)',
-          subtitleColor: '#5a5a5a',
-          containerBg: 'bg-white/15',
-          containerBorder: 'border-yellow-500/20',
-          accentGlow: 'drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]'
-        };
-      case 'poseidon':
-        return {
-          titleColor: 'var(--poseidon-fg)',
-          titleShadow:
-            '0 0 30px rgba(0, 229, 255, 0.5), 0 0 60px rgba(0, 229, 255, 0.2)',
-          subtitleColor: '#80deea',
-          containerBg: 'bg-cyan-950/20',
-          containerBorder: 'border-cyan-500/30',
-          accentGlow: 'drop-shadow-[0_0_15px_rgba(0,229,255,0.5)]'
-        };
-      case 'hades':
-        return {
-          titleColor: 'var(--hades-fg)',
-          titleShadow:
-            '0 0 30px rgba(255, 61, 0, 0.4), 0 0 60px rgba(255, 61, 0, 0.15)',
-          subtitleColor: '#ef9a9a',
-          containerBg: 'bg-black/30',
-          containerBorder: 'border-red-900/30',
-          accentGlow: 'drop-shadow-[0_0_15px_rgba(255,61,0,0.4)]'
-        };
-      default:
-        return {
-          titleColor: 'var(--foreground)',
-          titleShadow: 'none',
-          subtitleColor: '#cccccc',
-          containerBg: 'bg-black/10',
-          containerBorder: 'border-white/10',
-          accentGlow: ''
-        };
-    }
-  };
-
-  const styles = getThemeStyles();
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        ease: 'easeOut',
-        staggerChildren: 0.2
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+    let word = 0;
+    let i = words[0].length;
+    let deleting = true;
+    let timer: ReturnType<typeof setTimeout>;
+    const tick = () => {
+      const current = words[word];
+      setText(current.slice(0, i));
+      if (!deleting && i === current.length) {
+        deleting = true;
+        timer = setTimeout(tick, 2200);
+        return;
       }
-    }
-  } as Variants;
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: 'blur(0px)',
-      transition: { duration: 0.9, ease: 'easeOut' }
-    }
-  } as Variants;
-
-  const subtitleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: 'easeOut', delay: 0.3 }
-    }
-  } as Variants;
-
-  const decorativeLineVariants = {
-    hidden: { scaleX: 0, opacity: 0 },
-    visible: {
-      scaleX: 1,
-      opacity: 1,
-      transition: { duration: 0.8, delay: 0.5, ease: 'easeOut' }
-    }
-  } as Variants;
+      if (deleting && i === 0) {
+        deleting = false;
+        word = (word + 1) % words.length;
+      }
+      i += deleting ? -1 : 1;
+      timer = setTimeout(tick, deleting ? 30 : 65);
+    };
+    timer = setTimeout(tick, 2600);
+    return () => clearTimeout(timer);
+  }, [words]);
 
   return (
-    <section className="relative flex h-screen w-full items-center justify-center overflow-hidden">
-      {/* 3D Background */}
-      <GreekBust />
-      <LightningCanvas />
+    <span>
+      {text}
+      <span className="text-accent ml-0.5 inline-block w-[0.55em] animate-[pulse-dot_1s_steps(2)_infinite]">
+        ▍
+      </span>
+    </span>
+  );
+}
 
-      {/* Content Overlay */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className={`relative z-10 mx-4 flex max-w-4xl flex-col items-center justify-center rounded-3xl border ${styles.containerBorder} ${styles.containerBg} p-8 text-center shadow-2xl backdrop-blur-lg transition-all duration-700 md:p-12`}
-      >
-        {/* Decorative Top Line */}
-        <motion.div
-          variants={decorativeLineVariants}
-          className="mb-6 h-0.5 w-24 origin-center rounded-full md:w-32"
-          style={{
-            background: `linear-gradient(90deg, transparent, var(--primary), transparent)`
-          }}
-        />
+/** Nome quebrado em letras para a entrada; leitores de tela recebem o nome inteiro. */
+function SplitName({ text, className }: { text: string; className?: string }) {
+  return (
+    <span
+      className={`block overflow-hidden pb-[0.06em] ${className ?? ''}`}
+      aria-hidden
+    >
+      {text.split('').map((ch, i) => (
+        <span key={i} className="hero-char inline-block will-change-transform">
+          {ch}
+        </span>
+      ))}
+    </span>
+  );
+}
 
-        <motion.h1
-          variants={titleVariants}
-          className={`mb-4 text-4xl font-bold tracking-tight md:text-7xl ${styles.accentGlow}`}
-          style={{
-            fontFamily: 'var(--font-cinzel), serif',
-            color: styles.titleColor,
-            textShadow: styles.titleShadow
-          }}
-        >
-          Andrey Dantas
-        </motion.h1>
+export function Hero() {
+  const root = useRef<HTMLElement>(null);
 
-        <motion.p
-          variants={subtitleVariants}
-          className="mb-2 text-base font-light tracking-[0.25em] uppercase md:text-xl"
-          style={{ color: styles.subtitleColor }}
-        >
-          Desenvolvedor Full Stack
-        </motion.p>
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+      tl.from('.hero-char', {
+        yPercent: 110,
+        duration: 1.4,
+        stagger: 0.035,
+        delay: 0.2
+      })
+        .from(
+          '.hero-fade',
+          { y: 24, opacity: 0, duration: 1.1, stagger: 0.09 },
+          '-=1'
+        )
+        .from('.hero-scroll', { opacity: 0, duration: 1 }, '-=0.6');
+    }, root);
+    return () => ctx.revert();
+  }, []);
 
-        {/* Decorative Bottom Line */}
-        <motion.div
-          variants={decorativeLineVariants}
-          className="mt-6 h-0.5 w-24 origin-center rounded-full md:w-32"
-          style={{
-            background: `linear-gradient(90deg, transparent, var(--primary), transparent)`
-          }}
-        />
+  const [first, last] = site.name.split(' ');
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-          className="mt-8 flex flex-col items-center gap-2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-            className="h-6 w-4 rounded-full border-2 opacity-50"
-            style={{ borderColor: 'var(--primary)' }}
+  return (
+    <section
+      ref={root}
+      id="topo"
+      data-particles="orb"
+      className="relative z-10 flex min-h-svh items-end pt-28 pb-24 md:items-center md:pb-16"
+    >
+      <div className="container-site">
+        <div className="max-w-4xl">
+          <p className="hero-fade label flex items-center gap-2.5">
+            <span className="bg-accent size-1.5 animate-[pulse-dot_1.6s_ease-in-out_infinite] rounded-full shadow-[0_0_10px_var(--accent)]" />
+            {site.availability}
+          </p>
+
+          <h1
+            aria-label={site.name}
+            className="font-display mt-6 text-[clamp(64px,12.5vw,184px)] leading-[0.84] font-extrabold tracking-[-0.045em] uppercase"
           >
-            <motion.div
-              animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
-              transition={{
-                repeat: Infinity,
-                duration: 1.5,
-                ease: 'easeInOut'
-              }}
-              className="mx-auto mt-1 h-1.5 w-1.5 rounded-full"
-              style={{ backgroundColor: 'var(--primary)' }}
-            />
-          </motion.div>
-        </motion.div>
-      </motion.div>
+            <SplitName text={first} />
+            <SplitName text={last} className="text-glow" />
+          </h1>
+
+          <p className="hero-fade text-fg-muted mt-8 font-mono text-sm tracking-wider md:text-base">
+            <span className="text-accent">&gt;</span>{' '}
+            <Typewriter words={site.roles} />
+          </p>
+
+          <p className="hero-fade text-fg-muted mt-5 max-w-xl text-lg leading-relaxed md:text-xl">
+            Construo produtos que rodam em produção, do pagamento via PIX ao
+            disparo no WhatsApp. Next.js no front, Node e Nest no back,
+            PostgreSQL embaixo de tudo.
+          </p>
+
+          <div className="hero-fade mt-10 flex flex-wrap gap-3">
+            <Button href="#projetos">
+              Ver projetos <ArrowDown size={14} />
+            </Button>
+            <Button href="#contato" variant="ghost">
+              Fale comigo
+            </Button>
+          </div>
+
+          <ul className="hero-fade label mt-12 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <li className="flex items-center gap-2">
+              <MapPin size={13} className="text-accent" /> {site.location}
+            </li>
+            <li>
+              <a
+                href={site.social.github}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-fg flex items-center gap-2 transition-colors"
+              >
+                <Github size={13} /> GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href={site.social.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-fg flex items-center gap-2 transition-colors"
+              >
+                <Linkedin size={13} /> LinkedIn
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="hero-scroll label absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex">
+        Role
+        <span className="bg-line relative h-12 w-px overflow-hidden">
+          <span className="bg-accent absolute inset-x-0 top-0 h-1/2 animate-[scroll-line_1.8s_var(--ease-out-expo)_infinite]" />
+        </span>
+      </div>
     </section>
   );
 }
