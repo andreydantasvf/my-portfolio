@@ -1,4 +1,9 @@
-import { coreStack, stackGroups, stackMarquee } from '@/data/stack';
+import {
+  coreStack,
+  stackGroups,
+  stackMarquee,
+  toolsMarquee
+} from '@/data/stack';
 import { SectionObject } from '@/components/three/lazy';
 import { MarqueeBand } from '@/components/ui/MarqueeBand';
 import { Reveal } from '@/components/ui/Reveal';
@@ -7,21 +12,17 @@ import { Section, SectionHeader } from '@/components/ui/Section';
 export function Stack() {
   return (
     <Section id="stack" particles="wave" className="overflow-x-clip">
-      <div className="mb-24 md:mb-32">
+      {/* duas faixas em ângulos opostos; o espaço evita que se cruzem nas bordas em telas largas */}
+      <div className="mb-24 flex flex-col gap-14 md:mb-32 md:gap-24">
         <MarqueeBand
           items={stackMarquee}
           className="border-accent/60 bg-accent/10 text-fg shadow-[0_0_40px_-12px_var(--accent)]"
         />
         <MarqueeBand
-          items={[
-            'Do banco ao deploy',
-            'Código tipado de ponta a ponta',
-            'Produtos em produção',
-            'Remoto · Brasil'
-          ]}
+          items={toolsMarquee}
           reverse
-          tilt={1.6}
-          className="border-line bg-navy-950 text-fg-muted -mt-3"
+          tilt={1.5}
+          className="border-line bg-navy-950/90 text-fg-muted"
         />
       </div>
 

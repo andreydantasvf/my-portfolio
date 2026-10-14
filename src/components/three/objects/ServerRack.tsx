@@ -3,7 +3,7 @@
 import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { useAccentHex } from '@/lib/accent';
+import { ACCENT } from '@/lib/theme';
 import { getDotTexture, shade } from './shared';
 
 const SLABS = 4;
@@ -11,7 +11,7 @@ const LEDS_PER_SLAB = 6;
 
 /** Rack de servidor: lâminas empilhadas com arestas acesas e LEDs piscando. */
 export default function ServerRack() {
-  const accent = useAccentHex();
+  const accent = ACCENT;
   const group = useRef<THREE.Group>(null);
   const ledGeo = useRef<THREE.BufferGeometry>(null);
 

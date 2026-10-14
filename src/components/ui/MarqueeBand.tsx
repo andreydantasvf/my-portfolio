@@ -1,13 +1,14 @@
+import type { MarqueeItem } from '@/data/stack';
 import { cn } from '@/lib/utils';
 
-/** Faixa diagonal com texto correndo; pausa no hover. */
+/** Faixa diagonal com tecnologias correndo; pausa no hover. */
 export function MarqueeBand({
   items,
   reverse = false,
   tilt = -2,
   className
 }: {
-  items: readonly string[];
+  items: MarqueeItem[];
   reverse?: boolean;
   tilt?: number;
   className?: string;
@@ -17,7 +18,7 @@ export function MarqueeBand({
     <div
       aria-hidden
       className={cn(
-        'group relative -mx-10 overflow-hidden border-y py-4',
+        'group relative -mx-10 overflow-hidden border-y py-5',
         className
       )}
       style={{ transform: `rotate(${tilt}deg)` }}
@@ -25,16 +26,17 @@ export function MarqueeBand({
       <div
         className="flex w-max group-hover:[animation-play-state:paused]"
         style={{
-          animation: `marquee 36s linear infinite ${reverse ? 'reverse' : ''}`
+          animation: `marquee 40s linear infinite ${reverse ? 'reverse' : ''}`
         }}
       >
-        {loop.map((item, i) => (
+        {loop.map(({ label, icon: Icon }, i) => (
           <span
             key={i}
-            className="flex items-center gap-14 pr-14 font-mono text-sm tracking-[0.14em] whitespace-nowrap uppercase"
+            className="flex items-center gap-3 pr-14 font-mono text-sm tracking-[0.14em] whitespace-nowrap uppercase"
           >
-            {item}
-            <span className="text-accent">✦</span>
+            <Icon className="size-5 shrink-0" />
+            {label}
+            <span className="text-accent/70 pl-11">✦</span>
           </span>
         ))}
       </div>

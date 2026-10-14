@@ -1,30 +1,43 @@
 'use client';
 
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
-import { useAccentHex } from '@/lib/accent';
+import { ACCENT } from '@/lib/theme';
 import { useReducedMotion } from '@/lib/motion';
+import { sampleImagePoints } from './imagePoints';
+
+/** Imagem do rosto do hero. Troque o arquivo para usar outro rosto. */
+const FACE_SRC = '/hero/face.svg';
 
 /**
  * Fundo de partículas fixo atrás da página.
  * Cada <section data-particles="forma"> define a forma enquanto está na tela;
  * perto do fim da seção as partículas migram para a forma da próxima.
  */
-export type ParticleShape = 'orb' | 'field' | 'wave' | 'ring';
+export type ParticleShape = 'face' | 'orb' | 'field' | 'wave' | 'ring';
 
 type Shape = {
   pos: Float32Array;
-  /** Centro de giro (só o orb gira em torno de si). */
+  /** Centro em torno do qual a forma se move. */
   center?: [number, number, number];
+  /** spin: gira sem parar (orb) · sway: balança como quem olha em volta (rosto) */
+  motion?: 'spin' | 'sway';
 };
 
 const SPREAD = 0.35; // atraso máximo por partícula no morph, deixa a transição orgânica
+const EASE = 0.08; // quanto cada partícula anda até o alvo por frame
 const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
 const easeInOut = (t: number) =>
   t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-function buildShapes(n: number, halfW: number, halfH: number, mobile: boolean) {
+function buildShapes(
+  n: number,
+  halfW: number,
+  halfH: number,
+  mobile: boolean,
+  facePoints: Float32Array | null
+): Record<ParticleShape, Shape> {
   const rand = (a: number, b: number) => a + Math.random() * (b - a);
   const golden = Math.PI * (3 - Math.sqrt(5));
 
@@ -52,6 +65,22 @@ function buildShapes(n: number, halfW: number, halfH: number, mobile: boolean) {
       z = Math.sin(i * golden) * rr * orbR;
     }
     orb.set([x + orbCenter[0], y + orbCenter[1], z + orbCenter[2]], i * 3);
+  }
+
+  // Rosto: mesma posição do orb; enquanto a imagem carrega, usa o orb
+  const faceCenter: [number, number, number] = mobile
+    ? [halfW * 0.42, halfH * 0.55, -1]
+    : [halfW * 0.4, 0, 0];
+  const faceH = mobile ? 3.4 : 6.2;
+  const face = new Float32Array(n * 3);
+  if (facePoints) {
+    for (let i = 0; i < n * 3; i += 3) {
+      face[i] = facePoints[i] * faceH + faceCenter[0];
+      face[i + 1] = facePoints[i + 1] * faceH + faceCenter[1];
+      face[i + 2] = facePoints[i + 2] * faceH + faceCenter[2];
+    }
+  } else {
+    face.set(orb);
   }
 
   const field = new Float32Array(n * 3);
@@ -91,11 +120,14 @@ function buildShapes(n: number, halfW: number, halfH: number, mobile: boolean) {
   }
 
   return {
-    orb: { pos: orb, center: orbCenter },
+    face: facePoints
+      ? { pos: face, center: faceCenter, motion: 'sway' }
+      : { pos: face, center: orbCenter, motion: 'spin' },
+    orb: { pos: orb, center: orbCenter, motion: 'spin' },
     field: { pos: field },
     wave: { pos: wave },
     ring: { pos: ring }
-  } satisfies Record<ParticleShape, Shape>;
+  };
 }
 
 function dotTexture() {
@@ -120,20 +152,39 @@ function Particles({
   mobile: boolean;
   reduced: boolean;
 }) {
-  const { viewport } = useThree();
-  const accent = useAccentHex();
+  const { viewport, invalidate } = useThree();
   const points = useRef<THREE.Points>(null);
-  const material = useRef<THREE.PointsMaterial>(null);
   const sections = useRef<HTMLElement[]>([]);
   const mouse = useRef({ x: 0, y: 0 });
+  const [facePoints, setFacePoints] = useState<Float32Array | null>(null);
+
+  useEffect(() => {
+    let alive = true;
+    sampleImagePoints(FACE_SRC, count)
+      .then(pts => alive && setFacePoints(pts))
+      .catch(() => {}); // sem imagem, o hero continua com o orb
+    return () => {
+      alive = false;
+    };
+  }, [count]);
+
+  useEffect(() => invalidate(), [facePoints, invalidate]);
 
   const shapes = useMemo(
-    () => buildShapes(count, viewport.width / 2, viewport.height / 2, mobile),
-    [count, viewport.width, viewport.height, mobile]
+    () =>
+      buildShapes(
+        count,
+        viewport.width / 2,
+        viewport.height / 2,
+        mobile,
+        facePoints
+      ),
+    [count, viewport.width, viewport.height, mobile, facePoints]
   );
   const { positions, delay, phase } = useMemo(() => {
+    // começa espalhado: na entrada as partículas se juntam na forma do hero
     const positions = new Float32Array(count * 3);
-    positions.set(shapes.orb.pos);
+    positions.set(shapes.field.pos);
     const delay = Float32Array.from(
       { length: count },
       () => Math.random() * SPREAD
@@ -145,10 +196,6 @@ function Particles({
     return { positions, delay, phase };
   }, [count]);
   const texture = useMemo(() => dotTexture(), []);
-
-  useEffect(() => {
-    material.current?.color.set(accent);
-  }, [accent]);
 
   useEffect(() => {
     const collect = () => {
@@ -190,18 +237,30 @@ function Particles({
     if (cur && next) {
       k = clamp01((h - cur.getBoundingClientRect().bottom) / (h - handoff));
     }
-    const fromKey = (cur?.dataset.particles as ParticleShape) || 'orb';
+    const fromKey = (cur?.dataset.particles as ParticleShape) || 'face';
     const toKey = (next?.dataset.particles as ParticleShape) || fromKey;
-    const from = shapes[fromKey] ?? shapes.orb;
-    const to = shapes[toKey] ?? shapes.orb;
+    const from = shapes[fromKey] ?? shapes.face;
+    const to = shapes[toKey] ?? shapes.face;
 
-    // Giro do orb em torno do próprio centro
-    const spin = reduced ? 0 : t * 0.12;
-    const cos = Math.cos(spin);
-    const sin = Math.sin(spin);
-    const breathe = reduced ? 1 : 1 + Math.sin(t * 1.4) * 0.035;
+    // orb gira sem parar; rosto balança devagar, como quem olha em volta
+    const angle = (motion?: Shape['motion']) =>
+      reduced || !motion
+        ? 0
+        : motion === 'spin'
+          ? t * 0.12
+          : Math.sin(t * 0.45) * 0.22;
+    const breathe = reduced ? 1 : 1 + Math.sin(t * 1.4) * 0.025;
+    const rot = {
+      from: [Math.cos(angle(from.motion)), Math.sin(angle(from.motion))],
+      to: [Math.cos(angle(to.motion)), Math.sin(angle(to.motion))]
+    };
 
-    const sample = (shape: Shape, i: number, out: number[]) => {
+    const sample = (
+      shape: Shape,
+      [cos, sin]: number[],
+      i: number,
+      out: number[]
+    ) => {
       let x = shape.pos[i];
       let y = shape.pos[i + 1];
       let z = shape.pos[i + 2];
@@ -224,8 +283,8 @@ function Particles({
     const waveTo = toKey === 'wave';
     for (let p = 0, i = 0; p < count; p++, i += 3) {
       const kp = easeInOut(clamp01(k * (1 + SPREAD) - delay[p]));
-      sample(from, i, a);
-      sample(to, i, b);
+      sample(from, rot.from, i, a);
+      sample(to, rot.to, i, b);
       let x = a[0] + (b[0] - a[0]) * kp;
       let y = a[1] + (b[1] - a[1]) * kp;
       const z = a[2] + (b[2] - a[2]) * kp;
@@ -240,9 +299,16 @@ function Particles({
         y += Math.sin(t * 0.7 + phase[p]) * 0.035;
         x += Math.cos(t * 0.5 + phase[p]) * 0.02;
       }
-      out[i] = x;
-      out[i + 1] = y;
-      out[i + 2] = z;
+      if (reduced) {
+        out[i] = x;
+        out[i + 1] = y;
+        out[i + 2] = z;
+      } else {
+        // segue o alvo com atraso: suaviza a entrada e a troca de formas
+        out[i] += (x - out[i]) * EASE;
+        out[i + 1] += (y - out[i + 1]) * EASE;
+        out[i + 2] += (z - out[i + 2]) * EASE;
+      }
     }
     geo.attributes.position.needsUpdate = true;
 
@@ -258,9 +324,8 @@ function Particles({
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
       <pointsMaterial
-        ref={material}
         map={texture}
-        color={accent}
+        color={ACCENT}
         size={mobile ? 0.075 : 0.065}
         sizeAttenuation
         transparent

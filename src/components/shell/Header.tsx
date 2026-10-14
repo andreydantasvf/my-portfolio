@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { nav } from '@/data/site';
 import { cn } from '@/lib/utils';
-import { AccentSwitcher } from './AccentSwitcher';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -48,7 +47,6 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-5">
-          <AccentSwitcher />
           <a
             href="#contato"
             className="label border-line text-fg hover:border-accent hidden rounded-full border px-4 py-2 transition-colors sm:inline-block"

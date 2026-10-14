@@ -23,11 +23,9 @@ Construção iterativa: a base entra primeiro e os ajustes vêm conforme o site 
 | `--fg` | `#E8ECF6` | Texto principal |
 | `--fg-muted` | `#8A96B4` | Texto de apoio |
 | `--fg-subtle` | `#56627F` | Legendas, metadados |
-| `--accent` | `#5B8CFF` (padrão) | Destaques, palavras fortes, partículas, energia |
+| `--accent` | `#5B8CFF` | Destaques, palavras fortes, partículas, energia |
 
-O acento é trocável pelo visitante (seletor no header), por `data-accent` no `<html>`:
-`azul #5B8CFF` (padrão) · `ciano #2EE6D6` · `laranja #FF6B3D` · `lilás #B48CFF`.
-A escolha fica no `localStorage` como conveniência; o site funciona sem ela.
+A cor de destaque é fixa (decidido em 2026-10-14: sem seletor de cores).
 
 ### Tipografia
 
@@ -52,7 +50,7 @@ src/
   app/            layout (fontes, metadados, shell global), page (seções), globals.css (tokens)
   data/           site.ts, projects.ts, stack.ts — conteúdo separado da apresentação
   components/
-    shell/        SmoothScroll, ScrollProgress, Cursor, Header, AccentSwitcher, Footer
+    shell/        SmoothScroll, ScrollProgress, Cursor, Header, Footer
     three/        ParticleField (fundo fixo), ObjectCanvas (canvas sob demanda), objects/*
     ui/           SectionHeader, Button, Reveal, Marquee
     sections/     Hero, About, Stack, Projects, Contact (+ Experience, GitHub, Terminal nas próximas etapas)
@@ -64,7 +62,7 @@ Um único canvas `three.js` (via `@react-three/fiber`) fixo atrás da página. C
 
 | Seção | Forma |
 |---|---|
-| Hero | **orb** à direita: esfera que respira e reage ao mouse (a "presença" da IA) |
+| Hero | **rosto** pontilhado à direita, gerado de `public/hero/face.svg` (quanto mais claro, mais pontos). Hoje é um rosto de exemplo; será trocado pelo rosto vetorizado do Andrey |
 | Sobre | **campo** de estrelas espalhado |
 | Stack | **onda** no rodapé da tela |
 | Projetos | **anel** inclinado |
@@ -79,6 +77,10 @@ Canvas próprios e pequenos, renderizando só quando visíveis: **rack de servid
 - Canvas 3D carregados com `next/dynamic` (`ssr: false`), depois do conteúdo.
 - `dpr` limitado a 2; objetos fora da tela não renderizam.
 - Em telas pequenas: menos partículas (1.200 em vez de 3.500) e objetos menores.
+
+### Rosto a partir de imagem
+
+`components/three/imagePoints.ts` lê a imagem num canvas e distribui os pontos por amostragem sistemática proporcional ao brilho (com contraste via gamma). O brilho também empurra o ponto para frente, dando relevo. Imagens escuras sobre fundo claro são invertidas automaticamente. Para trocar o rosto basta substituir o arquivo.
 
 ## Escopo
 

@@ -1,3 +1,27 @@
+import type { IconType } from 'react-icons';
+import {
+  SiAmazonwebservices,
+  SiDocker,
+  SiGit,
+  SiGraphql,
+  SiGreensock,
+  SiMercadopago,
+  SiNestjs,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPrisma,
+  SiPython,
+  SiReact,
+  SiRedis,
+  SiTailwindcss,
+  SiThreedotjs,
+  SiTypeorm,
+  SiTypescript,
+  SiVercel,
+  SiWhatsapp
+} from 'react-icons/si';
+
 export type StackGroup = {
   title: string;
   items: string[];
@@ -42,16 +66,31 @@ export const stackGroups: StackGroup[] = [
   }
 ];
 
-/** Faixa que corre no topo da seção. */
-export const stackMarquee = [
-  'TypeScript',
-  'Next.js',
-  'React',
-  'Node.js',
-  'Nest.js',
-  'PostgreSQL',
-  'Redis',
-  'Docker',
-  'Three.js',
-  'Python'
+export type MarqueeItem = { label: string; icon: IconType };
+
+/** Faixas diagonais do topo da seção Stack. */
+export const stackMarquee: MarqueeItem[] = [
+  { label: 'TypeScript', icon: SiTypescript },
+  { label: 'Next.js', icon: SiNextdotjs },
+  { label: 'React', icon: SiReact },
+  { label: 'Node.js', icon: SiNodedotjs },
+  { label: 'Nest.js', icon: SiNestjs },
+  { label: 'PostgreSQL', icon: SiPostgresql },
+  { label: 'Redis', icon: SiRedis },
+  { label: 'Docker', icon: SiDocker },
+  { label: 'Three.js', icon: SiThreedotjs },
+  { label: 'Python', icon: SiPython }
+];
+
+export const toolsMarquee: MarqueeItem[] = [
+  { label: 'Prisma', icon: SiPrisma },
+  { label: 'TypeORM', icon: SiTypeorm },
+  { label: 'TailwindCSS', icon: SiTailwindcss },
+  { label: 'GSAP', icon: SiGreensock },
+  { label: 'GraphQL', icon: SiGraphql },
+  { label: 'AWS', icon: SiAmazonwebservices },
+  { label: 'Vercel', icon: SiVercel },
+  { label: 'Git', icon: SiGit },
+  { label: 'Mercado Pago', icon: SiMercadopago },
+  { label: 'WhatsApp API', icon: SiWhatsapp }
 ];

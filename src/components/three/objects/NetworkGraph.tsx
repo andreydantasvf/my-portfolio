@@ -3,7 +3,7 @@
 import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { useAccentHex } from '@/lib/accent';
+import { ACCENT } from '@/lib/theme';
 import { getDotTexture } from './shared';
 
 const NODES = 34;
@@ -13,7 +13,7 @@ const HUBS = [3, 16, 27];
 
 /** Rede distribuída: nós numa esfera, arestas entre vizinhos, hubs com anéis e pacotes viajando. */
 export default function NetworkGraph() {
-  const accent = useAccentHex();
+  const accent = ACCENT;
   const group = useRef<THREE.Group>(null);
   const hubs = useRef<(THREE.Group | null)[]>([]);
   const packetGeo = useRef<THREE.BufferGeometry>(null);

@@ -3,12 +3,12 @@
 import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { useAccentHex } from '@/lib/accent';
+import { ACCENT } from '@/lib/theme';
 import { getDotTexture, shade } from './shared';
 
 /** Três discos empilhados (o do meio aceso) com um anel de partículas orbitando. */
 export default function DatabaseStack() {
-  const accent = useAccentHex();
+  const accent = ACCENT;
   const group = useRef<THREE.Group>(null);
   const orbit = useRef<THREE.Group>(null);
 

@@ -15,7 +15,6 @@ import { SmoothScroll } from '@/components/shell/SmoothScroll';
 import { ParticleField } from '@/components/three/lazy';
 import { Toaster } from '@/components/ui/toaster';
 import { site } from '@/data/site';
-import { accentBootScript } from '@/lib/accent';
 
 const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
@@ -107,8 +106,6 @@ export default function RootLayout({
       className={`${bricolage.variable} ${interTight.variable} ${jetbrains.variable}`}
     >
       <body>
-        {/* aplica o acento salvo antes da primeira pintura */}
-        <script dangerouslySetInnerHTML={{ __html: accentBootScript }} />
         <SmoothScroll />
         <ScrollProgress />
         <Cursor />

@@ -3,7 +3,7 @@
 
 /*
   Design tokens — ver docs/superpowers/specs/2026-10-14-novo-portfolio-design.md
-  Fundo quase preto + camadas azul-marinho + um acento trocável (data-accent).
+  Fundo quase preto + camadas azul-marinho + azul elétrico como único destaque.
 */
 :root {
   --bg: #05070d;
@@ -20,16 +20,6 @@
   --accent-glow: color-mix(in srgb, var(--accent) 45%, transparent);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   color-scheme: dark;
-}
-
-[data-accent='ciano'] {
-  --accent: #2ee6d6;
-}
-[data-accent='laranja'] {
-  --accent: #ff6b3d;
-}
-[data-accent='lilas'] {
-  --accent: #b48cff;
 }
 
 @theme inline {
