@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { nav } from '@/data/site';
+import { Download } from 'lucide-react';
+import { nav, site } from '@/data/site';
 import { cn } from '@/lib/utils';
 
 export function Header() {
@@ -25,20 +26,17 @@ export function Header() {
     >
       <div className="container-site flex h-16 items-center justify-between gap-6">
         <a href="#topo" className="text-fg font-mono text-sm tracking-wider">
-          andrey<span className="text-accent">.</span>dev
+          andrey dantas
         </a>
 
         <nav aria-label="Seções" className="hidden md:block">
           <ol className="flex items-center gap-8">
-            {nav.map((item, i) => (
+            {nav.map(item => (
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  className="group label hover:text-fg flex items-center gap-2 transition-colors"
+                  className="label hover:text-fg transition-colors"
                 >
-                  <span className="text-accent/80">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
                   {item.label}
                 </a>
               </li>
@@ -46,14 +44,13 @@ export function Header() {
           </ol>
         </nav>
 
-        <div className="flex items-center gap-5">
-          <a
-            href="#contato"
-            className="label border-line text-fg hover:border-accent hidden rounded-full border px-4 py-2 transition-colors sm:inline-block"
-          >
-            Contato
-          </a>
-        </div>
+        <a
+          href={site.resume}
+          download
+          className="label border-line text-fg hover:border-accent hover:text-accent inline-flex items-center gap-2 rounded-full border px-4 py-2 transition-colors"
+        >
+          <Download size={13} /> Currículo
+        </a>
       </div>
     </header>
   );

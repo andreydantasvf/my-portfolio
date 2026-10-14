@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { site } from '@/data/site';
 import { prefersReducedMotion } from '@/lib/motion';
 import { Button } from '@/components/ui/Button';
@@ -95,14 +95,9 @@ export function Hero() {
     >
       <div className="container-site">
         <div className="max-w-4xl">
-          <p className="hero-fade label flex items-center gap-2.5">
-            <span className="bg-accent size-1.5 animate-[pulse-dot_1.6s_ease-in-out_infinite] rounded-full shadow-[0_0_10px_var(--accent)]" />
-            {site.availability}
-          </p>
-
           <h1
             aria-label={site.name}
-            className="font-display mt-6 text-[clamp(64px,12.5vw,184px)] leading-[0.84] font-extrabold tracking-[-0.045em] uppercase"
+            className="font-display text-[clamp(64px,12.5vw,184px)] leading-[0.84] font-extrabold tracking-[-0.045em] uppercase"
           >
             <SplitName text={first} />
             <SplitName text={last} className="text-glow" />
@@ -123,8 +118,8 @@ export function Hero() {
             <Button href="#projetos">
               Ver projetos <ArrowDown size={14} />
             </Button>
-            <Button href="#contato" variant="ghost">
-              Fale comigo
+            <Button href={site.resume} download variant="ghost">
+              Baixar currículo <Download size={14} />
             </Button>
           </div>
 

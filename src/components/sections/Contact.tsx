@@ -8,7 +8,8 @@ export function Contact() {
   const socials = [
     { label: 'GitHub', href: site.social.github },
     { label: 'LinkedIn', href: site.social.linkedin },
-    { label: 'Instagram', href: site.social.instagram }
+    { label: 'Instagram', href: site.social.instagram },
+    { label: 'Currículo (PDF)', href: site.resume }
   ];
 
   return (

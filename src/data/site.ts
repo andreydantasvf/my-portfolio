@@ -3,7 +3,7 @@ export const site = {
   role: 'Desenvolvedor Full Stack',
   url: 'https://www.andreydantas.com.br',
   email: 'andreydantasvf@gmail.com',
-  availability: 'Aberto a novas oportunidades',
+  resume: '/curriculo-andrey-dantas.pdf',
   roles: [
     'Desenvolvedor Full Stack',
     'React · Next.js · Node.js',

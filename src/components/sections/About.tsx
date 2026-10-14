@@ -14,16 +14,7 @@ export async function About() {
 
   const stats = [
     { value: years, suffix: '+', label: 'anos de experiência no mercado' },
-    {
-      value: 80,
-      suffix: '%',
-      label: 'menos tempo de resposta em telas React críticas'
-    },
-    {
-      value: 93,
-      suffix: '%',
-      label: 'menos tempo em consultas SQL críticas'
-    },
+
     ...(contributions
       ? [
           {
