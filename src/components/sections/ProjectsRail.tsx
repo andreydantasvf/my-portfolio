@@ -112,7 +112,7 @@ export function ProjectsRail({ projects }: { projects: Project[] }) {
 
   return (
     <div>
-      <div className="container-site mb-8 flex items-center justify-end gap-3">
+      <div className="container mb-8 flex items-center justify-end gap-3">
         <p className="label mr-2" aria-live="polite">
           <span className="text-fg">
             {String(Math.min(current + 1, projects.length)).padStart(2, '0')}

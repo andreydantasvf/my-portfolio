@@ -56,6 +56,84 @@ body {
   color: var(--bg);
 }
 
+/* Barra de rolagem nativa escondida; no lugar dela entra a barra de
+   energia (components/shell/ScrollProgress.tsx) */
+html {
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-energy {
+  --progress: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  width: 14px;
+  touch-action: none;
+}
+/* trilho apagado */
+.scroll-energy::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  right: 4px;
+  width: 2px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--line) 80%, transparent);
+  transition: width 0.3s var(--ease-out-expo);
+}
+/* luz preenchendo de cima para baixo */
+.scroll-energy__fill {
+  position: absolute;
+  inset-block: 0;
+  right: 4px;
+  width: 2px;
+  border-radius: 2px;
+  transform-origin: 50% 0;
+  transform: scaleY(var(--progress));
+  background: linear-gradient(
+    180deg,
+    var(--navy-700),
+    var(--accent) 70%,
+    color-mix(in srgb, var(--accent) 40%, #fff)
+  );
+  box-shadow:
+    0 0 8px var(--accent-glow),
+    0 0 18px -2px var(--accent);
+  transition: width 0.3s var(--ease-out-expo);
+}
+/* ponta brilhante que acompanha o preenchimento */
+.scroll-energy__head {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 35%, #fff);
+  box-shadow:
+    0 0 10px 2px var(--accent),
+    0 0 26px 6px var(--accent-glow);
+  transform: translateY(calc(var(--progress) * 100dvh));
+  transition: scale 0.3s var(--ease-out-expo);
+}
+.scroll-energy:hover::before,
+.scroll-energy:hover .scroll-energy__fill,
+.scroll-energy[data-dragging]::before,
+.scroll-energy[data-dragging] .scroll-energy__fill {
+  width: 4px;
+  right: 3px;
+}
+.scroll-energy:hover .scroll-energy__head,
+.scroll-energy[data-dragging] .scroll-energy__head {
+  scale: 1.35;
+}
+
 /* Lenis */
 html.lenis,
 html.lenis body {
@@ -77,11 +155,14 @@ html.lenis body {
   color: var(--fg-muted);
 }
 
-@utility container-site {
-  width: 100%;
-  max-width: 1240px;
+/* Estende o `container` do Tailwind: centralizado, com respiro lateral e
+   largura máxima de 80rem (xl), mesmo em telas 2xl. */
+@utility container {
   margin-inline: auto;
   padding-inline: clamp(20px, 5vw, 48px);
+  @media (width >= 96rem) {
+    max-width: 80rem;
+  }
 }
 
 /* Palavra forte dentro de títulos */

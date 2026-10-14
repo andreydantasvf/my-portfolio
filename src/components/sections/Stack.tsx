@@ -26,7 +26,7 @@ export function Stack() {
         />
       </div>
 
-      <div className="container-site grid items-start gap-16 lg:grid-cols-[1.25fr_1fr]">
+      <div className="container grid items-start gap-16 lg:grid-cols-[1.25fr_1fr]">
         <div>
           <SectionHeader
             index={3}

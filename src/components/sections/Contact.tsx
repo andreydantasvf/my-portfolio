@@ -14,7 +14,7 @@ export function Contact() {
 
   return (
     <Section id="contato" particles="orb">
-      <div className="container-site grid items-start gap-16 lg:grid-cols-2">
+      <div className="container grid items-start gap-16 lg:grid-cols-2">
         <div>
           <SectionHeader
             index={5}

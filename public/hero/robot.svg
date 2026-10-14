@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <!--
+    Robô do hero pontilhado (components/three/ParticleField.tsx).
+    Regra: quanto mais claro, mais pontos (e mais à frente). Preto = vazio.
+  -->
+  <defs>
+    <radialGradient id="shell" cx="50%" cy="40%" r="65%">
+      <stop offset="0" stop-color="#6e6e6e"/>
+      <stop offset=".65" stop-color="#454545"/>
+      <stop offset="1" stop-color="#262626"/>
+    </radialGradient>
+    <radialGradient id="eye" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#e6e6e6"/>
+      <stop offset="1" stop-color="#3a3a3a"/>
+    </radialGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#585858"/>
+      <stop offset="1" stop-color="#1c1c1c"/>
+    </linearGradient>
+    <linearGradient id="neck" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a3a3a"/>
+      <stop offset="1" stop-color="#5e5e5e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="500" fill="#000"/>
+
+  <!-- ombros e peito -->
+  <path d="M30 500 C40 440 96 404 160 398 L240 398 C304 404 360 440 370 500 Z"
+        fill="url(#body)" stroke="#bdbdbd" stroke-width="4"/>
+  <path d="M118 470 L118 442 M282 470 L282 442" stroke="#9a9a9a" stroke-width="3" stroke-linecap="round"/>
+  <!-- núcleo de energia no peito -->
+  <circle cx="200" cy="452" r="22" fill="#2a2a2a" stroke="#e0e0e0" stroke-width="4"/>
+  <circle cx="200" cy="452" r="10" fill="url(#eye)"/>
+
+  <!-- pescoço em anéis -->
+  <rect x="166" y="336" width="68" height="64" rx="8" fill="url(#neck)"/>
+  <path d="M164 352 H236 M164 368 H236 M164 384 H236" stroke="#a8a8a8" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- antena -->
+  <path d="M200 108 V62" stroke="#cfcfcf" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="200" cy="50" r="14" fill="url(#eye)"/>
+  <rect x="180" y="100" width="40" height="14" rx="6" fill="#5a5a5a" stroke="#cfcfcf" stroke-width="3"/>
+
+  <!-- módulos laterais (orelhas) -->
+  <rect x="58" y="176" width="34" height="92" rx="12" fill="#3e3e3e" stroke="#d6d6d6" stroke-width="4"/>
+  <rect x="308" y="176" width="34" height="92" rx="12" fill="#3e3e3e" stroke="#d6d6d6" stroke-width="4"/>
+  <path d="M75 196 V248 M325 196 V248" stroke="#8c8c8c" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- cabeça -->
+  <rect x="90" y="110" width="220" height="230" rx="48" fill="url(#shell)" stroke="#ffffff" stroke-width="5"/>
+  <!-- emenda da testa e parafusos -->
+  <path d="M128 146 H272" stroke="#9a9a9a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="114" cy="134" r="5" fill="#d0d0d0"/>
+  <circle cx="286" cy="134" r="5" fill="#d0d0d0"/>
+  <circle cx="114" cy="316" r="5" fill="#d0d0d0"/>
+  <circle cx="286" cy="316" r="5" fill="#d0d0d0"/>
+
+  <!-- visor escuro (menos pontos, dá profundidade) -->
+  <rect x="116" y="168" width="168" height="96" rx="42" fill="#161616" stroke="#e8e8e8" stroke-width="4"/>
+
+  <!-- olhos -->
+  <circle cx="164" cy="216" r="24" fill="url(#eye)"/>
+  <circle cx="236" cy="216" r="24" fill="url(#eye)"/>
+  <circle cx="164" cy="216" r="8" fill="#ffffff"/>
+  <circle cx="236" cy="216" r="8" fill="#ffffff"/>
+
+  <!-- boca em grade -->
+  <rect x="146" y="282" width="108" height="30" rx="10" fill="#202020" stroke="#d8d8d8" stroke-width="3"/>
+  <path d="M164 290 V304 M182 290 V304 M200 290 V304 M218 290 V304 M236 290 V304"
+        stroke="#f0f0f0" stroke-width="4" stroke-linecap="round"/>
+</svg>

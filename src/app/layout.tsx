@@ -48,6 +48,7 @@ export const metadata: Metadata = {
     'Andrey Dantas, Desenvolvedor Full Stack, React, Next.js, Node.js, NestJS, TypeScript, PostgreSQL, Python, Portfólio',
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
+  manifest: '/manifest.json',
   openGraph: {
     title: `${site.name} · ${site.role}`,
     description,

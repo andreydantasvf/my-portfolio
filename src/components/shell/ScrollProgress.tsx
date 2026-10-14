@@ -1,38 +1,72 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { scrollToY } from './SmoothScroll';
 
-/** Barra de "energia" no topo que se enche conforme a página rola. */
+/**
+ * Barra de rolagem do site (a nativa fica escondida em globals.css):
+ * uma linha de "energia" na borda direita que se enche de luz conforme a
+ * página rola. Clicar ou arrastar na barra rola até aquele ponto.
+ */
 export function ScrollProgress() {
   const bar = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const el = bar.current;
+    if (!el) return;
     let frame = 0;
+    const maxScroll = () =>
+      document.documentElement.scrollHeight - window.innerHeight;
     const update = () => {
       frame = 0;
-      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const max = maxScroll();
       const progress = max > 0 ? window.scrollY / max : 0;
-      bar.current?.style.setProperty('transform', `scaleX(${progress})`);
+      el.style.setProperty('--progress', progress.toFixed(4));
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
     };
+
+    // clicar/arrastar: a posição do ponteiro na barra vira a posição da página
+    let dragging = false;
+    const seek = (e: PointerEvent, immediate: boolean) => {
+      const ratio = Math.min(Math.max(e.clientY / window.innerHeight, 0), 1);
+      scrollToY(ratio * maxScroll(), immediate);
+    };
+    const onDown = (e: PointerEvent) => {
+      dragging = true;
+      el.setPointerCapture(e.pointerId);
+      el.dataset.dragging = 'true';
+      seek(e, false);
+    };
+    const onMove = (e: PointerEvent) => dragging && seek(e, true);
+    const onUp = () => {
+      dragging = false;
+      delete el.dataset.dragging;
+    };
+
     update();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
+    el.addEventListener('pointerdown', onDown);
+    el.addEventListener('pointermove', onMove);
+    el.addEventListener('pointerup', onUp);
+    el.addEventListener('pointercancel', onUp);
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
+      el.removeEventListener('pointerdown', onDown);
+      el.removeEventListener('pointermove', onMove);
+      el.removeEventListener('pointerup', onUp);
+      el.removeEventListener('pointercancel', onUp);
       cancelAnimationFrame(frame);
     };
   }, []);
 
   return (
-    <div aria-hidden className="bg-line/60 fixed inset-x-0 top-0 z-50 h-0.5">
-      <div
-        ref={bar}
-        className="bg-accent h-full origin-left scale-x-0 shadow-[0_0_12px_var(--accent)]"
-      />
+    <div ref={bar} aria-hidden className="scroll-energy">
+      <div className="scroll-energy__fill" />
+      <div className="scroll-energy__head" />
     </div>
   );
 }

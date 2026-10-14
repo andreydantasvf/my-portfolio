@@ -4,7 +4,7 @@ import { GitTimeline } from './GitTimeline';
 export function Experience() {
   return (
     <Section id="experiencia" particles="helix">
-      <div className="container-site">
+      <div className="container">
         <SectionHeader
           index={2}
           label="Experiência"

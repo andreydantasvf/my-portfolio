@@ -10,6 +10,8 @@ Construção iterativa: a base entra primeiro e os ajustes vêm conforme o site 
 
 ## Identidade visual
 
+Símbolo (Ω com A) em azul `--accent` sobre fundo `--navy-950`: favicon, ícones do app (`src/app/icon.png`, `apple-icon.png`, `public/brand/*`) e no header, no lugar do nome (`public/brand/mark.png` usado como máscara CSS).
+
 ### Cores
 
 | Token | Valor | Uso |
@@ -40,6 +42,8 @@ Escala: hero `clamp(56px, 11vw, 168px)`, h2 `clamp(36px, 5vw, 64px)`, corpo 16�
 ### Movimento
 
 - Scroll suave com **Lenis**, sincronizado ao **GSAP ScrollTrigger**.
+- A barra de rolagem nativa fica escondida; no lugar dela, uma **barra de energia** vertical na borda direita se enche de luz conforme a página rola (clicável e arrastável).
+- Largura das seções pelo `container` do Tailwind, estendido em `globals.css` (centralizado, respiro lateral fluido, máximo de 80rem).
 - Revelação de títulos por linha/palavra e de blocos com leve subida.
 - Tudo respeita `prefers-reduced-motion`: sem Lenis, sem morph de partículas, reveals instantâneos.
 
@@ -62,7 +66,7 @@ Um único canvas `three.js` (via `@react-three/fiber`) fixo atrás da página. C
 
 | Seção | Forma |
 |---|---|
-| Hero | **rosto** pontilhado à direita, gerado de `public/hero/face.svg` (quanto mais claro, mais pontos). Hoje é um rosto de exemplo; será trocado pelo rosto vetorizado do Andrey |
+| Hero | **robô** pontilhado à direita (remete a IA), gerado de `public/hero/robot.svg` (quanto mais claro, mais pontos) |
 | Sobre | **campo** de estrelas espalhado |
 | Experiência | **hélice dupla** girando à direita |
 | Stack | **onda** no rodapé da tela |
@@ -79,9 +83,9 @@ Canvas próprios e pequenos, renderizando só quando visíveis: **rack de servid
 - `dpr` limitado a 2; objetos fora da tela não renderizam.
 - Em telas pequenas: menos partículas (1.200 em vez de 3.500) e objetos menores.
 
-### Rosto a partir de imagem
+### Figura a partir de imagem
 
-`components/three/imagePoints.ts` lê a imagem num canvas e distribui os pontos por amostragem sistemática proporcional ao brilho (com contraste via gamma). O brilho também empurra o ponto para frente, dando relevo. Imagens escuras sobre fundo claro são invertidas automaticamente. Para trocar o rosto basta substituir o arquivo.
+`components/three/imagePoints.ts` lê a imagem num canvas e distribui os pontos por amostragem sistemática proporcional ao brilho (com contraste via gamma). O brilho também empurra o ponto para frente, dando relevo. Imagens escuras sobre fundo claro são invertidas automaticamente. Para trocar a figura do hero basta substituir o arquivo.
 
 ### Experiência como árvore do git
 

@@ -28,7 +28,7 @@ export async function About() {
 
   return (
     <Section id="sobre" particles="field">
-      <div className="container-site grid items-center gap-16 lg:grid-cols-[1.25fr_1fr]">
+      <div className="container grid items-center gap-16 lg:grid-cols-[1.25fr_1fr]">
         <div>
           <SectionHeader
             index={1}

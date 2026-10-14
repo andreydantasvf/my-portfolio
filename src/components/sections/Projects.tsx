@@ -6,7 +6,7 @@ import { ProjectsRail } from './ProjectsRail';
 export function Projects() {
   return (
     <Section id="projetos" particles="ring" className="overflow-x-clip">
-      <div className="container-site grid items-center gap-10 lg:grid-cols-[1.4fr_1fr]">
+      <div className="container grid items-center gap-10 lg:grid-cols-[1.4fr_1fr]">
         <SectionHeader
           index={4}
           label="Projetos"

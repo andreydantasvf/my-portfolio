@@ -8,21 +8,31 @@ import { prefersReducedMotion } from '@/lib/motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
+let lenis: Lenis | null = null;
+
+/** Rola até `y` pelo Lenis; sem ele (movimento reduzido), salta direto. */
+export function scrollToY(y: number, immediate = false) {
+  if (lenis) lenis.scrollTo(y, { immediate });
+  else window.scrollTo(0, y);
+}
+
 /** Scroll suave (Lenis) dirigido pelo ticker do GSAP, para o ScrollTrigger ficar em sincronia. */
 export function SmoothScroll() {
   useEffect(() => {
     if (prefersReducedMotion()) return;
 
-    const lenis = new Lenis({ lerp: 0.1, anchors: { offset: -72 } });
-    lenis.on('scroll', ScrollTrigger.update);
+    const instance = new Lenis({ lerp: 0.1, anchors: { offset: -72 } });
+    instance.on('scroll', ScrollTrigger.update);
+    lenis = instance;
 
-    const tick = (time: number) => lenis.raf(time * 1000);
+    const tick = (time: number) => instance.raf(time * 1000);
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
       gsap.ticker.remove(tick);
-      lenis.destroy();
+      instance.destroy();
+      lenis = null;
     };
   }, []);
 
