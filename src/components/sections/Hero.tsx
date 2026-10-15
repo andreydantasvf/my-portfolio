@@ -90,7 +90,7 @@ export function Hero() {
     <section
       ref={root}
       id="topo"
-      data-particles="robot"
+      data-particles="logo"
       className="relative z-10 flex min-h-svh items-end pt-28 pb-24 md:items-center md:pb-16"
     >
       <div className="container">

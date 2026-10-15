@@ -66,7 +66,7 @@ Um único canvas `three.js` (via `@react-three/fiber`) fixo atrás da página. C
 
 | Seção | Forma |
 |---|---|
-| Hero | **robô** pontilhado à direita (remete a IA), gerado de `public/hero/robot.svg` (quanto mais claro, mais pontos) |
+| Hero | **logo** (Ω com A) pontilhado à direita, em 2D (sem relevo), gerado de `public/hero/logo.png` (quanto mais claro, mais pontos) |
 | Sobre | **campo** de estrelas espalhado |
 | Experiência | **hélice dupla** girando à direita |
 | Stack | **onda** no rodapé da tela |
@@ -83,7 +83,7 @@ Canvas próprios e pequenos, renderizando só quando visíveis: **rack de servid
 - `dpr` limitado a 2; objetos fora da tela não renderizam.
 - Em telas pequenas: menos partículas (1.200 em vez de 3.500) e objetos menores.
 
-### Figura a partir de imagem
+### Forma a partir de imagem
 
 `components/three/imagePoints.ts` lê a imagem num canvas e distribui os pontos por amostragem sistemática proporcional ao brilho (com contraste via gamma). O brilho também empurra o ponto para frente, dando relevo. Imagens escuras sobre fundo claro são invertidas automaticamente. Para trocar a figura do hero basta substituir o arquivo.
 

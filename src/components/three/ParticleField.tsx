@@ -7,8 +7,8 @@ import { ACCENT } from '@/lib/theme';
 import { useReducedMotion } from '@/lib/motion';
 import { sampleImagePoints } from './imagePoints';
 
-/** Imagem do robô do hero. Troque o arquivo para usar outra figura. */
-const ROBOT_SRC = '/hero/robot.svg';
+/** Logo do hero, desenhado em pontos (2D). Troque o arquivo para usar outra figura. */
+const LOGO_SRC = '/hero/logo.png';
 
 /**
  * Fundo de partículas fixo atrás da página.
@@ -16,7 +16,7 @@ const ROBOT_SRC = '/hero/robot.svg';
  * perto do fim da seção as partículas migram para a forma da próxima.
  */
 export type ParticleShape =
-  | 'robot'
+  | 'logo'
   | 'orb'
   | 'field'
   | 'wave'
@@ -27,7 +27,7 @@ type Shape = {
   pos: Float32Array;
   /** Centro em torno do qual a forma se move. */
   center?: [number, number, number];
-  /** spin: gira sem parar (orb) · sway: balança como quem olha em volta (robô) */
+  /** spin: gira sem parar (orb) · sway: balança devagar (logo) */
   motion?: 'spin' | 'sway';
 };
 
@@ -42,7 +42,7 @@ function buildShapes(
   halfW: number,
   halfH: number,
   mobile: boolean,
-  robotPoints: Float32Array | null
+  logoPoints: Float32Array | null
 ): Record<ParticleShape, Shape> {
   const rand = (a: number, b: number) => a + Math.random() * (b - a);
   const golden = Math.PI * (3 - Math.sqrt(5));
@@ -73,20 +73,20 @@ function buildShapes(
     orb.set([x + orbCenter[0], y + orbCenter[1], z + orbCenter[2]], i * 3);
   }
 
-  // Robô: mesma posição do orb; enquanto a imagem carrega, usa o orb
-  const robotCenter: [number, number, number] = mobile
-    ? [halfW * 0.42, halfH * 0.55, -1]
+  // Logo à direita (no celular, menor e no canto de cima); enquanto a imagem carrega, usa o orb
+  const logoCenter: [number, number, number] = mobile
+    ? [halfW * 0.5, halfH * 0.62, -1]
     : [halfW * 0.4, 0, 0];
-  const robotH = mobile ? 3.4 : 6.2;
-  const robot = new Float32Array(n * 3);
-  if (robotPoints) {
+  const logoSize = mobile ? 2.2 : 5.2;
+  const logo = new Float32Array(n * 3);
+  if (logoPoints) {
     for (let i = 0; i < n * 3; i += 3) {
-      robot[i] = robotPoints[i] * robotH + robotCenter[0];
-      robot[i + 1] = robotPoints[i + 1] * robotH + robotCenter[1];
-      robot[i + 2] = robotPoints[i + 2] * robotH + robotCenter[2];
+      logo[i] = logoPoints[i] * logoSize + logoCenter[0];
+      logo[i + 1] = logoPoints[i + 1] * logoSize + logoCenter[1];
+      logo[i + 2] = logoPoints[i + 2] * logoSize + logoCenter[2];
     }
   } else {
-    robot.set(orb);
+    logo.set(orb);
   }
 
   const field = new Float32Array(n * 3);
@@ -156,9 +156,9 @@ function buildShapes(
 
   return {
     helix: { pos: helix, center: helixCenter, motion: 'spin' },
-    robot: robotPoints
-      ? { pos: robot, center: robotCenter, motion: 'sway' }
-      : { pos: robot, center: orbCenter, motion: 'spin' },
+    logo: logoPoints
+      ? { pos: logo, center: logoCenter, motion: 'sway' }
+      : { pos: logo, center: orbCenter, motion: 'spin' },
     orb: { pos: orb, center: orbCenter, motion: 'spin' },
     field: { pos: field },
     wave: { pos: wave },
@@ -192,19 +192,19 @@ function Particles({
   const points = useRef<THREE.Points>(null);
   const sections = useRef<HTMLElement[]>([]);
   const mouse = useRef({ x: 0, y: 0 });
-  const [robotPoints, setRobotPoints] = useState<Float32Array | null>(null);
+  const [logoPoints, setLogoPoints] = useState<Float32Array | null>(null);
 
   useEffect(() => {
     let alive = true;
-    sampleImagePoints(ROBOT_SRC, count)
-      .then(pts => alive && setRobotPoints(pts))
+    sampleImagePoints(LOGO_SRC, count, { depth: 0 })
+      .then(pts => alive && setLogoPoints(pts))
       .catch(() => {}); // sem imagem, o hero continua com o orb
     return () => {
       alive = false;
     };
   }, [count]);
 
-  useEffect(() => invalidate(), [robotPoints, invalidate]);
+  useEffect(() => invalidate(), [logoPoints, invalidate]);
 
   const shapes = useMemo(
     () =>
@@ -213,9 +213,9 @@ function Particles({
         viewport.width / 2,
         viewport.height / 2,
         mobile,
-        robotPoints
+        logoPoints
       ),
-    [count, viewport.width, viewport.height, mobile, robotPoints]
+    [count, viewport.width, viewport.height, mobile, logoPoints]
   );
   const { positions, delay, phase } = useMemo(() => {
     // começa espalhado: na entrada as partículas se juntam na forma do hero
@@ -273,12 +273,12 @@ function Particles({
     if (cur && next) {
       k = clamp01((h - cur.getBoundingClientRect().bottom) / (h - handoff));
     }
-    const fromKey = (cur?.dataset.particles as ParticleShape) || 'robot';
+    const fromKey = (cur?.dataset.particles as ParticleShape) || 'logo';
     const toKey = (next?.dataset.particles as ParticleShape) || fromKey;
-    const from = shapes[fromKey] ?? shapes.robot;
-    const to = shapes[toKey] ?? shapes.robot;
+    const from = shapes[fromKey] ?? shapes.logo;
+    const to = shapes[toKey] ?? shapes.logo;
 
-    // orb gira sem parar; robô balança devagar, como quem olha em volta
+    // orb gira sem parar; logo balança devagar de um lado para o outro
     const angle = (motion?: Shape['motion']) =>
       reduced || !motion
         ? 0
