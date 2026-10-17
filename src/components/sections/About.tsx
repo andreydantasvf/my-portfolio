@@ -47,13 +47,14 @@ export async function About() {
               ponta a ponta: da modelagem do banco à última animação da tela.
             </p>
             <p>
-              Meu foco é performance. Já reduzi em até{' '}
-              <strong className="text-fg font-medium">80%</strong> o tempo de
-              resposta de telas em React e em até{' '}
-              <strong className="text-fg font-medium">93%</strong> o de
-              consultas no PostgreSQL. Também uso IA no dia a dia da engenharia,
-              com Claude Code, Codex, agentes e desenvolvimento orientado por
-              especificação, sempre com revisão humana.
+              A IA faz parte do meu fluxo de trabalho. Uso{' '}
+              <strong className="text-fg font-medium">Claude Code</strong> e{' '}
+              <strong className="text-fg font-medium">Codex</strong> no dia a
+              dia, com agentes que me ajudam a explorar o código, implementar e
+              testar. Trabalho com desenvolvimento orientado por especificação:
+              primeiro defino o que precisa ser feito, depois a IA executa. LLMs
+              também entram na revisão de código, mas toda mudança passa pela
+              minha revisão antes de entrar no projeto.
             </p>
           </Reveal>
 
