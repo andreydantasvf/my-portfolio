@@ -3,7 +3,9 @@ import { GitTimeline } from './GitTimeline';
 
 export function Experience() {
   return (
-    <Section id="experiencia" particles="helix">
+    // overflow-x-clip: os cards entram deslizando da direita e, no celular,
+    // passariam da borda da tela antes de aparecer
+    <Section id="experiencia" particles="helix" className="overflow-x-clip">
       <div className="container">
         <SectionHeader
           index={2}
