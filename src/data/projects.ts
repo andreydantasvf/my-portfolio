@@ -68,6 +68,26 @@ export const projects: Project[] = [
     githubLink: 'https://github.com/andreydantasvf/auto-aula'
   },
   {
+    title: 'Meu Dinheirinho',
+    imgURL: '/projects/meu-dinheirinho.png',
+    details:
+      'App de controle financeiro pessoal instalável como PWA: lançamentos por conta e categoria, cartões de crédito com fatura e limite, compras parceladas, gastos fixos, metas mensais e lembretes via Web Push e Discord, com login por Face ID.',
+    technologies: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'TanStack Query',
+      'TailwindCSS',
+      'Express',
+      'Prisma',
+      'SQLite',
+      'PWA',
+      'Docker'
+    ],
+    webLink: 'https://meu-dinheirinho-demo.vercel.app',
+    githubLink: 'https://github.com/andreydantasvf/meu-dinheirinho'
+  },
+  {
     title: 'Entendendo Algoritmos',
     imgURL: '/projects/entendendo-algoritmos.png',
     details:
