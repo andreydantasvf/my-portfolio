@@ -100,14 +100,5 @@ export const projects: Project[] = [
       'Jogo de batalha naval desenvolvido em Ruby com interface gráfica utilizando a biblioteca Ruby2D. O jogo permite que um jogador enfrente uma máquina, posicionando seus navios em um tabuleiro e tentando afundar os navios do oponente.',
     technologies: ['Ruby', 'Ruby2D', 'SQLite'],
     githubLink: 'https://github.com/andreydantasvf/BattleShip_Ruby'
-  },
-  {
-    title: 'Mikael Barbearia',
-    imgURL: '/projects/mikael-barbearia.png',
-    details:
-      'Site institucional para uma barbearia local. Com formulário de contato funcional, os clientes podem facilmente agendar seus horários e serviços. O design é moderno e responsivo, garantindo uma ótima experiência em dispositivos móveis.',
-    technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
-    webLink: 'https://mikael-barbearia.vercel.app/',
-    githubLink: 'https://github.com/andreydantasvf/mikael-barbearia'
   }
 ];
