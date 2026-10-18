@@ -17,14 +17,15 @@ export const projects: Project[] = [
       'Next.js',
       'TypeScript',
       'TailwindCSS',
-      'PostgreSQL',
+      'Express',
       'Prisma',
-      'NextAuth.js',
+      'PostgreSQL',
       'Mercado Pago',
       'Evolution API',
-      'Coolify'
+      'Docker'
     ],
-    webLink: 'https://patosempregos.com.br'
+    webLink: 'https://patos-empregos-demo.vercel.app',
+    githubLink: 'https://github.com/andreydantasvf/patos-empregos'
   },
   {
     title: 'Racing of Legends',
