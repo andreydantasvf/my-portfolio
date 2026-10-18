@@ -88,6 +88,23 @@ export const projects: Project[] = [
     githubLink: 'https://github.com/andreydantasvf/meu-dinheirinho'
   },
   {
+    title: 'Nara Instrutora',
+    imgURL: '/projects/nara-instrutora.png',
+    details:
+      'Site e sistema de agendamento de aulas de direção para uma instrutora autônoma. Landing page com SEO local e contato por WhatsApp, e um painel com agenda, disponibilidade configurável e links de pré-agendamento para os alunos escolherem horários sem precisar de conta.',
+    technologies: [
+      'Next.js',
+      'TypeScript',
+      'TailwindCSS',
+      'shadcn/ui',
+      'PostgreSQL',
+      'Prisma',
+      'Better Auth',
+      'Vercel'
+    ],
+    webLink: 'https://narainstrutora.com.br'
+  },
+  {
     title: 'Entendendo Algoritmos',
     imgURL: '/projects/entendendo-algoritmos.png',
     details:
