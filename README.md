@@ -1,84 +1,87 @@
-# 🧙‍♂️ Portfólio Pessoal - Andrey Dantas
+# Andrey Dantas · Portfólio
 
-Bem-vindo ao repositório do meu portfólio pessoal! Este é o meu espaço na web, onde mostro meu trabalho, compartilho conhecimentos e ofereço uma maneira fácil de entrar em contato comigo.<!-- Substitua pela URL de uma imagem de pré-visualização -->
+Portfólio de desenvolvedor full stack JavaScript/TypeScript. Mostra experiência, stack e projetos num site escuro e interativo, com um campo de partículas em three.js que muda de forma conforme a página rola.
 
----
+**[andreydantas.com.br](https://andreydantas.com.br)**
 
-## 🔥 Tecnologias Utilizadas
+![Hero do portfólio](docs/screenshots/hero.jpg)
 
-Este projeto foi construído com as seguintes tecnologias modernas:
+## Destaques
 
-- **[Next.js](https://nextjs.org/)** - Framework React para desenvolvimento web.
-- **[Tailwind CSS](https://tailwindcss.com/)** - Framework de CSS para estilização moderna e responsiva.
-- **[EmailJS](https://www.emailjs.com/)** - Para envio de mensagens via formulário de contato.
-- **[React Icons](https://react-icons.github.io/react-icons/)** - Biblioteca de ícones para uma UI atraente.
-- **TypeScript** - Para garantir maior segurança no código.
-- **SEO Avançado** - Com suporte a Schema Markup, otimização para Open Graph e meta tags.
+- **Campo de partículas que acompanha o scroll.** Um único canvas three.js fica fixo atrás da página. Cada seção declara uma forma (`data-particles`) e as partículas migram entre elas: o logo pontilhado no hero, uma hélice dupla na experiência, uma onda na stack, um anel nos projetos.
+- **Experiência como árvore do git.** A carreira é desenhada como um `git log --graph`, com as branches `main`, `formacao` e `freelance` e animação de curva, nó e card ao rolar.
+- **Objetos 3D por seção.** Rack de servidor, banco de dados e rede distribuída, renderizados só quando estão visíveis.
+- **Movimento cuidado.** Scroll suave com Lenis sincronizado ao GSAP ScrollTrigger, barra de rolagem própria que se enche de luz e cursor em mira. Com `prefers-reduced-motion`, tudo isso é desligado.
+- **Contato direto.** Formulário com EmailJS e currículo em PDF para download.
 
----
+## Telas
 
-## ✨ Funcionalidades
+| Experiência | Stack |
+| --- | --- |
+| ![Experiência em árvore do git](docs/screenshots/experiencia.jpg) | ![Stack](docs/screenshots/stack.jpg) |
+| **Projetos** | **Contato** |
+| ![Projetos](docs/screenshots/projetos.jpg) | ![Contato](docs/screenshots/contato.jpg) |
 
-- **Página de Apresentação**: Mostra minha trajetória e habilidades principais.
-- **Portfólio de Projetos**: Galeria com os meus trabalhos.
-- **Formulário de Contato**: Permite enviar mensagens diretamente via EmailJS.
-- **Links Sociais**: Facilita a conexão com LinkedIn, GitHub e Instagram.
-- **Design Responsivo**: Compatível com todos os tamanhos de tela.
-- **SEO Melhorado**: Estrutura otimizada para melhores resultados nos motores de busca.
+<p align="center">
+  <img src="docs/screenshots/mobile.jpg" alt="Hero no celular" width="280" />
+</p>
 
----
+## Stack
 
-## 🛠️ Como Rodar o Projeto
+| | |
+| --- | --- |
+| Framework | Next.js 16 (App Router), React 19, TypeScript |
+| Estilo | Tailwind CSS 4 |
+| 3D e animação | three.js, React Three Fiber, drei, GSAP + ScrollTrigger, Lenis |
+| Integrações | EmailJS (formulário), API pública de contribuições do GitHub, Google Analytics |
 
-### Pré-requisitos
+## Estrutura
 
-Antes de começar, você precisará ter instalado em sua máquina:
+```
+src/
+  app/          layout, página e tokens de cor/tipografia (globals.css)
+  data/         conteúdo: site, experiência, stack e projetos
+  components/
+    shell/      header, footer, scroll suave, barra de rolagem e cursor
+    three/      campo de partículas e objetos 3D
+    sections/   Hero, Sobre, Experiência, Stack, Projetos e Contato
+    ui/         componentes de base
+```
 
-- **[Node.js](https://nodejs.org/)** (v18 ou superior)
-- **[Yarn](https://yarnpkg.com/)** ou **npm**
+Textos, projetos e experiência ficam em `src/data/`, separados da apresentação. Para adicionar um projeto, basta incluir um item em `src/data/projects.ts` e a imagem em `public/projects/`.
 
-### Passo a Passo
+## Como rodar
 
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/andreydantasvf/my-portfolio.git
-   ```
-2. Entre na pasta do projeto:
-   ```bash
-   cd my-portfolio
-   ```
-3. Instale as dependências:
-   ```bash
-     npm install
-     # ou
-     yarn install
-   ```
-4. Configure as variáveis de ambiente:
+Pré-requisitos: Node.js 20+ e [pnpm](https://pnpm.io/).
 
-   - Crie um arquivo .env.local na raiz do projeto com as seguintes variáveis:
+```bash
+git clone https://github.com/andreydantasvf/my-portfolio.git
+cd my-portfolio
+pnpm install
+cp .env.example .env.local   # preencha as chaves
+pnpm dev
+```
 
-   ```bash
-     NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=SEU_PUBLIC_KEY
-     NEXT_PUBLIC_EMAILJS_SERVICE_ID=SEU_SERVICE_ID
-     NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=SEU_TEMPLATE_ID
-   ```
+O site abre em http://localhost:3000.
 
-5. Inicie o servidor de desenvolvimento:
+### Variáveis de ambiente
 
-   ```bash
-     npm run dev
-     # ou
-     yarn dev
-   ```
+| Variável | Uso |
+| --- | --- |
+| `NEXT_PUBLIC_EMAILJS_SERVICE_ID`, `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`, `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY` | Envio do formulário de contato |
+| `NEXT_PUBLIC_GA_TRACKING` | Google Analytics (opcional) |
 
-6. Acesse o projeto em http://localhost:3000
+### Scripts
 
-## 📞 Contato
+| Comando | O que faz |
+| --- | --- |
+| `pnpm dev` | Servidor de desenvolvimento (Turbopack) |
+| `pnpm build` / `pnpm start` | Build e servidor de produção |
+| `pnpm lint` | ESLint |
+| `pnpm format` | Prettier |
 
-Se você gostou do meu trabalho ou tem alguma oportunidade interessante, entre em contato:
+## Contato
 
-- Portfólio: https://andreydantas.com.br
-- LinkedIn: https://linkedin.com/in/andreydantasvf
-- GitHub: https://github.com/andreydantasvf
-- Instagram: [@andreydantasvf](https://instagram.com/andreydantasvf)
 - E-mail: andreydantasvf@gmail.com
+- LinkedIn: [linkedin.com/in/andreydantasvf](https://linkedin.com/in/andreydantasvf)
+- GitHub: [github.com/andreydantasvf](https://github.com/andreydantasvf)

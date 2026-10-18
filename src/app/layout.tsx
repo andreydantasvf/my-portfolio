@@ -1,123 +1,128 @@
-import type { Metadata } from 'next';
-import { Cormorant_Garamond, Cinzel, Poppins } from 'next/font/google';
-import './globals.css';
+import type { Metadata, Viewport } from 'next';
+import {
+  Bricolage_Grotesque,
+  Inter_Tight,
+  JetBrains_Mono
+} from 'next/font/google';
 import Script from 'next/script';
+import './globals.css';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
-import { ThemeProvider } from '@/context/ThemeContext';
-import { DivineToggle } from '@/components/ui/DivineToggle';
-import { Loader } from '@/components/ui/Loader';
+import { Cursor } from '@/components/shell/Cursor';
+import { Footer } from '@/components/shell/Footer';
+import { Header } from '@/components/shell/Header';
+import { ScrollProgress } from '@/components/shell/ScrollProgress';
+import { SmoothScroll } from '@/components/shell/SmoothScroll';
+import { ParticleField } from '@/components/three/lazy';
 import { Toaster } from '@/components/ui/toaster';
+import { site } from '@/data/site';
 
-const CormorantGaramond = Cormorant_Garamond({
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
-  style: 'italic',
-  variable: '--font-cormorant-garamond',
-  weight: ['400', '600', '700']
+  variable: '--font-bricolage',
+  weight: ['600', '800'],
+  display: 'swap'
 });
 
-const CinzelFont = Cinzel({
+const interTight = Inter_Tight({
   subsets: ['latin'],
-  style: 'normal',
-  variable: '--font-cinzel',
-  weight: ['400', '600', '700']
+  variable: '--font-inter-tight',
+  weight: ['400', '500'],
+  display: 'swap'
 });
 
-const PoppinsFont = Poppins({
+const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
-  style: 'normal',
-  variable: '--font-poppins',
-  weight: ['400', '600', '700']
+  variable: '--font-jetbrains',
+  weight: ['400', '500'],
+  display: 'swap'
 });
+
+const description =
+  'Desenvolvedor full stack JavaScript/TypeScript. React, Next.js, Node.js, NestJS e PostgreSQL, com foco em performance e interfaces bem cuidadas.';
 
 export const metadata: Metadata = {
-  title: 'Andrey Dantas - Desenvolvedor de Software',
-  description:
-    'Desenvolvedor Full Stack especializado em tecnologias modernas para web e mobile.',
+  metadataBase: new URL(site.url),
+  title: `${site.name} · ${site.role}`,
+  description,
   keywords:
-    'Andrey Dantas, Desenvolvedor Full Stack, React, Node.js, TypeScript, Next.js, Tailwind, Portfólio',
-  authors: [{ name: 'Andrey Dantas', url: 'https://www.andreydantas.com.br' }],
-  creator: 'Andrey Dantas',
+    'Andrey Dantas, Desenvolvedor Full Stack, React, Next.js, Node.js, NestJS, TypeScript, PostgreSQL, Python, Portfólio',
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  manifest: '/manifest.json',
   openGraph: {
-    title: 'Andrey Dantas - Desenvolvedor de Software',
-    description:
-      'Conheça meu trabalho como desenvolvedor Full Stack. Projetos modernos com tecnologias de ponta.',
-    url: 'https://www.andreydantas.com.br',
-    siteName: 'Portfólio Andrey Dantas',
+    title: `${site.name} · ${site.role}`,
+    description,
+    url: site.url,
+    siteName: `Portfólio ${site.name}`,
     locale: 'pt_BR',
     type: 'website',
     images: [
       {
-        url: 'https://www.andreydantas.com.br/preview.png',
+        url: '/preview.png',
         width: 1200,
         height: 630,
-        alt: 'Andrey Dantas - Desenvolvedor de Software'
+        alt: `${site.name} · ${site.role}`
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Andrey Dantas | Desenvolvedor de Software',
-    description: 'Confira meu portfólio e meus projetos.',
+    title: `${site.name} · ${site.role}`,
+    description,
     creator: '@andreydantasvf',
-    images: ['https://www.andreydantas.com.br/preview.png']
+    images: ['/preview.png']
   }
+};
+
+export const viewport: Viewport = {
+  themeColor: '#05070d',
+  colorScheme: 'dark'
 };
 
 const schemaData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  author: {
-    '@type': 'Person',
-    name: 'Andrey Dantas',
-    url: 'https://www.andreydantas.com.br'
-  },
-  name: 'Andrey Dantas',
-  url: 'https://www.andreydantas.com.br',
-  image: 'https://www.andreydantas.com.br/preview.png', // Substitua pelo URL de uma imagem representativa
-  sameAs: [
-    'https://www.linkedin.com/in/andreydantasvf',
-    'https://github.com/andreydantasvf',
-    'https://www.instagram.com/andreydantasvf'
-  ],
-  jobTitle: 'Desenvolvedor de Software',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Freelancer'
-  },
+  name: site.name,
+  url: site.url,
+  image: `${site.url}/preview.png`,
+  sameAs: [site.social.linkedin, site.social.github, site.social.instagram],
+  jobTitle: site.role,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Patos',
     addressRegion: 'Paraíba',
     addressCountry: 'BR'
   },
-  description:
-    'Portfólio oficial de Andrey Dantas, desenvolvedor de software especializado em criar experiências lendárias.',
-  email: 'mailto:andreydantasvf@gmail.com'
+  description,
+  email: `mailto:${site.email}`
 };
 
 export default function RootLayout({
   children
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" dir="ltr" suppressHydrationWarning>
-      <body
-        className={`${CormorantGaramond.variable} ${CinzelFont.variable} ${PoppinsFont.variable} antialiased`}
-      >
-        <ThemeProvider>
-          <Loader />
-          {children}
-          <DivineToggle />
-          <Toaster />
+    <html
+      lang="pt-BR"
+      suppressHydrationWarning
+      className={`${bricolage.variable} ${interTight.variable} ${jetbrains.variable}`}
+    >
+      <body>
+        <SmoothScroll />
+        <ScrollProgress />
+        <Cursor />
+        <Header />
+        <ParticleField />
+        {children}
+        <Footer />
+        <div aria-hidden className="grain" />
+        <Toaster />
 
-          <Script
-            id="portfolio-schema"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-          />
-          <GoogleAnalytics />
-        </ThemeProvider>
+        <Script
+          id="portfolio-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
+        <GoogleAnalytics />
       </body>
     </html>
   );
