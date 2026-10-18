@@ -47,6 +47,26 @@ export const projects: Project[] = [
     githubLink: 'https://github.com/andreydantasvf/racing-of-legends'
   },
   {
+    title: 'Auto Aula',
+    imgURL: '/projects/autoaula.png',
+    details:
+      'Plataforma que conecta alunos a instrutores de direção. O aluno encontra instrutores, compra planos de aula e agenda horários; o instrutor gerencia disponibilidade, planos e recebimentos, com pagamentos via PIX pelo Mercado Pago.',
+    technologies: [
+      'Next.js',
+      'TypeScript',
+      'TailwindCSS',
+      'Nest.js',
+      'TypeORM',
+      'PostgreSQL',
+      'Mercado Pago',
+      'Google OAuth',
+      'Resend',
+      'Cloudinary'
+    ],
+    webLink: 'https://auto-aula-demo.vercel.app',
+    githubLink: 'https://github.com/andreydantasvf/auto-aula'
+  },
+  {
     title: 'Entendendo Algoritmos',
     imgURL: '/projects/entendendo-algoritmos.png',
     details:
