@@ -33,9 +33,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           sizes="400px"
           className="ease-out-expo object-cover object-top transition-transform duration-700 group-hover:scale-105"
         />
-        <span className="label border-accent/60 bg-bg/80 text-accent absolute top-3 left-3 rounded-full border px-3 py-1 text-[11px] backdrop-blur">
-          {project.kind}
-        </span>
       </a>
 
       <div className="flex flex-1 flex-col px-3 pt-5 pb-3">
