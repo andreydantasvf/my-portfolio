@@ -36,15 +36,15 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/home.png",
+      "src": "/screenshots/home.jpg",
       "sizes": "1280x720",
-      "type": "image/png",
+      "type": "image/jpeg",
       "label": "Página inicial"
     },
     {
-      "src": "/screenshots/contact.png",
+      "src": "/screenshots/contact.jpg",
       "sizes": "1280x720",
-      "type": "image/png",
+      "type": "image/jpeg",
       "label": "Formulário de contato"
     }
   ]
