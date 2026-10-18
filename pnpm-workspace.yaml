@@ -1,3 +1,8 @@
+# Projeto único: o pnpm 9 (usado pela Vercel) exige "packages" sempre que
+# este arquivo existe; sem ele o "pnpm install" falha.
+packages:
+  - '.'
+
 allowBuilds:
   msw: false
   sharp: true
