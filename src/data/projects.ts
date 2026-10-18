@@ -44,7 +44,6 @@ export const projects: Project[] = [
       'LUA',
       'Docker'
     ],
-    webLink: 'https://racingoflegends.com.br',
     githubLink: 'https://github.com/andreydantasvf/racing-of-legends'
   },
   {
